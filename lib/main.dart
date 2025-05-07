@@ -1,3 +1,4 @@
+import 'package:book_and_play/core/routing/app_router.dart';
 import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRouter.generateRoute,
       title: 'Book and Play',
       home: SignUpView(),
     );

@@ -34,12 +34,12 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: Colors.green[800],
       controller: controller,
       initialValue: initialValue, // Set initialValue here
       decoration: InputDecoration(
         isDense: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(color: ColorManager.primaryColor),
@@ -56,7 +56,6 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         suffixIcon: suffixIcon,
         suffixIconColor: Colors.grey[700],
-
         fillColor: Colors.transparent,
         //filled: true,
       ),
