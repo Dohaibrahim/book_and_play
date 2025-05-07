@@ -60,7 +60,10 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 child: AppButton(
                   text: 'Sign In',
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.homeView);
+                    Navigator.pushReplacementNamed(
+                      context,
+                      Routes.bottomNavView,
+                    );
                     /*if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                     } else {}*/
@@ -100,12 +103,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                             ),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            Routes.signUpView,
-                          );
-                        },
+                        onPressed: () {},
                       ),
                     ],
                   ),
