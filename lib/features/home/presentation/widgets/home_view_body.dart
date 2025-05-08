@@ -1,3 +1,4 @@
+import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/features/home/presentation/widgets/book_now.dart';
 import 'package:book_and_play/features/home/presentation/widgets/browse_your_booking.dart';
@@ -26,6 +27,9 @@ class HomeViewBody extends StatelessWidget {
           ),
           SizedBox(height: screenHight * 0.007),
           BrowseYourBooking(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.userBookingView);
+            },
             title: 'Browse your booking',
             trailing: Icon(
               Icons.navigate_next_outlined,

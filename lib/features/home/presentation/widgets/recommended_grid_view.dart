@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:flutter/material.dart';
 
