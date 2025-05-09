@@ -3,6 +3,8 @@
         android:label="book_and_play"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyCgHXjXoCwcq7YDxVqjrXFby5jgWI0A9wM"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

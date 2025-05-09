@@ -20,6 +20,8 @@ class RecommendedItem extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
+              left: 0,
+              right: 0,
               child: Container(
                 height: 150, // screenHeight * 0.19,
                 width: 180,
@@ -34,12 +36,12 @@ class RecommendedItem extends StatelessWidget {
             ),
             Positioned(
               left: 0,
-              right: 5,
+              right: 0,
               top: 120,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 7, vertical: 6),
                 height: 100,
-
+                width: 180,
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(

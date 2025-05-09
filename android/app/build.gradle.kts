@@ -6,9 +6,11 @@ plugins {
 }
 
 android {
+    compileSdk = 35
+    ndkVersion = "27.0.12077973"
     namespace = "com.example.book_and_play"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    //compileSdk = flutter.compileSdkVersion
+    //ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
