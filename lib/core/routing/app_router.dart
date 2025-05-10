@@ -1,6 +1,7 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/features/auth/presentation/sign_in_view.dart';
 import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
+import 'package:book_and_play/features/booking/presentation/location_selection.dart';
 import 'package:book_and_play/features/home/presentation/home_view.dart';
 import 'package:book_and_play/features/Bottom_nav/presentation/bottom_nav_view.dart';
 import 'package:book_and_play/features/user_booking/presentation/user_booking_view.dart';
@@ -21,6 +22,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => BottomNavView());
       case Routes.userBookingView:
         return MaterialPageRoute(builder: (_) => UserBookingView());
+      case Routes.bookingView:
+        return MaterialPageRoute(
+          builder: (builder) => const LocationSelectionView(),
+        );
     }
     return null;
   }

@@ -1,4 +1,4 @@
-import 'package:book_and_play/core/theme/color_manager.dart';
+import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -94,6 +94,9 @@ class BookNowListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           BookCard(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.bookingView);
+            },
             title: 'Book, Play, Win!',
             imagePath: 'assets/images/blue_banner.png',
             subTitle: 'Book Now ',

@@ -23,6 +23,8 @@ dependencies:
   get_it: ^8.0.3
   bloc: ^9.0.0
   google_maps_flutter: ^2.12.1
+  location: ^8.0.0
+  geolocator: ^14.0.0
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +42,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/gifs/
+    - assets/map_styles/
 
 
 flutter_launcher_icons:

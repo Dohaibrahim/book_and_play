@@ -1,4 +1,3 @@
-import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
