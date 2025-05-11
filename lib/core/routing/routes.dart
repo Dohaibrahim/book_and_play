@@ -5,4 +5,7 @@ class Routes {
   static const String bottomNavView = '/bottomNavView';
   static const String userBookingView = '/userBookingView';
   static const String bookingView = '/bookingView';
+  static const String chooseFootballFieldView = '/chooseFootballFieldView';
+  static const String footballFieldView = '/footballFieldView';
+  static const String userBookedFieldView = '/userBookedFieldView';
 }

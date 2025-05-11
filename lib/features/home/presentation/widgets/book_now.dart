@@ -95,7 +95,7 @@ class BookNowListView extends StatelessWidget {
         children: [
           BookCard(
             onTap: () {
-              Navigator.pushNamed(context, Routes.bookingView);
+              Navigator.pushNamed(context, Routes.chooseFootballFieldView);
             },
             title: 'Book, Play, Win!',
             imagePath: 'assets/images/blue_banner.png',

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -23,7 +22,6 @@ class _BookingGoogleMapState extends State<BookingGoogleMap> {
   @override
   void initState() {
     initLocationAndMap();
-
     initialCameraPosition = CameraPosition(zoom: 13, target: userLatLng);
     initMarkers();
     super.initState();

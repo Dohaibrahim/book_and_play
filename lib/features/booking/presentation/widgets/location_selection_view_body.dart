@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/booking/presentation/widgets/booking_google_map.dart';
 import 'package:flutter/material.dart';
@@ -19,35 +17,39 @@ class _LocationSelectionViewBodyState extends State<LocationSelectionViewBody> {
     final screenWidth = MediaQuery.sizeOf(context).width;
 
     //log(bottomInset.toString());
-    return SizedBox(
-      height: screenHeight,
-      width: screenWidth,
-      child: Stack(
-        children: [
-          Positioned.fill(child: BookingGoogleMap()),
-          Positioned(
-            top: screenHeight * 0.08,
-            right: 20,
-            left: 20,
-            child: SearchBar(
-              hintText: 'Search on a Football field',
-              textInputAction: TextInputAction.go,
-              onSubmitted: (value) {
-                // This gets called when "Go" is pressed on the keyboard
-                print("User searched: $value");
-              },
-            ),
+    return Column(
+      children: [
+        SizedBox(
+          height: screenHeight,
+          width: screenWidth,
+          child: Stack(
+            children: [
+              Positioned.fill(child: BookingGoogleMap()),
+              Positioned(
+                top: screenHeight * 0.08,
+                right: 20,
+                left: 20,
+                //TODO : change it to text field
+                child: SearchBar(
+                  hintText: 'Search on a Football field',
+                  textInputAction: TextInputAction.go,
+                  onSubmitted: (value) {
+                    // This gets called when "Go" is pressed on the keyboard
+                    print("User searched: $value");
+                  },
+                ),
+              ),
+              Positioned(
+                top: screenHeight * 0.90,
+                left: 20,
+                right: 20,
+                child: AppButton(onPressed: () {}, text: 'Next'),
+                //AppButton(onPressed: () {}, text: 'Next'),
+              ),
+            ],
           ),
-          Positioned(
-            top: screenHeight * 0.90,
-            left: 20,
-            right: 20,
-            child: AppButton(onPressed: () {}, text: 'Next'),
-
-            //AppButton(onPressed: () {}, text: 'Next'),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
