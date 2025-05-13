@@ -14,14 +14,19 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String?)? onSaved;
   final String? initialValue; // New nullable initialValue parameter
-
+  final Color? fillColor;
+  final BorderSide? focusedBorderSide, errorBorderSide, enabledBorderSide;
   const AppTextFormField({
     super.key,
     this.focusedBorder,
+    this.focusedBorderSide,
+    this.enabledBorderSide,
+    this.errorBorderSide,
     this.enabledBorder,
     this.inputTextStyle,
     this.hintStyle,
     required this.hintText,
+    this.fillColor,
     this.isObscureText,
     this.suffixIcon,
     this.backgroundColor,
@@ -42,21 +47,22 @@ class AppTextFormField extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: ColorManager.primaryColor),
+          borderSide:
+              focusedBorderSide ?? BorderSide(color: ColorManager.primaryColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: Colors.grey[700]!),
+          borderSide: enabledBorderSide ?? BorderSide(color: Colors.grey[700]!),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: errorBorderSide ?? BorderSide(color: Colors.red),
         ),
         hintStyle: TextStyle(color: Colors.grey[700]),
         hintText: hintText,
         suffixIcon: suffixIcon,
         suffixIconColor: Colors.grey[700],
-        fillColor: Colors.transparent,
+        fillColor: fillColor ?? Colors.transparent,
         //filled: true,
       ),
       obscuringCharacter: '*',

@@ -3,7 +3,6 @@ import 'package:book_and_play/core/routing/app_router.dart';
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/utils/constant.dart';
 import 'package:book_and_play/core/utils/shared_pref.dart';
-import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
 import 'package:book_and_play/features/onboarding/presentation/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +30,11 @@ class MyApp extends StatelessWidget {
               ? Routes.bottomNavView
               : Routes.onboardingView, // later will be sign in
       title: 'Book and Play',
-      home: OnboardingView(),
     );
   }
 }
+
+//10 -> max players
+// 3/10
+// 7 players left 
+// open , full , complete (status) based on status , if completed user can't fetch (book) the match 

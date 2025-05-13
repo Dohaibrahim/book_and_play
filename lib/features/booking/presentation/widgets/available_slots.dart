@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
+import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 
 class AvailableSlotsListView extends StatefulWidget {
@@ -31,41 +32,53 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.only(top: 10),
-      itemCount: dates.length,
-      itemBuilder: (BuildContext context, int index) {
-        String hour = dates[index];
-        final isSelected = selectedIndex == index;
-        return SizedBox(
-          height: 60,
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            child: Container(
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-              decoration: BoxDecoration(
-                color: isSelected ? ColorManager.primaryColor : Colors.white,
-                // Color(0xffDEF0E8),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey),
-              ),
-              child: Text(
-                hour,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            padding: EdgeInsets.only(top: 10),
+            itemCount: dates.length,
+            itemBuilder: (BuildContext context, int index) {
+              String hour = dates[index];
+              final isSelected = selectedIndex == index;
+              return SizedBox(
+                height: 60,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                    decoration: BoxDecoration(
+                      color:
+                          isSelected
+                              ? ColorManager.primaryColor
+                              : Color(0xffe0f7e8),
+                      // Color(0xffDEF0E8),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Text(
+                      hour,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight:
+                            isSelected ? FontWeight.w600 : FontWeight.w400,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
-        );
-      },
+        ),
+        AppButton(onPressed: () {}, text: 'Confirm Booking'),
+        SizedBox(height: 30),
+      ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/features/auth/presentation/sign_in_view.dart';
 import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
+import 'package:book_and_play/features/booking/presentation/book_now_view.dart';
 import 'package:book_and_play/features/booking/presentation/choose_football_field_view.dart';
 import 'package:book_and_play/features/booking/presentation/football_field_view.dart';
 import 'package:book_and_play/features/booking/presentation/location_selection.dart';
@@ -40,6 +41,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const FootballFieldView());
       case Routes.userBookedFieldView:
         return MaterialPageRoute(builder: (_) => const UserBookedFieldView());
+      case Routes.bookNowView:
+        return MaterialPageRoute(builder: (_) => const BookNowView());
     }
     return null;
   }

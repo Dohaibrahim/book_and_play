@@ -47,7 +47,7 @@ class _DataBookingSelectionState extends State<DataBookingSelection> {
               decoration: BoxDecoration(
                 color:
                     isSelected
-                        ? ColorManager.primaryColor
+                        ? Color(0xff4a5057)
                         : Colors.white, //  Color(0xffDEF0E8),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.grey),
@@ -56,7 +56,8 @@ class _DataBookingSelectionState extends State<DataBookingSelection> {
                 formatted,
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  fontSize: 18,
+                  color: isSelected ? Colors.white : Colors.black,
+                  fontSize: 15,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                 ),
               ),

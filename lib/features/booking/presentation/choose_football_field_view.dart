@@ -1,5 +1,5 @@
-import 'package:book_and_play/core/routing/routes.dart';
-import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:book_and_play/features/booking/presentation/widgets/booking_search_bar.dart';
 import 'package:book_and_play/features/booking/presentation/widgets/choose_football_field_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +11,18 @@ class ChooseFootballFieldView extends StatelessWidget {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          'Browse Football Fields',
+          style: TextStyles.font24BlackBold.copyWith(fontSize: 22),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
+            BookingSearchBar(screenHeight: screenHeight),
+            SizedBox(height: screenHeight * 0.01),
             /*SizedBox(
               width: screenWidth,
               height: screenHeight * 0.025,
@@ -29,15 +36,17 @@ class ChooseFootballFieldView extends StatelessWidget {
               ),
             ),*/
             SizedBox(
-              height: screenHeight * 0.80,
+              height: screenHeight * 0.77,
               child: ChooseFootballFieldViewBody(),
             ),
+
+            /*
             AppButton(
               onPressed: () {
                 Navigator.pushNamed(context, Routes.bookingView);
               },
               text: 'Search By Location',
-            ),
+            ),*/
           ],
         ),
       ),
