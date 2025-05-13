@@ -9,40 +9,71 @@ class OnboardingViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
+    final screenWidth = MediaQuery.sizeOf(context).width;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: screenHeight * 0.20),
-          Image.asset('assets/images/onboarding_image.png'),
-          SizedBox(height: 50),
+          SizedBox(height: screenHeight * 0.05),
+          Image.asset('assets/images/onboarding_players.png'),
+          SizedBox(height: screenHeight * 0.01),
           Center(
             child: Text(
               'Welcome to Book and Play!',
               style: TextStyles.font24BlackBold,
             ),
           ),
-          /*Center(
+          Center(
             child: Text(
-              'Continue as ',
-              style: TextStyles.font24BlackBold.copyWith(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+              'Football near you \n faster, easier, and more fun!',
+              textAlign: TextAlign.center,
+              style: TextStyles.font14BlackMedium.copyWith(fontSize: 18),
+            ),
+          ),
+          Image.asset(
+            'assets/icons/onboarding_xo_icon.png',
+            width: 100,
+            height: 100,
+          ),
+          Expanded(child: SizedBox()),
+          Center(
+            child: Text(
+              'Continue as ..',
+              style: TextStyles.font14BlackMedium.copyWith(fontSize: 19),
+            ),
+          ),
+          SizedBox(
+            width: screenWidth * 0.70,
+            height: 50,
+            child: AppButton(
+              //buttonWidth: screenWidth * 0.70,
+              //height: 50,
+              textStyle: TextStyles.font14BlackMedium.copyWith(
+                color: Colors.white,
+                fontSize: 17,
+              ),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, Routes.signUpView);
+              },
+              text: 'Player',
+            ),
+          ),
+          SizedBox(height: 10),
+          SizedBox(
+            height: 50,
+            width: screenWidth * 0.70,
+            child: AppButton(
+              //height: 50,
+              //buttonWidth: screenWidth * 0.60,
+              onPressed: () {},
+              text: 'Football Field Owner',
+              buttonColor: Colors.blue[400],
+              textStyle: TextStyles.font14BlackMedium.copyWith(
+                color: Colors.white,
+                fontSize: 17,
               ),
             ),
-          ),*/
-          Expanded(child: SizedBox()),
-          AppButton(
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, Routes.signUpView);
-            },
-            text: 'Continue as Player',
-          ),
-          AppButton(
-            onPressed: () {},
-            text: 'Continue as Football Field Owner',
-            buttonColor: Colors.blue[400],
           ),
           SizedBox(height: screenHeight * 0.05),
         ],

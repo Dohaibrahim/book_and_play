@@ -31,6 +31,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
+    final screenWidth = MediaQuery.sizeOf(context).width;
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Form(
@@ -40,7 +41,8 @@ class _SignInViewBodyState extends State<SignInViewBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.20),
+              //SizedBox(height: screenHeight * 0.20),
+              Image.asset('assets/images/onboarding_players.png'),
               SizedBox(
                 child: Text(
                   'Sign in to your account',
@@ -70,6 +72,8 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   return Center(
                     child: AppButton(
                       text: 'Sign In',
+                      height: 45,
+                      buttonWidth: screenWidth * 0.75,
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
@@ -119,7 +123,12 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                             ),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            Routes.signUpView,
+                          );
+                        },
                       ),
                     ],
                   ),

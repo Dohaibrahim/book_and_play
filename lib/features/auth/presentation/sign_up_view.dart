@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/routing/routes.dart';
+import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:book_and_play/features/auth/presentation/manager/signup_cubit/signup_state.dart';
 import 'package:book_and_play/features/auth/presentation/widgets/sign_up_view_body.dart';
@@ -16,6 +17,9 @@ class SignUpView extends StatelessWidget {
         listener: (context, state) {
           if (state is SignupSuccess) {
             Navigator.pushReplacementNamed(context, Routes.signInView);
+          }
+          if (state is SignupLoading) {
+            CircularProgressIndicator(color: ColorManager.primaryColor);
           }
         },
         child: const Scaffold(body: SignUpViewBody()),

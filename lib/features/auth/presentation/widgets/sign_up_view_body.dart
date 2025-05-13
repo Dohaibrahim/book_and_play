@@ -41,7 +41,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.1),
+              Center(
+                child: Image.asset(
+                  'assets/images/onboarding_players.png',
+                  width: 270,
+                  height: 270,
+                ),
+              ),
+              //SizedBox(height: screenHeight * 0.1),
               SizedBox(
                 child: Text(
                   'create an account',
@@ -77,12 +84,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               ),
               SizedBox(height: 16),
               AppButton(
-                buttonColor: Colors.grey[500],
+                buttonColor: Colors.grey[700],
                 buttonWidth: screenWidth * 0.90,
                 onPressed: () {
                   showCountryPicker(
                     context: context,
-                    //showPhoneCode:true, // optional. Shows phone code before the country name.
                     onSelect: (Country country) async {
                       log('Select country: ${country.name}');
                       countryName = country.name;
@@ -94,16 +100,16 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       countryName ??= '';
                     },
                   );
-
-                  //showCountryPickerDialog(context);
                 },
                 text: 'Select your country',
               ),
-              SizedBox(height: screenHeight * 0.15),
+              SizedBox(height: screenHeight * 0.10),
               BlocBuilder<SignupCubit, SignupState>(
                 builder: (context, state) {
                   return Center(
                     child: AppButton(
+                      height: 45,
+                      buttonWidth: screenWidth * 0.75,
                       text: 'Sign Up',
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
@@ -168,7 +174,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 18.0),
+                padding: const EdgeInsets.only(top: 10.0),
                 child: Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
