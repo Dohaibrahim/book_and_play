@@ -1,10 +1,18 @@
+import 'dart:developer';
+
+import 'package:book_and_play/core/di/dependency_injection.dart';
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/app_text_form_field.dart';
 import 'package:book_and_play/core/widgets/password_text_form_field.dart';
+import 'package:book_and_play/features/auth/data/model/signin_req_params.dart';
+import 'package:book_and_play/features/auth/domain/usecase/signin_usecase.dart';
+import 'package:book_and_play/features/auth/presentation/manager/signin_cubit/signin_cubit.dart';
+import 'package:book_and_play/features/auth/presentation/manager/signin_cubit/signin_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInViewBody extends StatefulWidget {
   const SignInViewBody({super.key});
@@ -18,7 +26,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-  late String email, userName, password;
+  late String email, password;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +55,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 hintText: 'Email',
                 onSaved: (value) {
                   email = value!;
+                  log(email);
                 },
               ),
               SizedBox(height: 16),
@@ -56,19 +65,26 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 },
               ),
               SizedBox(height: screenHeight * 0.10),
-              Center(
-                child: AppButton(
-                  text: 'Sign In',
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      Routes.bottomNavView,
-                    );
-                    /*if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                    } else {}*/
-                  },
-                ),
+              BlocBuilder<SigninCubit, SigninState>(
+                builder: (context, state) {
+                  return Center(
+                    child: AppButton(
+                      text: 'Sign In',
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          context.read<SigninCubit>().signin(
+                            usecase: getIt<SigninUsecase>(),
+                            params: SigninReqParams(
+                              email: email,
+                              password: password,
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  );
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0),

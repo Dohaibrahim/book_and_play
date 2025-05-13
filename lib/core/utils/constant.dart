@@ -1,5 +1,5 @@
 class ApiUrls {
-  static const String baseURL = "http://192.168.1.2:3000";
+  static const baseURL = 'https://book-and-play.vercel.app';
   static const String signup = '$baseURL/api/auth/signup';
   static const String signin = '$baseURL/api/auth/signin';
 }

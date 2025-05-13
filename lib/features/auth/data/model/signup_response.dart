@@ -1,13 +1,13 @@
 class SignupResponse {
   final String message;
-  final User user;
+  final User? user;
 
   SignupResponse({required this.message, required this.user});
 
   factory SignupResponse.fromJson(Map<String, dynamic> json) {
     return SignupResponse(
       message: json['message'],
-      user: User.fromJson(json['user']),
+      user: json['user'] == null ? null : User.fromJson(json['user']),
     );
   }
 }
@@ -15,37 +15,32 @@ class SignupResponse {
 class User {
   final String name;
   final String email;
-  final String password;
   final Location location;
-  final String role;
+  final String role, country;
   final String id;
-  final String createdAt;
-  final String updatedAt;
-  final int v;
+
+  final List<dynamic> match;
 
   User({
     required this.name,
     required this.email,
-    required this.password,
+    required this.country,
     required this.location,
     required this.role,
     required this.id,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.v,
+
+    required this.match,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       name: json['name'],
       email: json['email'],
-      password: json['password'],
+      match: json['match'],
+      country: json['country'],
       location: Location.fromJson(json['location']),
       role: json['role'],
       id: json['_id'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      v: json['__v'],
     );
   }
 }

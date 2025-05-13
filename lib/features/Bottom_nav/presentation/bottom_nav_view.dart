@@ -13,7 +13,6 @@ class BottomNavView extends StatefulWidget {
 class _BottomNavViewState extends State<BottomNavView> {
   int selectedIndex = 0;
   late List<Widget> screens;
-
   @override
   void initState() {
     super.initState();

@@ -1,4 +1,6 @@
 import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:book_and_play/core/utils/constant.dart';
+import 'package:book_and_play/core/utils/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -22,15 +24,35 @@ class HomeAppBar extends StatelessWidget {
             ),
             // TextStyles.font24BlackBold
           ),
-          Text(
-            textAlign: TextAlign.start,
-            'Doha',
-            style: TextStyles.font14BlackMedium.copyWith(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
-            // TextStyles.font24BlackBold
+          FutureBuilder(
+            future: SharedPrefHelper.getStringNullable(SharedPrefKeys.username),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text(
+                    'Error: ${snapshot.error}',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                );
+              } else {
+                String userName = snapshot.data ?? 'User';
+                return Text(
+                  textAlign: TextAlign.start,
+                  'Doha',
+                  style: TextStyles.font14BlackMedium.copyWith(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                );
+              }
+            },
           ),
+
+          // TextStyles.font24BlackBold
         ],
       ),
       actions: [
