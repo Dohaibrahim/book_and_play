@@ -17,7 +17,15 @@ class SignInView extends StatelessWidget {
         body: BlocListener<SigninCubit, SigninState>(
           listener: (context, state) {
             if (state is SigninSuccessState) {
-              Navigator.pushReplacementNamed(context, Routes.bottomNavView);
+              state.user.role == 'player'
+                  ? Navigator.pushReplacementNamed(
+                    context,
+                    Routes.userBottomNavView,
+                  )
+                  : Navigator.pushReplacementNamed(
+                    context,
+                    Routes.ownerBottomNavView,
+                  );
             }
             if (state is SigninLoadingState) {
               CircularProgressIndicator(color: ColorManager.primaryColor);

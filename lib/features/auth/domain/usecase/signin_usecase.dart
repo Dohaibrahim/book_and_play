@@ -7,6 +7,7 @@ import 'package:book_and_play/features/auth/domain/repo/auth_repo.dart';
 import 'package:dartz/dartz.dart';
 
 class SigninUsecase implements UseCase<SigninResponse, SigninReqParams> {
+  SigninUsecase();
   @override
   Future<Either<Failure, SigninResponse>> call([
     SigninReqParams? signinReq,

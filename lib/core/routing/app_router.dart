@@ -8,6 +8,7 @@ import 'package:book_and_play/features/booking/presentation/location_selection.d
 import 'package:book_and_play/features/home/presentation/home_view.dart';
 import 'package:book_and_play/features/Bottom_nav/presentation/bottom_nav_view.dart';
 import 'package:book_and_play/features/onboarding/presentation/onboarding_view.dart';
+import 'package:book_and_play/features/owner_home/presentation/owner_home_view.dart';
 import 'package:book_and_play/features/user_booking/presentation/user_booked_field_view.dart';
 import 'package:book_and_play/features/user_booking/presentation/user_booking_view.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +29,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OnboardingView());
       case Routes.homeView:
         return MaterialPageRoute(builder: (_) => HomeView());
-      case Routes.bottomNavView:
-        return MaterialPageRoute(builder: (_) => BottomNavView());
+      case Routes.ownerBottomNavView:
+        return MaterialPageRoute(
+          builder: (_) => BottomNavView(home: OwnerHomeView()),
+        );
+      case Routes.userBottomNavView:
+        return MaterialPageRoute(
+          builder: (_) => BottomNavView(home: HomeView()),
+        );
       case Routes.userBookingView:
         return MaterialPageRoute(builder: (_) => UserBookingView());
       case Routes.bookingView:

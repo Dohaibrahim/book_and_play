@@ -8,11 +8,12 @@ class SigninLoadingState extends SigninState {}
 
 class SigninSuccessState extends SigninState {
   final String message;
-  final String token;
+  final String token, role;
   final User user;
   SigninSuccessState({
     required this.message,
     required this.token,
+    required this.role,
     required this.user,
   });
 }

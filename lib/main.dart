@@ -11,13 +11,19 @@ void main() async {
   String? userToken = await SharedPrefHelper.getString(
     SharedPrefKeys.userToken,
   );
+  String? userRole = await SharedPrefHelper.getString(SharedPrefKeys.userRole);
   bool isLoggedInUser = userToken != null && userToken.isNotEmpty;
-  runApp(MyApp(isLoggedInUser: isLoggedInUser));
+  runApp(MyApp(isLoggedInUser: isLoggedInUser, userRole: userRole ?? ''));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.isLoggedInUser});
+  const MyApp({
+    super.key,
+    required this.isLoggedInUser,
+    required this.userRole,
+  });
   final bool isLoggedInUser;
+  final String userRole;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +31,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.generateRoute,
       initialRoute:
-          isLoggedInUser
-              ? Routes.bottomNavView
-              : Routes.onboardingView, // later will be sign in
+          !isLoggedInUser
+              ? Routes.onboardingView
+              : (userRole == 'owner'
+                  ? Routes.ownerBottomNavView
+                  : Routes.userBottomNavView),
+      // later will be sign in
       title: 'Book and Play',
     );
   }

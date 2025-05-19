@@ -10,4 +10,5 @@ class SharedPrefKeys {
   static const String username = 'username';
   static const String userEmail = 'userEmail';
   static const String userid = 'id';
+  static const String userRole = 'userRole';
 }

@@ -31,13 +31,19 @@ class SigninCubit extends Cubit<SigninState> {
         },
         (data) async {
           await saveUserToken(data.token);
-          await saveUserdata(data.user!.email, data.user!.name, data.user!.id);
+          await saveUserdata(
+            data.user!.email,
+            data.user!.name,
+            data.user!.id,
+            data.user!.role,
+          );
           log('Signup successful: ${data.message}'); // Log success message
           emit(
             SigninSuccessState(
               message: data.message,
               token: data.token,
               user: data.user!,
+              role: data.user!.role,
             ),
           ); // Ensure you pass the user's name if available
         },
@@ -56,8 +62,14 @@ Future<void> saveUserToken(String token) async {
   ); // Use the injected DioClient instance
 }
 
-Future<void> saveUserdata(String email, String name, String id) async {
+Future<void> saveUserdata(
+  String email,
+  String name,
+  String id,
+  String role,
+) async {
   await SharedPrefHelper.setData(SharedPrefKeys.userEmail, email);
   await SharedPrefHelper.setData(SharedPrefKeys.username, name);
   await SharedPrefHelper.setData(SharedPrefKeys.userid, id);
+  await SharedPrefHelper.setData(SharedPrefKeys.userRole, role);
 }

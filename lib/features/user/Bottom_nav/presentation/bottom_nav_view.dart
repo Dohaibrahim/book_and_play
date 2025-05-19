@@ -1,11 +1,10 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
-import 'package:book_and_play/features/home/presentation/home_view.dart';
 import 'package:book_and_play/features/settings/presentation/settings_view.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavView extends StatefulWidget {
-  const BottomNavView({super.key});
-
+  const BottomNavView({super.key, required this.home});
+  final Widget home;
   @override
   State<BottomNavView> createState() => _BottomNavViewState();
 }
@@ -16,7 +15,7 @@ class _BottomNavViewState extends State<BottomNavView> {
   @override
   void initState() {
     super.initState();
-    screens = [const HomeView(), const SettingsView()];
+    screens = [widget.home, const SettingsView()];
   }
 
   @override
