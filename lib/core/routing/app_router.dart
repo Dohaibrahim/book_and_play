@@ -38,7 +38,11 @@ class AppRouter {
           builder: (_) => const ChooseFootballFieldView(),
         );
       case Routes.footballFieldView:
-        return MaterialPageRoute(builder: (_) => const FootballFieldView());
+        final args = settings.arguments as String;
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => FootballFieldView(fieldId: args),
+        );
       case Routes.userBookedFieldView:
         return MaterialPageRoute(builder: (_) => const UserBookedFieldView());
       case Routes.bookNowView:

@@ -37,7 +37,11 @@ class FootballFieldCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.footballFieldView);
+        Navigator.pushNamed(
+          context,
+          Routes.footballFieldView,
+          arguments: field.id,
+        );
       },
       child: Column(
         children: [

@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class BookingRepo {
   Future<Either<Failure, List<Field>>> fetchFields();
+  Future<Either<Failure, Field>> getFieldById(String id);
 }

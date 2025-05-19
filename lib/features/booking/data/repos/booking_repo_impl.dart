@@ -27,4 +27,23 @@ class BookingRepoImpl extends BookingRepo {
       return Left(Failure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, Field>> getFieldById(String id) async {
+    try {
+      final result = await getIt<BookingRemoteDataSource>().getFieldById(id);
+      return result.fold(
+        (failure) {
+          log(failure.toString());
+          return Left(failure);
+        },
+        (field) {
+          return Right(field.field);
+        },
+      );
+    } catch (e) {
+      log(e.toString());
+      return Left(Failure(e.toString()));
+    }
+  }
 }

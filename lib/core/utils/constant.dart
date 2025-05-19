@@ -2,7 +2,7 @@ class ApiUrls {
   static const baseURL = 'https://book-and-play.vercel.app';
   static const String signup = '$baseURL/api/auth/signup';
   static const String signin = '$baseURL/api/auth/signin';
-  static const String gatAllFields = '$baseURL/api/field/allfields';
+  static const String field = '$baseURL/api/field';
 }
 
 class SharedPrefKeys {
