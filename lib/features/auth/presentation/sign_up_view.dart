@@ -11,8 +11,9 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as String;
     return BlocProvider(
-      create: (context) => SignupCubit(),
+      create: (context) => SignupCubit(args),
       child: BlocListener<SignupCubit, SignupState>(
         listener: (context, state) {
           if (state is SignupSuccess) {

@@ -7,8 +7,10 @@ import 'package:book_and_play/features/auth/domain/repo/auth_repo.dart';
 import 'package:dartz/dartz.dart';
 
 class SignupUsecase implements UseCase<SignupResponse, SignupReqParams> {
+  final String role;
+  SignupUsecase(this.role);
   @override
   Future<Either<Failure, SignupResponse>> call([SignupReqParams? param]) async {
-    return await getIt<AuthRepo>().signUp(param!);
+    return await getIt<AuthRepo>().signUp(param!, role);
   }
 }

@@ -16,7 +16,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
-
   @override
   State<SignUpViewBody> createState() => _SignUpViewBodyState();
 }
@@ -116,7 +115,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           if (isCountrySelected == true) {
                             formKey.currentState!.save();
                             context.read<SignupCubit>().execute(
-                              usecase: getIt<SignupUsecase>(),
+                              //usecase: SignupUsecase(widget.role),
                               params: SignupReqParams(
                                 email: email,
                                 country: countryName!,

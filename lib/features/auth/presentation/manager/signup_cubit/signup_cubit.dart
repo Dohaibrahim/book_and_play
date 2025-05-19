@@ -8,16 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupCubit extends Cubit<SignupState> {
-  SignupCubit() : super(SignupInitial());
-
+  SignupCubit(this.role) : super(SignupInitial());
+  final String role;
   static SignupCubit get(BuildContext context) => BlocProvider.of(context);
 
-  void execute({
-    required SignupReqParams params,
-    required SignupUsecase usecase,
-  }) async {
+  void execute({required SignupReqParams params}) async {
     emit(SignupLoading());
-
+    final usecase = SignupUsecase(role);
     try {
       final Either<Failure, SignupResponse> result = await usecase.call(params);
 

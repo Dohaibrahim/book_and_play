@@ -54,7 +54,11 @@ class OnboardingViewBody extends StatelessWidget {
                 fontSize: 17,
               ),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, Routes.signUpView);
+                Navigator.pushReplacementNamed(
+                  context,
+                  Routes.signUpView,
+                  arguments: 'player',
+                );
               },
               text: 'Player',
             ),
@@ -66,7 +70,13 @@ class OnboardingViewBody extends StatelessWidget {
             child: AppButton(
               //height: 50,
               //buttonWidth: screenWidth * 0.60,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(
+                  context,
+                  Routes.signUpView,
+                  arguments: 'owner',
+                );
+              },
               text: 'Football Field Owner',
               buttonColor: Colors.blue[400],
               textStyle: TextStyles.font14BlackMedium.copyWith(

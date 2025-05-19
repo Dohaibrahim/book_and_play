@@ -10,8 +10,11 @@ import 'package:dartz/dartz.dart';
 
 class AuthRepoImpl extends AuthRepo {
   @override
-  Future<Either<Failure, SignupResponse>> signUp(SignupReqParams signupReq) {
-    return getIt<AuthRemoteDataSource>().signUp(signupReq);
+  Future<Either<Failure, SignupResponse>> signUp(
+    SignupReqParams signupReq,
+    String role,
+  ) {
+    return getIt<AuthRemoteDataSource>().signUp(signupReq, role);
   }
 
   @override

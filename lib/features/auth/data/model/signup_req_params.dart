@@ -16,7 +16,7 @@ class SignupReqParams {
     required this.country,
   });
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson(String userRole) {
     return {
       'name': name,
       'country': country,
@@ -25,6 +25,7 @@ class SignupReqParams {
       'repassword': repassword,
       'location': location.toJson(),
       'preferred_distance': preferred_distance,
+      'role': userRole,
     };
   }
 }

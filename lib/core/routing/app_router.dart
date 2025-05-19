@@ -20,7 +20,10 @@ class AppRouter {
       case Routes.signInView:
         return MaterialPageRoute(builder: (_) => SignInView());
       case Routes.signUpView:
-        return MaterialPageRoute(builder: (_) => SignUpView());
+        return MaterialPageRoute(
+          builder: (_) => SignUpView(),
+          settings: settings,
+        );
       case Routes.onboardingView:
         return MaterialPageRoute(builder: (_) => const OnboardingView());
       case Routes.homeView:

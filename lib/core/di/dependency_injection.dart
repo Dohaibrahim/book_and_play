@@ -19,7 +19,7 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl());
 
-  getIt.registerSingleton<SignupUsecase>(SignupUsecase());
+  //getIt.registerSingleton<SignupUsecase>(SignupUsecase());
 
   getIt.registerSingleton<SigninUsecase>(SigninUsecase());
 

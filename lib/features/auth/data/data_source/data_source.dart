@@ -12,7 +12,10 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 abstract class AuthRemoteDataSource {
-  Future<Either<Failure, SignupResponse>> signUp(SignupReqParams signupReq);
+  Future<Either<Failure, SignupResponse>> signUp(
+    SignupReqParams signupReq,
+    String role,
+  );
 
   Future<Either<Failure, SigninResponse>> signIn(SigninReqParams signInReq);
 }
@@ -21,11 +24,12 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   @override
   Future<Either<Failure, SignupResponse>> signUp(
     SignupReqParams signupReq,
+    String role,
   ) async {
     try {
       var response = await getIt<DioClient>().post(
         ApiUrls.signup,
-        data: signupReq.toJson(),
+        data: signupReq.toJson(role),
       );
 
       final signupResponse = SignupResponse.fromJson(response.data);
