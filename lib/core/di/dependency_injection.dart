@@ -4,6 +4,10 @@ import 'package:book_and_play/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:book_and_play/features/auth/domain/repo/auth_repo.dart';
 import 'package:book_and_play/features/auth/domain/usecase/signin_usecase.dart';
 import 'package:book_and_play/features/auth/domain/usecase/signup_usecase.dart';
+import 'package:book_and_play/features/booking/data/data_source/booking_remote_data_source.dart';
+import 'package:book_and_play/features/booking/data/repos/booking_repo_impl.dart';
+import 'package:book_and_play/features/booking/domain/repo/booking_repo.dart';
+import 'package:book_and_play/features/booking/domain/usecase/fetch_fields_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -18,4 +22,14 @@ void setupServiceLocator() {
   getIt.registerSingleton<SignupUsecase>(SignupUsecase());
 
   getIt.registerSingleton<SigninUsecase>(SigninUsecase());
+
+  getIt.registerSingleton<BookingRemoteDataSource>(
+    BookingRemoteDataSourceImpl(),
+  );
+
+  getIt.registerSingleton<BookingRepo>(BookingRepoImpl());
+
+  getIt.registerSingleton<FetchFieldsUsecase>(
+    FetchFieldsUsecase(allFieldsRepo: getIt.get<BookingRepo>()),
+  );
 }
