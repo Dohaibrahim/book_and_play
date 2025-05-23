@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/core/widgets/app_dialog.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/get_available_matches/get_available_matches_cubit.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/get_available_matches/get_available_matches_state.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/join_match/join_match_cubit.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/join_match/join_match_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,26 +21,11 @@ class AvailableSlotsListView extends StatefulWidget {
 class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
   int? selectedIndex;
   late final List<String> dates;
-
-  @override
-  void initState() {
-    dates = [
-      "9:00 - 10:00 pm ",
-      "3:00 - 4:00 pm ",
-      "7:00 - 8:00 pm ",
-      "9:00 - 10:00 am ",
-      "5:00 - 6:00 pm ",
-      "9:00 - 10:00 pm ",
-      "3:00 - 4:00 pm ",
-      "7:00 - 8:00 pm ",
-      "9:00 - 10:00 am ",
-      "5:00 - 6:00 pm ",
-    ];
-    super.initState();
-  }
-
+  String? matchId;
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final screenHeight = MediaQuery.sizeOf(context).height;
     return BlocBuilder<GetAvailableMatchesCubit, GetAvailableMatchesState>(
       builder: (context, state) {
         if (state is GetAvailableMatchesLoadingState) {
@@ -63,6 +53,7 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
                         onTap: () {
                           setState(() {
                             selectedIndex = index;
+                            matchId = match.id;
                           });
                         },
                         child: Container(
@@ -100,7 +91,51 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
                   },
                 ),
               ),
-              AppButton(onPressed: () {}, text: 'Confirm Booking'),
+              BlocConsumer<JoinMatchCubit, JoinMatchState>(
+                builder: (context, state) {
+                  return AppButton(
+                    onPressed: () {
+                      if (matchId == null) {
+                        log('match id == 0');
+                      } else {
+                        context.read<JoinMatchCubit>().joinMatch(matchId!);
+                      }
+                    },
+                    text: 'Confirm Booking',
+                  );
+                },
+                listener: (context, state) {
+                  if (state is JoinMatchFailureState) {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AppDialog(
+                          subTitle:
+                              state
+                                  .errorMessage, //'You already have booked this match',
+                          title: 'Error in booking!',
+                          imagePath: 'assets/icons/error_icon.png',
+                          screenHeight: screenHeight,
+                          screenWidth: screenWidth,
+                        );
+                      },
+                    );
+                  } else if (state is JoinMatchSuccessState) {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AppDialog(
+                          screenHeight: screenHeight,
+                          screenWidth: screenWidth,
+                          imagePath: 'assets/icons/success_icon.png',
+                          title: 'Congratulations!',
+                          subTitle: 'You have booked successfully',
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
               SizedBox(height: 30),
             ],
           );

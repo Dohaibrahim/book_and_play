@@ -4,6 +4,7 @@ class ApiUrls {
   static const String signin = '$baseURL/api/auth/signin';
   static const String field = '$baseURL/api/field';
   static const String availableMatches = '$baseURL/api/match/available';
+  static const String match = '$baseURL/api/match';
 }
 
 class SharedPrefKeys {

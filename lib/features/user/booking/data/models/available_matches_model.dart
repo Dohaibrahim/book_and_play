@@ -17,16 +17,16 @@ class AvailableMatchesModel {
 
 class MatchModel {
   final String id, fieldId, date, status;
-  final int max_players;
-  final List<CurrentPlayerModel> current_players;
+  final int maxPlayers;
+  final List<CurrentPlayerModel> currentPlayers;
   final TimeModel time;
   MatchModel({
-    required this.current_players,
+    required this.currentPlayers,
     required this.status,
     required this.date,
     required this.fieldId,
     required this.id,
-    required this.max_players,
+    required this.maxPlayers,
     required this.time,
   });
 
@@ -35,13 +35,13 @@ class MatchModel {
     List<CurrentPlayerModel> currentPlyaers =
         players.map((i) => CurrentPlayerModel.fromJson(i)).toList();
     return MatchModel(
-      current_players: currentPlyaers,
+      currentPlayers: currentPlyaers,
       status: json['status'],
       id: json['id'],
       fieldId: json['fieldId'],
       date: json['date'],
       time: TimeModel.fromJson(json['time']),
-      max_players: json['max_players'],
+      maxPlayers: json['max_players'],
     );
   }
 }
