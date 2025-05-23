@@ -1,7 +1,8 @@
 import 'dart:developer';
 
-import 'package:book_and_play/core/theme/color_manager.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/get_available_matches/get_available_matches_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class DataBookingSelection extends StatefulWidget {
@@ -38,8 +39,14 @@ class _DataBookingSelectionState extends State<DataBookingSelection> {
             onTap: () {
               setState(() {
                 selectedIndex = index;
-                log(selectedIndex.toString());
               });
+              final formattedDate = DateFormat(
+                'yyyy-MM-dd',
+              ).format(days[selectedIndex!]);
+              log(formattedDate);
+              context.read<GetAvailableMatchesCubit>().getAvailableMatches(
+                formattedDate,
+              );
             },
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),

@@ -1,16 +1,16 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/features/auth/presentation/sign_in_view.dart';
 import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
-import 'package:book_and_play/features/booking/presentation/book_now_view.dart';
-import 'package:book_and_play/features/booking/presentation/choose_football_field_view.dart';
-import 'package:book_and_play/features/booking/presentation/football_field_view.dart';
-import 'package:book_and_play/features/booking/presentation/location_selection.dart';
-import 'package:book_and_play/features/home/presentation/home_view.dart';
-import 'package:book_and_play/features/Bottom_nav/presentation/bottom_nav_view.dart';
+import 'package:book_and_play/features/user/booking/presentation/book_now_view.dart';
+import 'package:book_and_play/features/user/booking/presentation/choose_football_field_view.dart';
+import 'package:book_and_play/features/user/booking/presentation/football_field_view.dart';
+import 'package:book_and_play/features/user/booking/presentation/location_selection.dart';
+import 'package:book_and_play/features/user/home/presentation/home_view.dart';
+import 'package:book_and_play/features/user/Bottom_nav/presentation/bottom_nav_view.dart';
 import 'package:book_and_play/features/onboarding/presentation/onboarding_view.dart';
-import 'package:book_and_play/features/owner_home/presentation/owner_home_view.dart';
-import 'package:book_and_play/features/user_booking/presentation/user_booked_field_view.dart';
-import 'package:book_and_play/features/user_booking/presentation/user_booking_view.dart';
+import 'package:book_and_play/features/owner/owner_home/presentation/owner_home_view.dart';
+import 'package:book_and_play/features/user/user_booking/presentation/user_booked_field_view.dart';
+import 'package:book_and_play/features/user/user_booking/presentation/user_booking_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -56,7 +56,10 @@ class AppRouter {
       case Routes.userBookedFieldView:
         return MaterialPageRoute(builder: (_) => const UserBookedFieldView());
       case Routes.bookNowView:
-        return MaterialPageRoute(builder: (_) => const BookNowView());
+        return MaterialPageRoute(
+          builder: (_) => const BookNowView(),
+          settings: settings,
+        );
     }
     return null;
   }

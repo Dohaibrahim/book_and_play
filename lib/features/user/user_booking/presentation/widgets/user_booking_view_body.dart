@@ -1,5 +1,5 @@
-import 'package:book_and_play/features/user_booking/presentation/widgets/filter_booking_by_date.dart';
-import 'package:book_and_play/features/user_booking/presentation/widgets/stadium_card.dart';
+import 'package:book_and_play/features/user/user_booking/presentation/widgets/filter_booking_by_date.dart';
+import 'package:book_and_play/features/user/user_booking/presentation/widgets/stadium_card.dart';
 import 'package:flutter/material.dart';
 
 class UserBookingViewBody extends StatelessWidget {

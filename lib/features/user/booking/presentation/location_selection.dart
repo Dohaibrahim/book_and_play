@@ -1,4 +1,4 @@
-import 'package:book_and_play/features/booking/presentation/widgets/location_selection_view_body.dart';
+import 'package:book_and_play/features/user/booking/presentation/widgets/location_selection_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LocationSelectionView extends StatelessWidget {

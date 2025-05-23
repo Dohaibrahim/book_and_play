@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:book_and_play/features/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_cubit.dart';
-import 'package:book_and_play/features/booking/presentation/widgets/football_field_view_body.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_cubit.dart';
+import 'package:book_and_play/features/user/booking/presentation/widgets/football_field_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

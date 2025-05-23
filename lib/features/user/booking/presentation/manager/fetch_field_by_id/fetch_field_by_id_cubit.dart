@@ -1,7 +1,7 @@
 import 'package:book_and_play/core/di/dependency_injection.dart';
-import 'package:book_and_play/features/booking/domain/repo/booking_repo.dart';
-import 'package:book_and_play/features/booking/domain/usecase/get_field_by_id_usecase.dart';
-import 'package:book_and_play/features/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_state.dart';
+import 'package:book_and_play/features/user/booking/domain/repo/booking_repo.dart';
+import 'package:book_and_play/features/user/booking/domain/usecase/get_field_by_id_usecase.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FetchFieldByIdCubit extends Cubit<FetchFieldByIdState> {

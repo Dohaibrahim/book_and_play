@@ -1,8 +1,8 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
-import 'package:book_and_play/features/booking/data/models/all_fields_res.dart';
-import 'package:book_and_play/features/booking/presentation/manager/fetch_fields_cubit/fetch_fields_cubit.dart';
-import 'package:book_and_play/features/booking/presentation/manager/fetch_fields_cubit/fetch_fields_state.dart';
+import 'package:book_and_play/features/user/booking/data/models/all_fields_res.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/fetch_fields_cubit/fetch_fields_cubit.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/fetch_fields_cubit/fetch_fields_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-import 'package:book_and_play/features/settings/presentation/widgets/settings_view_body.dart';
+import 'package:book_and_play/features/user/settings/presentation/widgets/settings_view_body.dart';
 import 'package:flutter/material.dart';
 
 class SettingsView extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
-import 'package:book_and_play/features/home/presentation/widgets/book_now.dart';
-import 'package:book_and_play/features/home/presentation/widgets/browse_your_booking.dart';
-import 'package:book_and_play/features/home/presentation/widgets/home_app_bar.dart';
-import 'package:book_and_play/features/home/presentation/widgets/recommended_grid_view.dart';
+import 'package:book_and_play/features/user/home/presentation/widgets/book_now.dart';
+import 'package:book_and_play/features/user/home/presentation/widgets/browse_your_booking.dart';
+import 'package:book_and_play/features/user/home/presentation/widgets/home_app_bar.dart';
+import 'package:book_and_play/features/user/home/presentation/widgets/recommended_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {

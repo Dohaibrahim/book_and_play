@@ -1,4 +1,4 @@
-import 'package:book_and_play/features/owner_home/presentation/widgets/owner_home_view_body.dart';
+import 'package:book_and_play/features/owner/owner_home/presentation/widgets/owner_home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class OwnerHomeView extends StatelessWidget {

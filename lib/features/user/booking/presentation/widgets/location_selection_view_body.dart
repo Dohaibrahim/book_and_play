@@ -1,5 +1,5 @@
 import 'package:book_and_play/core/widgets/app_button.dart';
-import 'package:book_and_play/features/booking/presentation/widgets/booking_google_map.dart';
+import 'package:book_and_play/features/user/booking/presentation/widgets/booking_google_map.dart';
 import 'package:flutter/material.dart';
 
 class LocationSelectionViewBody extends StatefulWidget {

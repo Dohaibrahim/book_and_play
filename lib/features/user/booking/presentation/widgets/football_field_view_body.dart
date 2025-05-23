@@ -4,10 +4,10 @@ import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
-import 'package:book_and_play/features/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_cubit.dart';
-import 'package:book_and_play/features/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_state.dart';
-import 'package:book_and_play/features/booking/presentation/manager/fetch_fields_cubit/fetch_fields_cubit.dart';
-import 'package:book_and_play/features/booking/presentation/widgets/location_button.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_cubit.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_state.dart';
+import 'package:book_and_play/features/user/booking/presentation/manager/fetch_fields_cubit/fetch_fields_cubit.dart';
+import 'package:book_and_play/features/user/booking/presentation/widgets/location_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -114,7 +114,14 @@ class FootballFieldViewBody extends StatelessWidget {
                       //Expanded(child: AvailableSlotsListView()),
                       AppButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, Routes.bookNowView);
+                          Navigator.pushNamed(
+                            context,
+                            Routes.bookNowView,
+                            arguments: {
+                              'fieldName': state.field.name,
+                              'fieldId': state.field.id,
+                            },
+                          );
                         },
                         text: 'Book Now',
                       ),

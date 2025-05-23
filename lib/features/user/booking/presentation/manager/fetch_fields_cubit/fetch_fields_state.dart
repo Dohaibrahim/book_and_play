@@ -1,4 +1,4 @@
-import 'package:book_and_play/features/booking/data/models/all_fields_res.dart';
+import 'package:book_and_play/features/user/booking/data/models/all_fields_res.dart';
 
 abstract class FetchFieldsState {}
 
