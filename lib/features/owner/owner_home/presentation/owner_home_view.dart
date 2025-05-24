@@ -6,6 +6,6 @@ class OwnerHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: OwnerHomeViewBody());
+    return Scaffold(body: OwnerHomeViewBody());
   }
 }

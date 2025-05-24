@@ -6,10 +6,11 @@ class RecommendedItem extends StatelessWidget {
     super.key,
     required this.imagePath,
     required this.title,
-    required this.rateNum,
+    this.rateNum,
     required this.location,
   });
-  final String imagePath, title, rateNum, location;
+  final String imagePath, title, location;
+  final String? rateNum;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -68,23 +69,25 @@ class RecommendedItem extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 5),
-                    Row(
-                      children: [
-                        ImageIcon(
-                          AssetImage('assets/icons/star_icon.png'),
-                          color: ColorManager.primaryColor,
-                          size: 17,
-                        ),
-                        Text(
-                          rateNum,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
+                    rateNum != null
+                        ? Row(
+                          children: [
+                            ImageIcon(
+                              AssetImage('assets/icons/star_icon.png'),
+                              color: ColorManager.primaryColor,
+                              size: 17,
+                            ),
+                            Text(
+                              rateNum!,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        )
+                        : SizedBox(),
                     SizedBox(height: 7),
                     Text(
                       location,

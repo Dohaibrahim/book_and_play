@@ -42,7 +42,7 @@ class HomeAppBar extends StatelessWidget {
                 String userName = snapshot.data ?? 'User';
                 return Text(
                   textAlign: TextAlign.start,
-                  'Doha',
+                  userName,
                   style: TextStyles.font14BlackMedium.copyWith(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,

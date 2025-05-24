@@ -86,32 +86,6 @@ class BookingRemoteDataSourceImpl extends BookingRemoteDataSource {
     }
   }
 
-  /*@override
-  Future<Either<Failure, JoinMatchModel>> joinMatch(matchId) async {
-    try {
-      var response = await getIt<DioClient>().post(
-        '${ApiUrls.match}/$matchId/join',
-        options: Options(
-          headers: {
-            'Authorization':
-                'Bearer ${await SharedPrefHelper.getString(SharedPrefKeys.userToken)}',
-            'Content-Type': 'application/json',
-          },
-        ),
-      );
-      JoinMatchModel joinMatchModel = JoinMatchModel.fromJson(response.data);
-      return Right(joinMatchModel);
-    } on DioException catch (e) {
-      log(e.toString());
-
-      return Left(Failure('there are an error , please try again later'));
-    } catch (e) {
-      log('error in joinMatch field remote data source ${e.toString()}');
-      return Left(
-        Failure('error in joining match remote data source : ${e.toString()}'),
-      );
-    }
-  }*/
   @override
   Future<Either<Failure, JoinMatchModel>> joinMatch(matchId) async {
     try {
