@@ -11,8 +11,8 @@ class UserBookingViewBody extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: screenHeight * 0.12),
-        FilterBookingByDate(),
-        SizedBox(height: screenHeight * 0.03),
+        //FilterBookingByDate(),
+        //SizedBox(height: screenHeight * 0.03),
         Expanded(child: StadiumCardListView()),
       ],
     );
