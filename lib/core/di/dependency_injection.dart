@@ -3,7 +3,10 @@ import 'package:book_and_play/features/auth/data/data_source/data_source.dart';
 import 'package:book_and_play/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:book_and_play/features/auth/domain/repo/auth_repo.dart';
 import 'package:book_and_play/features/auth/domain/usecase/signin_usecase.dart';
-import 'package:book_and_play/features/auth/domain/usecase/signup_usecase.dart';
+import 'package:book_and_play/features/owner/owner_fields/data/data_sources/owner_fields_remote_data_source.dart';
+import 'package:book_and_play/features/owner/owner_fields/data/repo/owner_fields_repo_impl.dart';
+import 'package:book_and_play/features/owner/owner_fields/domain/repo/owner_field_repo.dart';
+import 'package:book_and_play/features/owner/owner_fields/domain/usecase/owner_field_usecase.dart';
 import 'package:book_and_play/features/user/booking/data/data_source/booking_remote_data_source.dart';
 import 'package:book_and_play/features/user/booking/data/repos/booking_repo_impl.dart';
 import 'package:book_and_play/features/user/booking/domain/repo/booking_repo.dart';
@@ -46,4 +49,12 @@ void setupServiceLocator() {
   getIt.registerSingleton<UserBookingsUsecase>(
     UserBookingsUsecase(userBookingRepo: getIt<UserBookingRepo>()),
   );
+
+  getIt.registerSingleton<OwnerFieldsRemoteDataSource>(
+    OwnerFieldsRemoteDataSourceImpl(),
+  );
+
+  getIt.registerSingleton<OwnerFieldRepo>(OwnerFieldsRepoImpl());
+
+  getIt.registerSingleton<OwnerFieldUsecase>(OwnerFieldUsecase());
 }

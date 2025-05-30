@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 
 class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
-    final arguments = settings.arguments;
+    //final arguments = settings.arguments;
 
     switch (settings.name) {
       case Routes.signInView:

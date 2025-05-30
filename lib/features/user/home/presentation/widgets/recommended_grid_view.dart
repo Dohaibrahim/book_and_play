@@ -6,10 +6,11 @@ class RecommendedItem extends StatelessWidget {
     super.key,
     required this.imagePath,
     required this.title,
+    required this.capacity,
     this.rateNum,
     required this.location,
   });
-  final String imagePath, title, location;
+  final String imagePath, title, location, capacity;
   final String? rateNum;
   @override
   Widget build(BuildContext context) {
@@ -88,7 +89,12 @@ class RecommendedItem extends StatelessWidget {
                           ],
                         )
                         : SizedBox(),
-                    SizedBox(height: 7),
+                    SizedBox(height: 3),
+                    Text(
+                      capacity,
+                      style: TextStyle(color: Colors.grey[700], fontSize: 13),
+                    ),
+                    SizedBox(height: 3),
                     Text(
                       location,
                       style: TextStyle(color: Colors.grey[700], fontSize: 13),
@@ -132,6 +138,7 @@ class RecommendedGridView extends StatelessWidget {
         itemCount: listOfImage.length, // list.length,
         itemBuilder: (context, index) {
           return RecommendedItem(
+            capacity: '',
             title: listOfNames[index],
             location: listOfLocations[index],
             rateNum: listOfRates[index],
