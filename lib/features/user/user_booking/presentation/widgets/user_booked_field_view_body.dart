@@ -1,15 +1,18 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/features/user/user_booking/data/models/user_matches_res.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class UserBookedFieldViewBody extends StatelessWidget {
-  const UserBookedFieldViewBody({super.key});
-
+  const UserBookedFieldViewBody({super.key, required this.userMatchModel});
+  final UserMatchModel userMatchModel;
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final screenWidth = MediaQuery.sizeOf(context).width;
+    final bool isMatchesOpen = userMatchModel.status == 'open';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -34,30 +37,52 @@ class UserBookedFieldViewBody extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.01),
                 SizedBox(
                   height: screenHeight * 0.04,
-                  child: Text('Red Meadow', style: TextStyles.font24BlackBold),
+                  child: Text(
+                    userMatchModel.field.name,
+                    style: TextStyles.font24BlackBold,
+                  ),
                 ),
 
                 Text(
-                  'A 5x5 Football Field',
+                  'A ${userMatchModel.field.capacity} x ${userMatchModel.field.capacity} Football Field',
                   style: TextStyles.font14BlackMedium.copyWith(
                     color: Colors.grey[700],
                     fontSize: 18,
                   ),
                 ),
                 Text(
-                  'Cairo , egypt ',
+                  '${userMatchModel.field.city} , ${userMatchModel.field.country} ',
                   style: TextStyles.font14BlackMedium.copyWith(
                     color: Colors.grey[700],
                     fontSize: 18,
                   ),
                 ),
-
+                SizedBox(height: 10),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  margin: EdgeInsets.symmetric(horizontal: 100),
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color:
+                        isMatchesOpen ? ColorManager.primaryColor : Colors.red,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Center(
+                    child: Text(
+                      userMatchModel.status,
+                      style: TextStyles.font24BlackBold.copyWith(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 10,
+                        horizontal: 20,
                         vertical: 5,
                       ),
                       margin: EdgeInsets.only(top: 10, bottom: 10),
@@ -68,7 +93,7 @@ class UserBookedFieldViewBody extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Friday',
+                          formatDayOfWeek(userMatchModel.date),
                           style: TextStyles.font24BlackBold.copyWith(
                             fontSize: 19,
                             fontWeight: FontWeight.w500,
@@ -76,7 +101,7 @@ class UserBookedFieldViewBody extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: screenWidth * 0.05),
+                    SizedBox(width: screenWidth * 0.04),
                     Expanded(
                       child: Container(
                         padding: EdgeInsets.symmetric(
@@ -91,7 +116,7 @@ class UserBookedFieldViewBody extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            '7:00 - 8:00 am',
+                            '${formatTime(userMatchModel.time.start)} - ${formatTime(userMatchModel.time.end)}',
                             style: TextStyles.font24BlackBold.copyWith(
                               fontSize: 19,
                               fontWeight: FontWeight.w500,
@@ -102,16 +127,13 @@ class UserBookedFieldViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
-
-                /*Text(
-                  '1 km away',
-                  style: TextStyles.font14BlackMedium.copyWith(
-                    color: Colors.grey[700],
-                    fontSize: 18,
-                  ),
-                ),*/
                 Expanded(child: SizedBox()),
-                AppButton(onPressed: () {}, text: 'Review Your Booking '),
+                AppButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  text: 'Done',
+                ),
                 SizedBox(height: screenHeight * 0.03),
               ],
             ),
@@ -119,5 +141,17 @@ class UserBookedFieldViewBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String formatTime(String time24) {
+    final inputFormat = DateFormat("HH:mm");
+    final outputFormat = DateFormat("h:mm a"); // e.g. 6:00 PM
+
+    final time = inputFormat.parse(time24);
+    return outputFormat.format(time);
+  }
+
+  String formatDayOfWeek(DateTime date) {
+    return DateFormat('EEEE').format(date); // Full day name
   }
 }
