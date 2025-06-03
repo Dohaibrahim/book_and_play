@@ -1,3 +1,4 @@
+import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/manager/owner_field_cubit.dart';
@@ -31,6 +32,9 @@ class OwnerHomeViewBody extends StatelessWidget {
             subTitle: 'Add Now',
             trailing: SizedBox(),
             imagePath: 'assets/images/green_banner.png',
+            onTap: () {
+              Navigator.pushNamed(context, Routes.addFieldView);
+            },
           ),
           SizedBox(height: screenHight * 0.013),
           FieldAndMatchScore(

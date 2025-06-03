@@ -1,6 +1,8 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/features/auth/presentation/sign_in_view.dart';
 import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
+import 'package:book_and_play/features/owner/add_field/presentation/add_field_view.dart';
+import 'package:book_and_play/features/owner/add_field/presentation/pick_location_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/book_now_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/choose_football_field_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/football_field_view.dart';
@@ -12,6 +14,7 @@ import 'package:book_and_play/features/owner/owner_home/presentation/owner_home_
 import 'package:book_and_play/features/user/user_booking/presentation/user_booked_field_view.dart';
 import 'package:book_and_play/features/user/user_booking/presentation/user_booking_view.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -63,6 +66,10 @@ class AppRouter {
           builder: (_) => const BookNowView(),
           settings: settings,
         );
+      case Routes.addFieldView:
+        return MaterialPageRoute(builder: (_) => AddFieldView());
+      case Routes.pickLocationView:
+        return MaterialPageRoute<LatLng>(builder: (_) => PickLocationView());
     }
     return null;
   }

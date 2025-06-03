@@ -26,16 +26,18 @@ class SettingsViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
-                height: screenHeight * 0.25,
+                height: screenHeight * 0.23,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
+                    SizedBox(width: screenWidth * 0.10),
                     Image.asset(
                       'assets/icons/soccer_player.png',
-                      width: 100,
-                      height: 100,
+                      width: 80,
+                      height: 80,
                     ),
+                    SizedBox(width: screenWidth * 0.05),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -50,7 +52,7 @@ class SettingsViewBody extends StatelessWidget {
                         Text(
                           '${userInfo['email']}',
                           style: TextStyles.font24BlackBold.copyWith(
-                            fontSize: 22,
+                            fontSize: 19,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
