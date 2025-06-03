@@ -11,6 +11,7 @@ import 'package:book_and_play/features/user/home/presentation/home_view.dart';
 import 'package:book_and_play/features/user/Bottom_nav/presentation/bottom_nav_view.dart';
 import 'package:book_and_play/features/onboarding/presentation/onboarding_view.dart';
 import 'package:book_and_play/features/owner/owner_home/presentation/owner_home_view.dart';
+import 'package:book_and_play/features/user/settings/presentation/about_us_view.dart';
 import 'package:book_and_play/features/user/user_booking/presentation/user_booked_field_view.dart';
 import 'package:book_and_play/features/user/user_booking/presentation/user_booking_view.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => AddFieldView());
       case Routes.pickLocationView:
         return MaterialPageRoute<LatLng>(builder: (_) => PickLocationView());
+      case Routes.aboutUsView:
+        return MaterialPageRoute(builder: (_) => AboutUsView());
     }
     return null;
   }

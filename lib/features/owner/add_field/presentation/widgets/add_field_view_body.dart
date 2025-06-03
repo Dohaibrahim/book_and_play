@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
@@ -180,7 +179,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
               AppButton(
                 onPressed: () {
                   log(
-                    '${countryName} , ${capacityNumber} , ${fieldName} , ${cityName} , ${longtiude} , ${latitude}',
+                    '$countryName , $capacityNumber , $fieldName , $cityName , $longtiude , $latitude',
                   );
                 },
                 text: 'Add Football Field',

@@ -75,7 +75,6 @@ class _PickLocationViewBodyState extends State<PickLocationViewBody> {
   Future<bool> checkAndRequestLoactionPermission() async {
     permissionStatus = await Geolocator.checkPermission();
     log("Permission status before: $permissionStatus");
-    //log(permissionStatus.toString());
     if (permissionStatus == LocationPermission.deniedForever) {
       return false;
     } else if (permissionStatus == LocationPermission.denied) {
@@ -90,7 +89,7 @@ class _PickLocationViewBodyState extends State<PickLocationViewBody> {
   @override
   void dispose() {
     googleMapController?.dispose();
-    _searchController?.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 

@@ -2,6 +2,7 @@ import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/utils/constant.dart';
 import 'package:book_and_play/core/utils/shared_pref.dart';
+import 'package:book_and_play/features/user/settings/presentation/widgets/settings_item.dart';
 import 'package:flutter/material.dart';
 
 class SettingsViewBody extends StatelessWidget {
@@ -65,37 +66,40 @@ class SettingsViewBody extends StatelessWidget {
               SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: screenHeight * 0.01,
-                  ),
-                  height: screenHeight * 0.056,
-                  //width: screenWidth * 0.80,
-                  decoration: BoxDecoration(
-                    color: Color(0xffE7EFFD),
-                    border: Border.all(color: Colors.transparent),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: GestureDetector(
-                    child: Text(
-                      'log out',
-                      style: TextStyles.font14BlackMedium.copyWith(
-                        fontSize: 18,
-                      ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SettingsIcon(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.aboutUsView);
+                      },
+                      screenHeight: screenHeight,
+                      text: 'About us',
                     ),
-                    onTap: () async {
-                      await SharedPrefHelper.removeData(
-                        SharedPrefKeys.userToken,
-                      );
-                      await SharedPrefHelper.clearAllData();
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        Routes.onboardingView,
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  ),
+                    SizedBox(height: screenHeight * 0.017),
+                    SettingsIcon(
+                      screenHeight: screenHeight,
+                      text: 'Change Password',
+                      onTap: () {},
+                    ),
+                    SizedBox(height: screenHeight * 0.017),
+                    SettingsIcon(
+                      onTap: () async {
+                        await SharedPrefHelper.removeData(
+                          SharedPrefKeys.userToken,
+                        );
+                        await SharedPrefHelper.clearAllData();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          Routes.onboardingView,
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      screenHeight: screenHeight,
+                      text: 'Log out',
+                    ),
+                    SizedBox(height: screenHeight * 0.017),
+                  ],
                 ),
               ),
             ],

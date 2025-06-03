@@ -13,4 +13,5 @@ class Routes {
   static const String bookNowView = '/bookNowView';
   static const String addFieldView = '/addFieldView';
   static const String pickLocationView = '/pickLocationView';
+  static const String aboutUsView = '/aboutUsView';
 }
