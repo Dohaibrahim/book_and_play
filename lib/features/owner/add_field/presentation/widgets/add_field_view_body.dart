@@ -25,6 +25,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
   double? longtiude, latitude;
   bool isCountrySelected = false;
   File? _image;
+  int? capacityNumber;
 
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
@@ -116,6 +117,9 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                   onChanged: (String? newValue) {
                     setState(() {
                       capacityValue = newValue;
+                      String numberToSend =
+                          capacityValue!.split(' ').first; // '10'
+                      capacityNumber = int.parse(numberToSend); // 10 as integer
                     });
                   },
                   items:
@@ -176,7 +180,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
               AppButton(
                 onPressed: () {
                   log(
-                    '${countryName} , ${capacityValue} , ${fieldName} , ${cityName} , ${longtiude} , ${latitude}',
+                    '${countryName} , ${capacityNumber} , ${fieldName} , ${cityName} , ${longtiude} , ${latitude}',
                   );
                 },
                 text: 'Add Football Field',
