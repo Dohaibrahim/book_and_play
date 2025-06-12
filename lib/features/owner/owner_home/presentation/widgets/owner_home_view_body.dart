@@ -55,10 +55,33 @@ class OwnerHomeViewBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: screenHight * 0.013),
-          FieldAndMatchScore(
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            height: 80,
+            decoration: BoxDecoration(
+              color: Color(0xffE7EFFD),
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: Colors.transparent),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'See Your Tournaments',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                ),
+                Icon(
+                  Icons.navigate_next_outlined,
+                  color: Colors.black,
+                  size: 30,
+                ),
+              ],
+            ),
+          ),
+          /*FieldAndMatchScore(
             screenWidth: screenWidth,
             screenHight: screenHight,
-          ),
+          ),*/
           SizedBox(height: screenHight * 0.025),
           Text('Your Fields', style: TextStyles.font24BlackBold),
           SizedBox(height: screenHight * 0.02),
