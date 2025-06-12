@@ -3,6 +3,7 @@ import 'package:book_and_play/features/auth/presentation/sign_in_view.dart';
 import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/add_field_view.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/pick_location_view.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/add_tournament_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/book_now_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/choose_football_field_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/football_field_view.dart';
@@ -73,6 +74,8 @@ class AppRouter {
         return MaterialPageRoute<LatLng>(builder: (_) => PickLocationView());
       case Routes.aboutUsView:
         return MaterialPageRoute(builder: (_) => AboutUsView());
+      case Routes.addTournamentView:
+        return MaterialPageRoute(builder: (_) => AddTournamentView());
     }
     return null;
   }

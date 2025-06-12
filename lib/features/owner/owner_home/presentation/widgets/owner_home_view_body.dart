@@ -27,14 +27,32 @@ class OwnerHomeViewBody extends StatelessWidget {
           SizedBox(height: screenHight * 0.02),
           HomeAppBar(),
           SizedBox(height: screenHight * 0.02),
-          BookCard(
-            title: 'Add Football Field',
-            subTitle: 'Add Now',
-            trailing: SizedBox(),
-            imagePath: 'assets/images/green_banner.png',
-            onTap: () {
-              Navigator.pushNamed(context, Routes.addFieldView);
-            },
+          SizedBox(
+            height: screenHight * 0.20,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                BookCard(
+                  title: 'Add Football Field',
+                  subTitle: 'Add Now',
+                  trailing: SizedBox(),
+                  imagePath: 'assets/images/green_banner.png',
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.addFieldView);
+                  },
+                ),
+                SizedBox(width: 15),
+                BookCard(
+                  title: 'Add A Tournament',
+                  subTitle: 'Add Now',
+                  trailing: SizedBox(),
+                  imagePath: 'assets/images/blue_banner.png',
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.addTournamentView);
+                  },
+                ),
+              ],
+            ),
           ),
           SizedBox(height: screenHight * 0.013),
           FieldAndMatchScore(
