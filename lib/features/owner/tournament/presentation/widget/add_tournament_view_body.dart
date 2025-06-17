@@ -1,15 +1,14 @@
 import 'dart:developer';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/app_text_form_field.dart';
-import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/owner/owner_fields/data/models/owner_fields.dart';
-import 'package:book_and_play/features/owner/owner_fields/presentation/manager/owner_field_cubit.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_req.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/add_tounament_cubit/add_tournament_cubit.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/add_tounament_cubit/add_tournament_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/add_field_drop_button.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/date_range_dialog.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/widget/number_of_teams.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/private_public_checkbox.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart';
@@ -24,7 +23,7 @@ class AddTournamentViewBody extends StatefulWidget {
 class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
   GlobalKey<FormState> formKey = GlobalKey();
   String tournamentName = '', describtion = '', institutionName = '';
-  String? numOfTeamsValue;
+
   DateTime startDate = DateTime.now().subtract(Duration(days: 365));
   DateTime endDate = DateTime.now().add(Duration(days: 365));
   DatePeriod selectedPeriod = DatePeriod(
@@ -35,6 +34,8 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
   bool isPublicSelected = false;
   bool isPrivateSelected = false;
   OwnerField? selectedField;
+  List<String>? fieldIds;
+  String? numOfTeamsValue;
 
   @override
   Widget build(BuildContext context) {
@@ -62,47 +63,18 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
               ),
               SizedBox(height: screenHeight * 0.01),
               AppTextFormField(
-                hintText: ' description',
+                hintText: 'description',
                 onSaved: (data) {
                   describtion = data!;
                 },
               ),
               SizedBox(height: screenHeight * 0.01),
-              DropdownButtonHideUnderline(
-                child: DropdownButton2(
-                  isExpanded: true,
-                  hint: Text('number of teams'),
-                  items:
-                      ['8', '16']
-                          .map(
-                            (item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(item),
-                            ),
-                          )
-                          .toList(),
-                  value: numOfTeamsValue,
-                  onChanged: (value) {
-                    setState(() {
-                      numOfTeamsValue = value as String;
-                    });
-                  },
-                  buttonStyleData: ButtonStyleData(
-                    height: 50,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.transparent),
-                      color: Colors.grey[200],
-                    ),
-                  ),
-                  dropdownStyleData: DropdownStyleData(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+              NumberOfTeams(
+                value: numOfTeamsValue,
+                onChanged: (value) {
+                  numOfTeamsValue = value;
+                  setState(() {});
+                },
               ),
               SizedBox(height: screenHeight * 0.01),
               MaterialButton(
@@ -119,11 +91,18 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                     onApply: (newPeriod) {
                       setState(() {
                         selectedPeriod = newPeriod;
+                        startDate = DateTime(
+                          selectedPeriod.start.year,
+                          selectedPeriod.start.month,
+                          selectedPeriod.start.day,
+                        );
+                        endDate = DateTime(
+                          selectedPeriod.end.year,
+                          selectedPeriod.end.month,
+                          selectedPeriod.end.day,
+                        );
                         newRange = newPeriod;
                       });
-                      log(
-                        "Selected: ${selectedPeriod.start} → ${selectedPeriod.end}",
-                      );
                     },
                   );
                 },
@@ -170,46 +149,54 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                 },
               ),
               SizedBox(height: screenHeight * 0.01),
-              BlocProvider(
-                create: (context) => OwnerFieldCubit(),
-                child: AddFieldDropButton(
-                  onChanged: (value) {
-                    selectedField = value;
-                    log(selectedField.toString());
-                  },
-                  value: selectedField,
-                ),
-              ),
-              //Expanded(child: SizedBox()),
-              SizedBox(height: screenHeight * 0.30),
-              AppButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate() &&
-                      newRange != null &&
-                      selectedField != null) {
-                    formKey.currentState!.save();
-                    if (isPublicSelected == true || isPrivateSelected == true) {
-                      Navigator.pop(context);
-                      TopSnackBar.show(
-                        context,
-                        title: 'Done',
-                        message: 'You are added a tournament successfully!',
-                        contentType: ContentType.success,
-                        color: Color(0xff58997F),
-                      );
-                    }
-                  }
-                  /*if (tournamentName.isNotEmpty &&
-                      numOfTeamsValue.isNotEmpty &&
-                      newRange != null &&
-                      institutionName.isNotEmpty &&
-                      selectedField != null) {
-                    if (isPublicSelected == true ||
-                        isPrivateSelected == true) {}
-                  } */
+              AddFieldDropButton(
+                onChanged: (value) {
+                  selectedField = value;
+                  fieldIds?.add(value!.id);
+                  log(selectedField!.id.toString());
+                  setState(() {});
                 },
-                text: 'Submit',
-                textStyle: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+                value: selectedField,
+              ),
+              SizedBox(height: screenHeight * 0.30),
+              BlocBuilder<AddTournamentCubit, AddTournamentState>(
+                builder: (context, state) {
+                  log(selectedField.toString());
+                  return AppButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate() &&
+                          newRange != null &&
+                          selectedField != null &&
+                          numOfTeamsValue != null) {
+                        formKey.currentState!.save();
+                        log(
+                          'tournamentName : $tournamentName , desc : $describtion , startDate : $startDate , end date : $endDate , maxTeams : ${int.parse(numOfTeamsValue!)} , fieldIds :  ${[selectedField!.id.toString()]} , isPrivate: $isPrivateSelected  , institution: $institutionName , ',
+                        );
+                        if (isPublicSelected == true ||
+                            isPrivateSelected == true) {
+                          context.read<AddTournamentCubit>().addTournament(
+                            request: AddTournamentReq(
+                              name: tournamentName,
+                              description: describtion,
+                              startDate: startDate,
+                              endDate: endDate,
+                              maxTeams: int.parse(numOfTeamsValue!),
+                              fieldIds: [selectedField!.id.toString()],
+                              isPrivate: isPrivateSelected,
+                              institution: institutionName,
+                              type: "knockout",
+                            ),
+                          );
+                        }
+                      }
+                    },
+                    text: 'Submit',
+                    textStyle: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  );
+                },
               ),
             ],
           ),

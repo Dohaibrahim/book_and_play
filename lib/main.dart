@@ -30,12 +30,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.generateRoute,
-      initialRoute:
-          !isLoggedInUser
-              ? Routes.onboardingView
-              : (userRole == 'owner'
-                  ? Routes.ownerBottomNavView
-                  : Routes.userBottomNavView),
+      initialRoute: !isLoggedInUser
+          ? Routes.onboardingView
+          : (userRole == 'owner'
+                ? Routes.ownerBottomNavView
+                : Routes.userBottomNavView),
       // later will be sign in
       title: 'Book and Play',
     );

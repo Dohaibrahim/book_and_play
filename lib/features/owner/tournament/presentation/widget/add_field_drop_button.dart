@@ -5,7 +5,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddFieldDropButton extends StatelessWidget {
+class AddFieldDropButton extends StatefulWidget {
   const AddFieldDropButton({
     super.key,
     required this.onChanged,
@@ -13,9 +13,21 @@ class AddFieldDropButton extends StatelessWidget {
   });
   final OwnerField? value;
   final void Function(OwnerField?)? onChanged;
+
+  @override
+  State<AddFieldDropButton> createState() => _AddFieldDropButtonState();
+}
+
+class _AddFieldDropButtonState extends State<AddFieldDropButton> {
+  @override
+  void initState() {
+    context.read<OwnerFieldCubit>().getFields();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    context.read<OwnerFieldCubit>().getFields();
+    //context.read<OwnerFieldCubit>().getFields();
     return BlocBuilder<OwnerFieldCubit, OwnerFieldState>(
       builder: (context, state) {
         if (state is OwnerFieldFailueState) {
@@ -29,36 +41,30 @@ class AddFieldDropButton extends StatelessWidget {
             child: DropdownButton2(
               isExpanded: true,
               hint: Text('Add Field'),
-              items:
-                  state.fields
-                      //['8', '16']
-                      .map(
-                        (item) => DropdownMenuItem<OwnerField>(
-                          value: item,
-                          child: SizedBox(
-                            height: 100,
-                            child: ListTile(
-                              minTileHeight: 100,
-                              title: Text(
-                                item.name,
-                                style: TextStyle(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              subtitle: Text('${item.city} - ${item.country}'),
+              items: state.fields
+                  //['8', '16']
+                  .map(
+                    (item) => DropdownMenuItem<OwnerField>(
+                      value: item,
+                      child: SizedBox(
+                        height: 100,
+                        child: ListTile(
+                          minTileHeight: 100,
+                          title: Text(
+                            item.name,
+                            style: TextStyle(
+                              fontSize: 19,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
+                          subtitle: Text('${item.city} - ${item.country}'),
                         ),
-                      )
-                      .toList(),
-              value: value,
-              onChanged: onChanged,
-              /*(value) {
-            setState(() {
-              selectedValue = value as String;
-            });
-          }, */
+                      ),
+                    ),
+                  )
+                  .toList(),
+              value: widget.value,
+              onChanged: widget.onChanged,
               buttonStyleData: ButtonStyleData(
                 height: 50,
                 padding: EdgeInsets.symmetric(horizontal: 10),
