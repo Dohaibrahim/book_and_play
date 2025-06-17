@@ -19,6 +19,7 @@ class TeamsJoinedViewBody extends StatelessWidget {
           Text('Teams Joined', style: TextStyles.font32BlockBold),
           SizedBox(height: 15),
           TournamentCard(
+            tournamentStatus: TournamentStatus.notStarted.name,
             subTitle: '3 may 2025',
             title: 'The Offsiders',
             onTap: () {

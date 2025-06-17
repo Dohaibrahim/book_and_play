@@ -11,6 +11,7 @@ import 'package:book_and_play/features/owner/tournament/data/data_source/tournam
 import 'package:book_and_play/features/owner/tournament/data/repo/add_tournament_repo.dart';
 import 'package:book_and_play/features/owner/tournament/domain/repo/add_tournament_repo.dart';
 import 'package:book_and_play/features/owner/tournament/domain/usecase/add_tournament_usecase.dart';
+import 'package:book_and_play/features/owner/tournament/domain/usecase/fetch_tournaments.dart';
 import 'package:book_and_play/features/user/booking/data/data_source/booking_remote_data_source.dart';
 import 'package:book_and_play/features/user/booking/data/repos/booking_repo_impl.dart';
 import 'package:book_and_play/features/user/booking/domain/repo/booking_repo.dart';
@@ -67,4 +68,6 @@ void setupServiceLocator() {
   getIt.registerSingleton<TournamentRepo>(TournamentRepoImpl());
 
   getIt.registerSingleton<AddTournamentUsecase>(AddTournamentUsecase());
+
+  getIt.registerSingleton<FetchTournamentsUsecase>(FetchTournamentsUsecase());
 }

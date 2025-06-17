@@ -7,16 +7,19 @@ class TournamentCard extends StatelessWidget {
     required this.onTap,
     required this.subTitle,
     required this.title,
+    required this.tournamentStatus,
   });
   final void Function()? onTap;
   final String title, subTitle;
+  final String tournamentStatus;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: EdgeInsets.only(bottom: 20),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: 100,
+        height: 120,
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.transparent),
@@ -37,12 +40,38 @@ class TournamentCard extends StatelessWidget {
             Text(
               title,
               style: TextStyles.font24BlackBold.copyWith(fontSize: 20),
+              overflow: TextOverflow.ellipsis,
             ),
             SizedBox(height: 12),
-            Text(subTitle, style: TextStyles.font14BlackMedium),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(subTitle, style: TextStyles.font14BlackMedium),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: tournamentStatus == TournamentStatus.notStarted.name
+                        ? Color(0xffFAA60A)
+                        : tournamentStatus == TournamentStatus.finished.name
+                        ? Color(0xffFB120A)
+                        : Color(0xff23CF5F),
+                    border: Border.all(color: Colors.transparent),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    tournamentStatus,
+                    style: TextStyles.font14BlackMedium.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+enum TournamentStatus { notStarted, onGoing, finished }
