@@ -1,0 +1,48 @@
+import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:flutter/material.dart';
+
+class TournamentCard extends StatelessWidget {
+  const TournamentCard({
+    super.key,
+    required this.onTap,
+    required this.subTitle,
+    required this.title,
+  });
+  final void Function()? onTap;
+  final String title, subTitle;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        height: 100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.transparent),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.10),
+              offset: Offset(0, 5),
+              blurRadius: 8,
+              spreadRadius: 0,
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyles.font24BlackBold.copyWith(fontSize: 20),
+            ),
+            SizedBox(height: 12),
+            Text(subTitle, style: TextStyles.font14BlackMedium),
+          ],
+        ),
+      ),
+    );
+  }
+}

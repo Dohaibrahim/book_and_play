@@ -32,6 +32,7 @@ dependencies:
   flutter_date_pickers: ^0.4.3
   awesome_snackbar_content: ^0.1.6
   flutter_svg: ^2.1.0
+  flutter_datetime_picker_plus: ^2.2.0
 
 dev_dependencies:
   flutter_test:
