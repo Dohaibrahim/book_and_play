@@ -82,7 +82,10 @@ class AppRouter {
       case Routes.ownerTournamentsView:
         return MaterialPageRoute(builder: (_) => OwnerTournamentsView());
       case Routes.teamsJoinedView:
-        return MaterialPageRoute(builder: (_) => TeamsJoinedView());
+        return MaterialPageRoute(
+          builder: (_) => TeamsJoinedView(),
+          settings: settings,
+        );
       case Routes.teamsScheduledView:
         return MaterialPageRoute(builder: (_) => TeamsScheduledView());
     }

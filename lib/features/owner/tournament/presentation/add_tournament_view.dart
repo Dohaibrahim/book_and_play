@@ -31,7 +31,6 @@ class AddTournamentView extends StatelessWidget {
               );
             }
           },
-
           child: AddTournamentViewBody(),
         ),
       ),

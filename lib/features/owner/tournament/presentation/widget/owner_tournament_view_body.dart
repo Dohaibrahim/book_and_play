@@ -50,14 +50,32 @@ class OwnerTournamentViewBody extends StatelessWidget {
                     itemCount: state.tournament.length,
                     itemBuilder: (context, index) {
                       return TournamentCard(
-                        tournamentStatus: TournamentStatus.notStarted.name,
+                        tournamentStatus: TournamentStatus.upcoming.name,
                         subTitle:
                             'from ${formatDateToReadable(state.tournament[index].startDate)} to ${formatDateToReadable(state.tournament[index].endDate)}',
                         title: state.tournament[index].name,
                         onTap: () {
+                          switch (state.tournament[index].status) {
+                            case 'upcoming':
+                              Navigator.pushNamed(
+                                context,
+                                Routes.teamsJoinedView,
+                                arguments: state.tournament[index].id,
+                              );
+                            case 'ongoing':
+                              Navigator.pushNamed(
+                                context,
+                                Routes.teamsJoinedView,
+                              );
+                            case 'finished':
+                              Navigator.pushNamed(
+                                context,
+                                Routes.teamsJoinedView,
+                              );
+                          }
+
                           //check if not startted yet , if started => validate in which round and go to it
                           //if not started => go to see teams that joined screen
-                          Navigator.pushNamed(context, Routes.teamsJoinedView);
                         },
                       );
                     },
