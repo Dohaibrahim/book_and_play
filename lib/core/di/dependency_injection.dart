@@ -3,6 +3,9 @@ import 'package:book_and_play/features/auth/data/data_source/data_source.dart';
 import 'package:book_and_play/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:book_and_play/features/auth/domain/repo/auth_repo.dart';
 import 'package:book_and_play/features/auth/domain/usecase/signin_usecase.dart';
+import 'package:book_and_play/features/owner/add_field/data/data_source/add_field_remote_data_source.dart';
+import 'package:book_and_play/features/owner/add_field/data/repo/add_field_repo_impl.dart';
+import 'package:book_and_play/features/owner/add_field/domain/repo/add_field_repo.dart';
 import 'package:book_and_play/features/owner/owner_fields/data/data_sources/owner_fields_remote_data_source.dart';
 import 'package:book_and_play/features/owner/owner_fields/data/repo/owner_fields_repo_impl.dart';
 import 'package:book_and_play/features/owner/owner_fields/domain/repo/owner_field_repo.dart';
@@ -70,4 +73,10 @@ void setupServiceLocator() {
   getIt.registerSingleton<AddTournamentUsecase>(AddTournamentUsecase());
 
   getIt.registerSingleton<FetchTournamentsUsecase>(FetchTournamentsUsecase());
+
+  getIt.registerSingleton<AddFieldRemoteDataSource>(
+    AddFieldRemoteDataSourceImpl(),
+  );
+
+  getIt.registerSingleton<AddFieldRepo>(AddFieldRepoImpl());
 }

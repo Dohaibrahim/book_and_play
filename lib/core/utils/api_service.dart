@@ -11,7 +11,7 @@ class DioClient {
     : _dio = Dio(
         BaseOptions(
           responseType: ResponseType.json,
-          sendTimeout: const Duration(seconds: 10),
+          sendTimeout: const Duration(seconds: 30),
           receiveTimeout: const Duration(seconds: 10),
         ),
       )..interceptors.addAll([LoggerInterceptor()]) {

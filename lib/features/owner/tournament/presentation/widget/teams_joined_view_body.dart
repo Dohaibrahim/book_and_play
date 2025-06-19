@@ -1,15 +1,9 @@
-import 'dart:developer';
-
-import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
-import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_state.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/manager/start_tournament_cubit/start_tournament_cubit.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/manager/start_tournament_cubit/start_tournament_state.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/widget/start_tournament_bloc_consumer.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/teams_card.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/widget/tournament_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -67,21 +61,7 @@ class TeamsJoinedViewBody extends StatelessWidget {
               return SizedBox();
             },
           ),
-          BlocConsumer<StartTournamentCubit, StartTournamentState>(
-            listener: (context, state) {
-              if (state is StartTournamentSuccessState) {
-                Navigator.pushNamed(context, Routes.teamsScheduledView);
-              }
-            },
-            builder: (context, state) {
-              return AppButton(
-                onPressed: () {
-                  context.read<StartTournamentCubit>().startTournament(id);
-                },
-                text: 'Start Tournament',
-              );
-            },
-          ),
+          StartTournamentBlocConsumer(id: id),
           SizedBox(height: screenHeight * 0.05),
         ],
       ),

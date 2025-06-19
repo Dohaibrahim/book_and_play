@@ -49,7 +49,7 @@ class FieldsGridView extends StatelessWidget {
                 title: state.fields[index].name,
                 location:
                     '${state.fields[index].city} - ${state.fields[index].country}',
-                imagePath: listOfImage[index],
+                imagePath: listOfImage[index % 2],
               );
             },
           );

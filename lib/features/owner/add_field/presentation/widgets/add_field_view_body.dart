@@ -1,11 +1,18 @@
 import 'dart:developer';
 import 'dart:io';
+
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/app_text_form_field.dart';
+import 'package:book_and_play/core/widgets/top_snackbar.dart';
+import 'package:book_and_play/features/owner/add_field/data/models/add_field_req.dart';
+import 'package:book_and_play/features/owner/add_field/presentation/manager/add_field_cubit/add_field_cubit.dart';
+import 'package:book_and_play/features/owner/add_field/presentation/manager/add_field_cubit/add_field_state.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -23,7 +30,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
   String? capacityValue, fieldName, cityName;
   double? longtiude, latitude;
   bool isCountrySelected = false;
-  File? _image;
+  File? image;
   int? capacityNumber;
 
   Future<void> _pickImage() async {
@@ -34,7 +41,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
 
     if (pickedFile != null) {
       setState(() {
-        _image = File(pickedFile.path);
+        image = File(pickedFile.path);
       });
     }
   }
@@ -116,22 +123,20 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                   onChanged: (String? newValue) {
                     setState(() {
                       capacityValue = newValue;
-                      String numberToSend =
-                          capacityValue!.split(' ').first; // '10'
+                      String numberToSend = capacityValue!
+                          .split(' ')
+                          .first; // '10'
                       capacityNumber = int.parse(numberToSend); // 10 as integer
                     });
                   },
-                  items:
-                      <String>[
-                        '10 x 10',
-                        '5 x 5',
-                        '7 x 7',
-                      ].map<DropdownMenuItem<String>>((String value) {
+                  items: <String>['10 x 10', '5 x 5', '7 x 7']
+                      .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
                         );
-                      }).toList(),
+                      })
+                      .toList(),
                 ),
               ),
               AppButton(
@@ -176,15 +181,56 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                 ),
               ),
               SizedBox(height: screenHeight * 0.30),
-              AppButton(
-                onPressed: () {
-                  log(
-                    '$countryName , $capacityNumber , $fieldName , $cityName , $longtiude , $latitude',
+              BlocConsumer<AddFieldCubit, AddFieldState>(
+                listener: (context, state) {
+                  if (state is AddFieldSuccessState) {
+                    Navigator.pop(context);
+                    TopSnackBar.show(
+                      context,
+                      title: 'Done1',
+                      message: 'Your field is now added successfully',
+                      contentType: ContentType.success,
+                      color: ColorManager.primaryColor,
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  return AppButton(
+                    onPressed: () {
+                      log(
+                        ' data at ui => $countryName , $capacityNumber , $fieldName , $cityName , $longtiude , $latitude',
+                      );
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        if (image != null &&
+                            countryName != null &&
+                            capacityNumber != null) {
+                          context.read<AddFieldCubit>().addField(
+                            AddFieldRequest(
+                              name: fieldName!,
+                              imageFile: image!,
+                              country: countryName!,
+                              city: cityName!,
+                              capacity: capacityNumber!,
+                              isPaid: 'false',
+                              pricePerHour: 0,
+                              location: Location(
+                                coordinates: [26.8206, 30.8025],
+                              ),
+                              locationInfo: 'near to mostorad bridge',
+                            ),
+                          );
+                        }
+                      }
+                    },
+                    text: 'Add Football Field',
+                    textStyle: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    height: 50,
                   );
                 },
-                text: 'Add Football Field',
-                textStyle: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
-                height: 50,
               ),
             ],
           ),
