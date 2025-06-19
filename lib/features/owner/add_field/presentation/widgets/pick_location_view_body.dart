@@ -1,8 +1,11 @@
 import 'dart:developer';
 
 import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/features/owner/add_field/presentation/manager/get_places_cubit/get_places_cubit.dart';
+import 'package:book_and_play/features/owner/add_field/presentation/manager/get_places_cubit/get_places_state.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/widgets/search_on_location.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -130,20 +133,69 @@ class _PickLocationViewBodyState extends State<PickLocationViewBody> {
           },
         ),
         //SizedBox(height: screenHeight * 0.05),
-        Positioned(
-          top: 60,
-          right: 0,
-          left: 0,
-          child: CustomSearchBar(
-            controller: _searchController,
-            onChanged: (value) {
-              // TODO: implement search logic
-              print('User typed: $value');
-            },
-            onClear: () {
-              _searchController.clear();
-            },
-          ),
+        BlocBuilder<GetPlacesCubit, GetPlacesState>(
+          builder: (context, state) {
+            return Positioned(
+              top: 60,
+              right: 0,
+              left: 0,
+              child: CustomSearchBar(
+                controller: _searchController,
+                onChanged: (value) {
+                  context.read<GetPlacesCubit>().getPlaces(value);
+                  // TODO: implement search logic
+                  print('User typed: $value');
+                },
+                onClear: () {
+                  _searchController.clear();
+                },
+              ),
+            );
+          },
+        ),
+        BlocBuilder<GetPlacesCubit, GetPlacesState>(
+          builder: (context, state) {
+            if (state is GetPlacesLoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is GetPlacesSuccessState) {
+              if (_searchController.text.isEmpty) {
+                return SizedBox();
+              }
+              return Positioned(
+                top: 60,
+                left: 16,
+                right: 16,
+                bottom: 0,
+                child: ListView.builder(
+                  itemCount: state.place.length > 5 ? 5 : state.place.length,
+                  itemBuilder: (context, index) {
+                    final place = state.place[index];
+                    return GestureDetector(
+                      onTap: () {
+                        googleMapController?.animateCamera(
+                          CameraUpdate.newLatLng(
+                            LatLng(place.location.lat, place.location.lng),
+                          ),
+                        );
+                        _searchController.clear();
+                        setState(() {});
+                      },
+                      child: Card(
+                        child: ListTile(
+                          title: Text(place.name),
+                          subtitle: Text(place.address),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              );
+            } else if (state is GetPlacesFailureState) {
+              return SizedBox();
+            } else {
+              return const SizedBox(); // Initial state or empty
+            }
+          },
         ),
         Positioned(
           top: screenHeight * 0.90,

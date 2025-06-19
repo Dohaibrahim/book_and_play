@@ -215,7 +215,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                               isPaid: 'false',
                               pricePerHour: 0,
                               location: Location(
-                                coordinates: [26.8206, 30.8025],
+                                coordinates: [latitude!, longtiude!],
                               ),
                               locationInfo: 'near to mostorad bridge',
                             ),
