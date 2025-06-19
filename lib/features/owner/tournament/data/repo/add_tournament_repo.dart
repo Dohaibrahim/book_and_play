@@ -6,6 +6,7 @@ import 'package:book_and_play/features/owner/tournament/data/data_source/tournam
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/get_spec_tournament_response.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/start_tournaments_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/tournaments_res.dart';
 import 'package:book_and_play/features/owner/tournament/domain/repo/add_tournament_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -59,6 +60,25 @@ class TournamentRepoImpl extends TournamentRepo {
       final result = await getIt<TournamentsDataSource>().getTournamentTeams(
         id,
       );
+      return result.fold(
+        (failure) {
+          return Left(Failure(failure.toString()));
+        },
+        (data) {
+          return Right(data);
+        },
+      );
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, StartTournamentsResPonse>> startTournament(
+    String id,
+  ) async {
+    try {
+      final result = await getIt<TournamentsDataSource>().startTournament(id);
       return result.fold(
         (failure) {
           return Left(Failure(failure.toString()));

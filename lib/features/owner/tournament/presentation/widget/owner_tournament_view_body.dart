@@ -50,7 +50,9 @@ class OwnerTournamentViewBody extends StatelessWidget {
                     itemCount: state.tournament.length,
                     itemBuilder: (context, index) {
                       return TournamentCard(
-                        tournamentStatus: TournamentStatus.upcoming.name,
+                        tournamentStatus: state
+                            .tournament[index]
+                            .status, //TournamentStatus.upcoming.name,
                         subTitle:
                             'from ${formatDateToReadable(state.tournament[index].startDate)} to ${formatDateToReadable(state.tournament[index].endDate)}',
                         title: state.tournament[index].name,
@@ -65,7 +67,7 @@ class OwnerTournamentViewBody extends StatelessWidget {
                             case 'ongoing':
                               Navigator.pushNamed(
                                 context,
-                                Routes.teamsJoinedView,
+                                Routes.teamsScheduledView,
                               );
                             case 'finished':
                               Navigator.pushNamed(

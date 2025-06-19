@@ -6,6 +6,8 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_state.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/start_tournament_cubit/start_tournament_cubit.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/start_tournament_cubit/start_tournament_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/teams_card.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/tournament_card.dart';
 import 'package:flutter/material.dart';
@@ -65,13 +67,20 @@ class TeamsJoinedViewBody extends StatelessWidget {
               return SizedBox();
             },
           ),
-
-          //Expanded(child: SizedBox()),
-          AppButton(
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.teamsScheduledView);
+          BlocConsumer<StartTournamentCubit, StartTournamentState>(
+            listener: (context, state) {
+              if (state is StartTournamentSuccessState) {
+                Navigator.pushNamed(context, Routes.teamsScheduledView);
+              }
             },
-            text: 'Start Tournament',
+            builder: (context, state) {
+              return AppButton(
+                onPressed: () {
+                  context.read<StartTournamentCubit>().startTournament(id);
+                },
+                text: 'Start Tournament',
+              );
+            },
           ),
           SizedBox(height: screenHeight * 0.05),
         ],
