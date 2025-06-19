@@ -39,11 +39,12 @@ class TeamsJoinedViewBody extends StatelessWidget {
               }
               if (state is GetTournamentsTeamsSuccessState) {
                 var teams = state.teams;
-                var formattedDate = formatDate(teams[0].createdAt);
+
                 return Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
                     itemBuilder: (context, index) {
+                      var formattedDate = formatDate(teams[index].createdAt);
                       return TeamCard(
                         subTitle: formattedDate,
                         title: teams[index].name,
