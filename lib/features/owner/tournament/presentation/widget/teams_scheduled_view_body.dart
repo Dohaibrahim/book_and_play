@@ -3,10 +3,7 @@ import 'dart:developer';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/widget/tournament_card.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class TeamsScheduledViewBody extends StatefulWidget {
   const TeamsScheduledViewBody({super.key});
@@ -168,9 +165,8 @@ Future<DateTime?> timeAndDatePicker(BuildContext context) async {
       return Theme(
         data: ThemeData.dark().copyWith(
           colorScheme: ColorScheme.dark(
-            primary:
-                ColorManager
-                    .primaryColor, // Replace with your app's primary color
+            primary: ColorManager
+                .primaryColor, // Replace with your app's primary color
             onPrimary: Colors.black,
             surface: Colors.white, // Background of the dialog
             onSurface: Colors.black,
