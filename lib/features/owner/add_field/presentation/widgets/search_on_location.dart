@@ -14,10 +14,9 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.sizeOf(context).height;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12),
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 5),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(14),
