@@ -11,12 +11,13 @@ import 'package:book_and_play/features/auth/data/model/signin_req_params.dart';
 import 'package:book_and_play/features/auth/domain/usecase/signin_usecase.dart';
 import 'package:book_and_play/features/auth/presentation/manager/signin_cubit/signin_cubit.dart';
 import 'package:book_and_play/features/auth/presentation/manager/signin_cubit/signin_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInViewBody extends StatefulWidget {
-  const SignInViewBody({super.key});
-
+  const SignInViewBody({super.key, required this.userRole});
+  final String userRole;
   @override
   State<SignInViewBody> createState() => _SignInViewBodyState();
 }
@@ -45,7 +46,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               Image.asset('assets/images/onboarding_players.png'),
               SizedBox(
                 child: Text(
-                  'Sign in to your account',
+                  'signin.title'.tr(),
                   style: TextStyles.font32BlockBold,
                   // style: TextStyles.font32PrimaryExtraBold,
                 ),
@@ -54,7 +55,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
 
               SizedBox(height: 16),
               AppTextFormField(
-                hintText: 'Email',
+                hintText: 'signin.email'.tr(),
                 onSaved: (value) {
                   email = value!;
                   log(email);
@@ -71,7 +72,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 builder: (context, state) {
                   return Center(
                     child: AppButton(
-                      text: 'Sign In',
+                      text: 'signin.button'.tr(),
                       height: 45,
                       buttonWidth: screenWidth * 0.75,
                       onPressed: () {
@@ -98,7 +99,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Don\'t have an account ? ',
+                        'signin.no_account'.tr(),
                         style: TextStyles.font14BlackMedium,
                       ),
                       TextButton(
@@ -115,7 +116,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         child: Align(
                           alignment: Alignment.topCenter,
                           child: Text(
-                            'Sign Up',
+                            'signin.signup'.tr(),
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
@@ -127,6 +128,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                           Navigator.pushReplacementNamed(
                             context,
                             Routes.signUpView,
+                            arguments: widget.userRole,
                           );
                         },
                       ),

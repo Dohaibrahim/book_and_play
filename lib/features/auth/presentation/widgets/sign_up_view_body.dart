@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:book_and_play/core/di/dependency_injection.dart';
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
@@ -7,15 +6,17 @@ import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/app_text_form_field.dart';
 import 'package:book_and_play/core/widgets/password_text_form_field.dart';
 import 'package:book_and_play/features/auth/data/model/signup_req_params.dart';
-import 'package:book_and_play/features/auth/domain/usecase/signup_usecase.dart';
 import 'package:book_and_play/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:book_and_play/features/auth/presentation/manager/signup_cubit/signup_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpViewBody extends StatefulWidget {
-  const SignUpViewBody({super.key});
+  const SignUpViewBody({super.key, required this.userRole});
+
+  final String userRole;
   @override
   State<SignUpViewBody> createState() => _SignUpViewBodyState();
 }
@@ -50,21 +51,21 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               //SizedBox(height: screenHeight * 0.1),
               SizedBox(
                 child: Text(
-                  'create an account',
+                  'signup.title'.tr(),
                   style: TextStyles.font32BlockBold,
                   // style: TextStyles.font32PrimaryExtraBold,
                 ),
               ),
               const SizedBox(height: 20),
               AppTextFormField(
-                hintText: 'Name',
+                hintText: 'signup.name'.tr(),
                 onSaved: (value) {
                   userName = value!;
                 },
               ),
               SizedBox(height: 16),
               AppTextFormField(
-                hintText: 'Email',
+                hintText: 'signup.email'.tr(),
                 onSaved: (value) {
                   email = value!;
                 },
@@ -100,7 +101,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     },
                   );
                 },
-                text: 'Select your country',
+                text: 'signup.select_country'.tr(),
               ),
               SizedBox(height: screenHeight * 0.10),
               BlocBuilder<SignupCubit, SignupState>(
@@ -109,7 +110,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     child: AppButton(
                       height: 45,
                       buttonWidth: screenWidth * 0.75,
-                      text: 'Sign Up',
+                      text: 'signup.submit'.tr(),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           if (isCountrySelected == true) {
@@ -152,7 +153,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                                           height: 50,
                                         ),
                                         Text(
-                                          'the country is required',
+                                          'signup.country_required'.tr(),
                                           style: TextStyles.font24BlackBold
                                               .copyWith(
                                                 fontSize: 20,
@@ -179,7 +180,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already Have An Account ?',
+                        'signup.already_have_account'.tr(),
                         style: TextStyles.font14BlackMedium,
                       ),
                       TextButton(
@@ -189,7 +190,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           ),
                         ),
                         child: Text(
-                          'login',
+                          'signup.login'.tr(),
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
@@ -200,6 +201,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           Navigator.pushReplacementNamed(
                             context,
                             Routes.signInView,
+                            arguments: widget.userRole,
                           );
                         },
                       ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 
@@ -16,7 +17,7 @@ Future<void> showDateRangeDialog({
       return StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            title: const Text('Select Date Range'),
+            title: Text('date_range.title'.tr()),
             content: SizedBox(
               height: 300,
               width: 300,
@@ -54,8 +55,8 @@ Future<void> showDateRangeDialog({
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text(
-                  "Cancel",
+                child: Text(
+                  'date_range.cancel'.tr(),
                   style: TextStyle(
                     color: Color(0xff58997F),
                     fontWeight: FontWeight.w700,
@@ -67,8 +68,8 @@ Future<void> showDateRangeDialog({
                   onApply(tempPeriod); // Pass the result back
                   Navigator.pop(context);
                 },
-                child: const Text(
-                  "Apply",
+                child: Text(
+                  'date_range.apply'.tr(),
                   style: TextStyle(
                     color: Color(0xff58997F),
                     fontWeight: FontWeight.w700,

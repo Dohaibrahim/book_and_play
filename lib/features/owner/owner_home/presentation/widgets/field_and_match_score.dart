@@ -1,5 +1,6 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class FieldAndMatchScore extends StatelessWidget {
@@ -33,7 +34,7 @@ class FieldAndMatchScore extends StatelessWidget {
             children: [
               //SizedBox(height: 8),
               Text(
-                'Fields',
+                'owner_home_fields'.tr(),
                 style: TextStyles.font24BlackBold.copyWith(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
@@ -64,7 +65,7 @@ class FieldAndMatchScore extends StatelessWidget {
             children: [
               //SizedBox(height: 8),
               Text(
-                'Matches',
+                'owner_home.matches'.tr(),
                 style: TextStyles.font24BlackBold.copyWith(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,

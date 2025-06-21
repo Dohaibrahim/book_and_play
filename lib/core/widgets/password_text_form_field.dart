@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
 
@@ -18,7 +19,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
     return AppTextFormField(
       onSaved: widget.onSaved,
       isObscureText: isObscure,
-      hintText: 'Password',
+      hintText: 'signin.password'.tr(),
       suffixIcon: Padding(
         padding: const EdgeInsets.all(8.0),
         child: IconButton(

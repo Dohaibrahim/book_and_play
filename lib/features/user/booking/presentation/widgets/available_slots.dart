@@ -8,6 +8,7 @@ import 'package:book_and_play/features/user/booking/presentation/manager/get_ava
 import 'package:book_and_play/features/user/booking/presentation/manager/get_available_matches/get_available_matches_state.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/join_match/join_match_cubit.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/join_match/join_match_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,7 +36,7 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
         } else if (state is GetAvailableMatchesSuccessState) {
           final matches = state.matches;
           if (matches.isEmpty) {
-            return const Center(child: Text('No available matches'));
+            return Center(child: Text('user_book.no_available_matches'.tr()));
           }
           return Column(
             children: [
@@ -66,10 +67,9 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
                             horizontal: 12,
                           ),
                           decoration: BoxDecoration(
-                            color:
-                                isSelected
-                                    ? ColorManager.primaryColor
-                                    : Color(0xffe0f7e8),
+                            color: isSelected
+                                ? ColorManager.primaryColor
+                                : Color(0xffe0f7e8),
                             // Color(0xffDEF0E8),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(color: Colors.grey),
@@ -79,10 +79,9 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               fontSize: 18,
-                              fontWeight:
-                                  isSelected
-                                      ? FontWeight.w600
-                                      : FontWeight.w400,
+                              fontWeight: isSelected
+                                  ? FontWeight.w600
+                                  : FontWeight.w400,
                             ),
                           ),
                         ),
@@ -101,7 +100,7 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
                         context.read<JoinMatchCubit>().joinMatch(matchId!);
                       }
                     },
-                    text: 'Confirm Booking',
+                    text: 'user_book.confirm_booking'.tr(),
                   );
                 },
                 listener: (context, state) {
@@ -110,10 +109,9 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
                       context: context,
                       builder: (context) {
                         return AppDialog(
-                          subTitle:
-                              state
-                                  .errorMessage, //'You already have booked this match',
-                          title: 'Error in booking!',
+                          subTitle: state
+                              .errorMessage, //'You already have booked this match',
+                          title: 'user_book.error_booking_title'.tr(),
                           imagePath: 'assets/icons/error_icon.png',
                           screenHeight: screenHeight,
                           screenWidth: screenWidth,
@@ -128,8 +126,8 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
                           screenHeight: screenHeight,
                           screenWidth: screenWidth,
                           imagePath: 'assets/icons/success_icon.png',
-                          title: 'Congratulations!',
-                          subTitle: 'You have booked successfully',
+                          title: 'user_book.success_booking_title'.tr(),
+                          subTitle: 'user_book.success_booking_sub'.tr(),
                         );
                       },
                     );
@@ -149,7 +147,7 @@ class _AvailableSlotsListViewState extends State<AvailableSlotsListView> {
         }
         return Center(
           child: Text(
-            'Please select a date to see matches',
+            'user_book.select_date_prompt'.tr(),
             style: TextStyles.font24BlackBold,
           ),
         );

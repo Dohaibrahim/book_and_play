@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -31,7 +32,7 @@ class CustomSearchBar extends StatelessWidget {
               controller: controller,
               onChanged: onChanged,
               decoration: InputDecoration(
-                hintText: 'Search on location',
+                hintText: 'owner_add_field.search_location'.tr(),
                 border: InputBorder.none,
               ),
             ),

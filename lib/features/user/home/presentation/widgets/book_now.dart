@@ -1,5 +1,6 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class BookCard extends StatelessWidget {
@@ -97,9 +98,9 @@ class BookNowListView extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, Routes.chooseFootballFieldView);
             },
-            title: 'Book, Play, Win!',
+            title: 'home.card1_title'.tr(),
             imagePath: 'assets/images/blue_banner.png',
-            subTitle: 'Book Now ',
+            subTitle: 'home.card1_subtitle'.tr(),
             trailing: PositionedDirectional(
               end: 20,
               child: Image.asset(
@@ -111,9 +112,9 @@ class BookNowListView extends StatelessWidget {
           ),
           SizedBox(width: screenWidth * 0.015),
           BookCard(
-            title: 'Connect, Chat, and Play',
+            title: 'home.card2_title'.tr(),
             imagePath: 'assets/images/purpule_banner.png',
-            subTitle: 'Message Now ',
+            subTitle: 'home.card2_subtitle'.tr(),
             trailing: PositionedDirectional(
               top: 64,
               end: 0,
@@ -126,9 +127,9 @@ class BookNowListView extends StatelessWidget {
           ),
           SizedBox(width: screenWidth * 0.015),
           BookCard(
-            title: 'Find New Players ',
+            title: 'home.card3_title'.tr(),
             imagePath: 'assets/images/green_banner.png',
-            subTitle: 'Broadcast ',
+            subTitle: 'home.card3_subtitle'.tr(),
             trailing: PositionedDirectional(
               top: 20,
               end: 20,

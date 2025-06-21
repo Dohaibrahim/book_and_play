@@ -1,12 +1,9 @@
 import 'dart:developer';
 
 import 'package:book_and_play/core/widgets/app_button.dart';
-import 'package:book_and_play/features/owner/add_field/presentation/manager/get_places_cubit/get_places_cubit.dart';
-import 'package:book_and_play/features/owner/add_field/presentation/manager/get_places_cubit/get_places_state.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/widgets/search_bar_bloc_builder.dart';
-import 'package:book_and_play/features/owner/add_field/presentation/widgets/search_on_location.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -155,7 +152,7 @@ class _PickLocationViewBodyState extends State<PickLocationViewBody> {
                 Navigator.pop(context, userLatLng);
               }
             },
-            text: 'Save Location',
+            text: 'owner_add_field.save_location'.tr(),
             textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
           ),
         ),

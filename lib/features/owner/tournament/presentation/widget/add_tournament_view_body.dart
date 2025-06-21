@@ -9,6 +9,7 @@ import 'package:book_and_play/features/owner/tournament/presentation/widget/add_
 import 'package:book_and_play/features/owner/tournament/presentation/widget/date_range_dialog.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/number_of_teams.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/private_public_checkbox.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart';
@@ -51,19 +52,19 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
             children: [
               SizedBox(height: screenHeight * 0.12),
               Text(
-                'Create a tournament',
+                'owner_tournament.create'.tr(),
                 style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
               ),
               SizedBox(height: screenHeight * 0.02),
               AppTextFormField(
-                hintText: 'tournament name',
+                hintText: 'owner_tournament.name'.tr(),
                 onSaved: (data) {
                   tournamentName = data!;
                 },
               ),
               SizedBox(height: screenHeight * 0.01),
               AppTextFormField(
-                hintText: 'description',
+                hintText: 'owner_tournament.description'.tr(),
                 onSaved: (data) {
                   describtion = data!;
                 },
@@ -107,7 +108,7 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                   );
                 },
                 child: Text(
-                  'pick date',
+                  'owner_tournament.pick_date'.tr(),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
@@ -119,7 +120,7 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   PrivatePublicCheckBox(
-                    text: 'public',
+                    text: 'owner_tournament.public'.tr(),
                     onChanged: (value) {
                       setState(() {
                         isPublicSelected = true;
@@ -130,7 +131,7 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                     value: isPublicSelected,
                   ),
                   PrivatePublicCheckBox(
-                    text: 'private',
+                    text: 'owner_tournament.private'.tr(),
                     onChanged: (value) {
                       setState(() {
                         isPrivateSelected = true;
@@ -143,7 +144,7 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                 ],
               ),
               AppTextFormField(
-                hintText: 'Institution Name',
+                hintText: 'owner_tournament.institution'.tr(),
                 onSaved: (data) {
                   institutionName = data!;
                 },
@@ -190,7 +191,7 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                         }
                       }
                     },
-                    text: 'Submit',
+                    text: 'owner_tournament.submit'.tr(),
                     textStyle: TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.w600,

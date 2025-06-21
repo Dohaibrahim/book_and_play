@@ -3,6 +3,7 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/utils/constant.dart';
 import 'package:book_and_play/core/utils/shared_pref.dart';
 import 'package:book_and_play/features/user/settings/presentation/widgets/settings_item.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SettingsViewBody extends StatelessWidget {
@@ -74,12 +75,12 @@ class SettingsViewBody extends StatelessWidget {
                         Navigator.pushNamed(context, Routes.aboutUsView);
                       },
                       screenHeight: screenHeight,
-                      text: 'About us',
+                      text: 'user_settings.about_us'.tr(),
                     ),
                     SizedBox(height: screenHeight * 0.017),
                     SettingsIcon(
                       screenHeight: screenHeight,
-                      text: 'Change Password',
+                      text: 'user_settings.change_password'.tr(),
                       onTap: () {},
                     ),
                     SizedBox(height: screenHeight * 0.017),
@@ -96,7 +97,7 @@ class SettingsViewBody extends StatelessWidget {
                         );
                       },
                       screenHeight: screenHeight,
-                      text: 'Log out',
+                      text: 'user_settings.logout'.tr(),
                     ),
                     SizedBox(height: screenHeight * 0.017),
                   ],

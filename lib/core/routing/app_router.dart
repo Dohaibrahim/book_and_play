@@ -27,7 +27,10 @@ class AppRouter {
 
     switch (settings.name) {
       case Routes.signInView:
-        return MaterialPageRoute(builder: (_) => SignInView());
+        return MaterialPageRoute(
+          builder: (_) => SignInView(),
+          settings: settings,
+        );
       case Routes.signUpView:
         return MaterialPageRoute(
           builder: (_) => SignUpView(),

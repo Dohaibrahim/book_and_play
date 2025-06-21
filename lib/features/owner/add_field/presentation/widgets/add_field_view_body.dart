@@ -11,6 +11,7 @@ import 'package:book_and_play/features/owner/add_field/data/models/add_field_req
 import 'package:book_and_play/features/owner/add_field/presentation/manager/add_field_cubit/add_field_cubit.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/manager/add_field_cubit/add_field_state.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -60,12 +61,12 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
             children: [
               SizedBox(height: screenHeight * 0.13),
               Text(
-                'Fill Your Football Field Information',
+                'owner_add_field.title'.tr(),
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),
               SizedBox(height: screenHeight * 0.04),
               AppTextFormField(
-                hintText: 'Football field name',
+                hintText: 'owner_add_field.field_name_hint'.tr(),
                 onSaved: (data) {
                   fieldName = data;
                 },
@@ -98,13 +99,13 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: Colors.transparent),
                     ),
-                    child: Text('Select Country'),
+                    child: Text('owner_add_field.select_country'.tr()),
                   ),
                   SizedBox(width: screenWidth * 0.01),
                   SizedBox(
                     width: screenWidth * 0.55,
                     child: AppTextFormField(
-                      hintText: 'Football field city',
+                      hintText: 'owner_add_field.city_hint'.tr(),
                       onSaved: (data) {
                         cityName = data;
                       },
@@ -118,7 +119,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                 child: DropdownButton<String>(
                   isExpanded: true,
                   menuWidth: screenWidth * 0.50,
-                  hint: Text("Capacity of the field"),
+                  hint: Text('owner_add_field.capacity_hint'.tr()),
                   value: capacityValue,
                   onChanged: (String? newValue) {
                     setState(() {
@@ -154,7 +155,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                   }
                   //Navigator.pushNamed(context, Routes.pickLocationView);
                 },
-                text: 'Choose Location',
+                text: 'owner_add_field.choose_location'.tr(),
                 height: 40,
                 textColor: Colors.black,
                 textStyle: TextStyle(fontSize: 17),
@@ -172,7 +173,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                   borderSide: BorderSide(color: Colors.transparent),
                 ),
                 child: Text(
-                  'pick an image of the field',
+                  'owner_add_field.pick_image'.tr(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
@@ -187,8 +188,8 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                     Navigator.pop(context);
                     TopSnackBar.show(
                       context,
-                      title: 'Done1',
-                      message: 'Your field is now added successfully',
+                      title: 'owner_add_field.success_title'.tr(),
+                      message: 'owner_add_field.success_message'.tr(),
                       contentType: ContentType.success,
                       color: ColorManager.primaryColor,
                     );
@@ -223,7 +224,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                         }
                       }
                     },
-                    text: 'Add Football Field',
+                    text: 'owner_add_field.submit'.tr(),
                     textStyle: TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.w600,

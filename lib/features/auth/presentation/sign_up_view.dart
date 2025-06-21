@@ -17,13 +17,17 @@ class SignUpView extends StatelessWidget {
       child: BlocListener<SignupCubit, SignupState>(
         listener: (context, state) {
           if (state is SignupSuccess) {
-            Navigator.pushReplacementNamed(context, Routes.signInView);
+            Navigator.pushReplacementNamed(
+              context,
+              Routes.signInView,
+              arguments: "player",
+            );
           }
           if (state is SignupLoading) {
             CircularProgressIndicator(color: ColorManager.primaryColor);
           }
         },
-        child: const Scaffold(body: SignUpViewBody()),
+        child: Scaffold(body: SignUpViewBody(userRole: args)),
       ),
     );
   }

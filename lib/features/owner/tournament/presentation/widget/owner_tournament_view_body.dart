@@ -4,6 +4,7 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/fetch_tournaments/fetch_tournaments_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/fetch_tournaments/ffetch_tournaments_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/tournament_card.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,14 +21,17 @@ class OwnerTournamentViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(height: screenHeight * 0.10),
-          Text('Your tournaments', style: TextStyles.font32BlockBold),
+          Text(
+            'owner_tournament.title'.tr(),
+            style: TextStyles.font32BlockBold,
+          ),
           SizedBox(height: 15),
           BlocBuilder<FetchTournamentsCubit, FetchTournamentsState>(
             builder: (context, state) {
               if (state is FetchTournamentsFailureState) {
                 return Center(
                   child: Text(
-                    'There are an error write now , please reach out our team',
+                    'owner_tournament.error_message'.tr(),
                     style: TextStyles.font24BlackBold,
                   ),
                 );
@@ -52,7 +56,7 @@ class OwnerTournamentViewBody extends StatelessWidget {
                             .tournament[index]
                             .status, //TournamentStatus.upcoming.name,
                         subTitle:
-                            'from ${formatDateToReadable(state.tournament[index].startDate)} to ${formatDateToReadable(state.tournament[index].endDate)}',
+                            '${'owner_tournament.from'.tr()} ${formatDateToReadable(state.tournament[index].startDate)} ${'owner_tournament.to'.tr()} ${formatDateToReadable(state.tournament[index].endDate)}',
                         title: state.tournament[index].name,
                         onTap: () {
                           switch (state.tournament[index].status) {

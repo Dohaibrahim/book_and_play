@@ -2,6 +2,7 @@ import 'package:book_and_play/features/owner/owner_fields/data/models/owner_fiel
 import 'package:book_and_play/features/owner/owner_fields/presentation/manager/owner_field_cubit.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/manager/owner_field_state.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,7 +41,7 @@ class _AddFieldDropButtonState extends State<AddFieldDropButton> {
           return DropdownButtonHideUnderline(
             child: DropdownButton2(
               isExpanded: true,
-              hint: Text('Add Field'),
+              hint: Text('owner_home.add_field'.tr()),
               items: state.fields
                   //['8', '16']
                   .map(

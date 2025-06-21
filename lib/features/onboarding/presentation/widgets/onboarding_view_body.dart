@@ -1,6 +1,7 @@
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingViewBody extends StatelessWidget {
@@ -20,13 +21,13 @@ class OnboardingViewBody extends StatelessWidget {
           SizedBox(height: screenHeight * 0.01),
           Center(
             child: Text(
-              'Welcome to Book and Play!',
+              'onboarding.welcome'.tr(),
               style: TextStyles.font24BlackBold,
             ),
           ),
           Center(
             child: Text(
-              'Football near you \n faster, easier, and more fun!',
+              'onboarding.subtitle'.tr(),
               textAlign: TextAlign.center,
               style: TextStyles.font14BlackMedium.copyWith(fontSize: 18),
             ),
@@ -39,7 +40,7 @@ class OnboardingViewBody extends StatelessWidget {
           Expanded(child: SizedBox()),
           Center(
             child: Text(
-              'Continue as ..',
+              'onboarding.continue_as'.tr(),
               style: TextStyles.font14BlackMedium.copyWith(fontSize: 19),
             ),
           ),
@@ -60,7 +61,7 @@ class OnboardingViewBody extends StatelessWidget {
                   arguments: 'player',
                 );
               },
-              text: 'Player',
+              text: 'onboarding.player'.tr(),
             ),
           ),
           SizedBox(height: 10),
@@ -77,7 +78,7 @@ class OnboardingViewBody extends StatelessWidget {
                   arguments: 'owner',
                 );
               },
-              text: 'Football Field Owner',
+              text: 'onboarding.owner'.tr(),
               buttonColor: Colors.blue[400],
               textStyle: TextStyles.font14BlackMedium.copyWith(
                 color: Colors.white,

@@ -4,6 +4,7 @@ import 'package:book_and_play/features/user/home/presentation/widgets/book_now.d
 import 'package:book_and_play/features/user/home/presentation/widgets/browse_your_booking.dart';
 import 'package:book_and_play/features/user/home/presentation/widgets/home_app_bar.dart';
 import 'package:book_and_play/features/user/home/presentation/widgets/recommended_grid_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -22,7 +23,7 @@ class HomeViewBody extends StatelessWidget {
           BookNowListView(),
           SizedBox(height: screenHight * 0.03),
           Text(
-            'Your Booking',
+            'home.your_booking'.tr(),
             style: TextStyles.font24BlackBold.copyWith(fontSize: 20),
           ),
           SizedBox(height: screenHight * 0.007),
@@ -30,7 +31,7 @@ class HomeViewBody extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, Routes.userBookingView);
             },
-            title: 'Browse your booking',
+            title: 'home.browse_your_booking'.tr(),
             trailing: Icon(
               Icons.navigate_next_outlined,
               color: Colors.black,
@@ -39,7 +40,7 @@ class HomeViewBody extends StatelessWidget {
           ),
           SizedBox(height: screenHight * 0.03),
           Text(
-            'Recommended For You',
+            'home.recommended'.tr(),
             style: TextStyles.font24BlackBold.copyWith(fontSize: 20),
           ),
           SizedBox(height: screenHight * 0.007),

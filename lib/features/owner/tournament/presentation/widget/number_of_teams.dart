@@ -1,4 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NumberOfTeams extends StatefulWidget {
@@ -19,7 +20,7 @@ class _NumberOfTeamsState extends State<NumberOfTeams> {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
         isExpanded: true,
-        hint: Text('number of teams'),
+        hint: Text("owner_tournament.num_of_teams".tr()),
         items: ['8', '16']
             .map(
               (item) =>

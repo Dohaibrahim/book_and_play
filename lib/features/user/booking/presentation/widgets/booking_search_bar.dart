@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/widgets/app_text_form_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class BookingSearchBar extends StatefulWidget {
@@ -37,7 +38,7 @@ class _BookingSearchBarState extends State<BookingSearchBar> {
       child: AppTextFormField(
         controller: _searchController,
         fillColor: Colors.grey[700],
-        hintText: 'Search for a place or location',
+        hintText: 'user_book.search_hint'.tr(),
         suffixIcon: Icon(Icons.search, size: 25),
         focusedBorderSide: BorderSide(color: Colors.grey[400]!),
         enabledBorderSide: BorderSide(color: Colors.grey[200]!),

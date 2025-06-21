@@ -1,6 +1,7 @@
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/utils/constant.dart';
 import 'package:book_and_play/core/utils/shared_pref.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -17,7 +18,7 @@ class HomeAppBar extends StatelessWidget {
         children: [
           SizedBox(height: 10),
           Text(
-            'Welcome Back,',
+            'player_home_appbar.welcome_back'.tr(),
             style: TextStyles.font14BlackMedium.copyWith(
               fontSize: 18,
               color: Colors.grey[700],

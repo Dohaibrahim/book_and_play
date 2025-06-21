@@ -1,4 +1,5 @@
 import 'package:book_and_play/features/user/settings/presentation/widgets/about_us_view_body.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AboutUsView extends StatelessWidget {
@@ -9,7 +10,7 @@ class AboutUsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'About Us',
+          'user_settings.about_us'.tr(),
           style: TextStyle(
             color: Colors.black,
             fontSize: 25,

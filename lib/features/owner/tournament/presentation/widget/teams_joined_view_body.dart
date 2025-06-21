@@ -4,6 +4,7 @@ import 'package:book_and_play/features/owner/tournament/presentation/manager/get
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/start_tournament_bloc_consumer.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/teams_card.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +22,7 @@ class TeamsJoinedViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(height: screenHeight * 0.10),
-          Text('Teams Joined', style: TextStyles.font32BlockBold),
+          Text('teams_joined.title'.tr(), style: TextStyles.font32BlockBold),
           SizedBox(height: 15),
           BlocBuilder<GetTournamentsTeamsCubit, GetTournamentsTeamsState>(
             builder: (context, state) {
@@ -35,7 +36,7 @@ class TeamsJoinedViewBody extends StatelessWidget {
                 );
               }
               if (state is GetTournamentsTeamsFailureState) {
-                return Center(child: Text('there are an error right now!'));
+                return Center(child: Text('teams_joined.error'.tr()));
               }
               if (state is GetTournamentsTeamsSuccessState) {
                 var teams = state.teams;

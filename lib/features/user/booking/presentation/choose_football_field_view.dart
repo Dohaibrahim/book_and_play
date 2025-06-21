@@ -4,6 +4,7 @@ import 'package:book_and_play/features/user/booking/domain/usecase/fetch_fields_
 import 'package:book_and_play/features/user/booking/presentation/manager/fetch_fields_cubit/fetch_fields_cubit.dart';
 import 'package:book_and_play/features/user/booking/presentation/widgets/booking_search_bar.dart';
 import 'package:book_and_play/features/user/booking/presentation/widgets/choose_football_field_view_body.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,15 +14,13 @@ class ChooseFootballFieldView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
-    final screenWidth = MediaQuery.sizeOf(context).width;
     return BlocProvider(
-      create:
-          (context) =>
-              FetchFieldsCubit(fetchFieldsUsecase: getIt<FetchFieldsUsecase>()),
+      create: (context) =>
+          FetchFieldsCubit(fetchFieldsUsecase: getIt<FetchFieldsUsecase>()),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Browse Football Fields',
+            'user_book.browse_fields'.tr(),
             style: TextStyles.font24BlackBold.copyWith(fontSize: 22),
           ),
         ),
@@ -31,30 +30,10 @@ class ChooseFootballFieldView extends StatelessWidget {
             children: [
               BookingSearchBar(screenHeight: screenHeight),
               SizedBox(height: screenHeight * 0.01),
-              /*SizedBox(
-                width: screenWidth,
-                height: screenHeight * 0.025,
-                child: Text(
-                  textAlign: TextAlign.end,
-                  'Search by Location',
-                  style: TextStyles.font14BlackMedium.copyWith(
-                    color: ColorManager.primaryColor,
-                    fontSize: 15,
-                  ),
-                ),
-              ),*/
               SizedBox(
                 height: screenHeight * 0.77,
                 child: ChooseFootballFieldViewBody(),
               ),
-
-              /*
-              AppButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.bookingView);
-                },
-                text: 'Search By Location',
-              ),*/
             ],
           ),
         ),

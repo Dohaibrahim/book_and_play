@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AboutUsViewBody extends StatelessWidget {
@@ -13,7 +14,7 @@ class AboutUsViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Book And Play',
+            'about_us.title'.tr(),
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20,
@@ -23,22 +24,22 @@ class AboutUsViewBody extends StatelessWidget {
           ),
           SizedBox(height: screenHeight * 0.03),
           Text(
-            '''Book and Play is your ultimate companion for organizing and enjoying football matches in your area. Whether you’re a player looking to join a game or a field owner managing stadium bookings, our app brings the football community together in one place.''',
+            'about_us.p1'.tr(),
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           SizedBox(height: screenHeight * 0.01),
           Text(
-            '''Players can easily discover and book matches at nearby stadiums, connect and chat with fellow teammates, and even take part in exciting championships to showcase their skills.''',
+            'about_us.p2'.tr(),
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           SizedBox(height: screenHeight * 0.01),
           Text(
-            '''For field owners, Book and Play offers a seamless platform to add stadium details, schedule matches, and manage bookings with ease—ensuring your fields are always active and visible to local players.''',
+            'about_us.p3'.tr(),
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           SizedBox(height: screenHeight * 0.01),
           Text(
-            '''Join a growing community that’s passionate about the game. With Book and Play, it’s never been easier to find a match, build your team, and enjoy the sport you love. ''',
+            'about_us.p4'.tr(),
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
         ],

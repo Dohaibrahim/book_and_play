@@ -6,8 +6,8 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_cubit.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_state.dart';
-import 'package:book_and_play/features/user/booking/presentation/manager/fetch_fields_cubit/fetch_fields_cubit.dart';
 import 'package:book_and_play/features/user/booking/presentation/widgets/location_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -82,7 +82,7 @@ class FootballFieldViewBody extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Location Info :',
+                              'user_book.location_info'.tr(),
                               style: TextStyles.font24BlackBold,
                             ),
                             LocationButton(
@@ -103,9 +103,9 @@ class FootballFieldViewBody extends StatelessWidget {
                       SizedBox(height: screenHeight * 0.03),
                       state.field.amenities.isNotEmpty
                           ? Text(
-                            'Amenities :',
-                            style: TextStyles.font24BlackBold,
-                          )
+                              'user_book.amenities'.tr(),
+                              style: TextStyles.font24BlackBold,
+                            )
                           : SizedBox(),
                       state.field.amenities.isNotEmpty
                           ? AmenitiesListView(amenties: state.field.amenities)

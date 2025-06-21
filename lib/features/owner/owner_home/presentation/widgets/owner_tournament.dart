@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/routing/routes.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OwnerTournaments extends StatelessWidget {
@@ -22,7 +23,7 @@ class OwnerTournaments extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'See Your Tournaments',
+              "owner_home.see_tournaments".tr(),
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             ),
             Icon(Icons.navigate_next_outlined, color: Colors.black, size: 30),

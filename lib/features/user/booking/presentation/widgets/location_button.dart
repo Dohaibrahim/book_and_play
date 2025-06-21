@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -38,7 +39,10 @@ class LocationButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Get Directions', style: TextStyles.font14BlackMedium),
+            Text(
+              'user_book.get_directions'.tr(),
+              style: TextStyles.font14BlackMedium,
+            ),
             SizedBox(width: 3),
             Icon(Icons.location_on_rounded, color: Colors.black),
           ],

@@ -1,0 +1,133 @@
+{
+  "signin": {
+    "title": "Sign in to your account",
+    "email": "Email",
+    "password": "Password",
+    "button": "Sign In",
+    "no_account": "Don't have an account?",
+    "signup": "Sign Up"
+  },
+  "signup": {
+    "title": "Create an account",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "select_country": "Select your country",
+    "submit": "Sign Up",
+    "country_required": "The country is required",
+    "already_have_account": "Already have an account?",
+    "login": "Login"
+  },
+  "onboarding": {
+    "welcome": "Welcome to Book and Play!",
+    "subtitle": "Football near you \n faster, easier, and more fun!",
+    "continue_as": "Continue as ..",
+    "player": "Player",
+    "owner": "Football Field Owner"
+  },
+  
+  "home": {
+    "card1_title": "Book, Play, Win!",
+    "card1_subtitle": "Book Now",
+    "card2_title": "Connect, Chat, and Play",
+    "card2_subtitle": "Message Now",
+    "card3_title": "Find New Players",
+    "card3_subtitle": "Broadcast",
+    "your_booking": "Your Booking",
+    "browse_your_booking": "Browse your booking",
+    "recommended": "Recommended For You"
+  },
+  "player_home_appbar": {
+    "welcome_back": "Welcome Back,",
+    "error": "Error:",
+    "default_user": "User"
+  },
+  "user_booking": {
+    "error_message": "There was an error, please try again later or contact our team.",
+    "no_matches": "No Matches Booked Yet"
+  },
+  "user_book": {
+    "browse_fields": "Browse Football Fields",
+    "search_hint": "Search for a place or location",
+    "location_info": "Location Info:",
+    "amenities": "Amenities:",
+    "book_now": "Book Now",
+    "get_directions": "Get Directions",
+    "no_available_matches": "No available matches",
+    "confirm_booking": "Confirm Booking",
+    "error_booking_title": "Error in booking!",
+    "success_booking_title": "Congratulations!",
+    "success_booking_sub": "You have booked successfully",
+    "select_date_prompt": "Please select a date to see matches"
+  },
+  "user_settings": {
+    "about_us": "About Us",
+    "change_password": "Change Password",
+    "logout": "Log Out"
+  },
+  "about_us": {
+    "title": "Book And Play",
+    "p1": "Book and Play is your ultimate companion for organizing and enjoying football matches in your area. Whether you’re a player looking to join a game or a field owner managing stadium bookings, our app brings the football community together in one place.",
+    "p2": "Players can easily discover and book matches at nearby stadiums, connect and chat with fellow teammates, and even take part in exciting championships to showcase their skills.",
+    "p3": "For field owners, Book and Play offers a seamless platform to add stadium details, schedule matches, and manage bookings with ease—ensuring your fields are always active and visible to local players.",
+    "p4": "Join a growing community that’s passionate about the game. With Book and Play, it’s never been easier to find a match, build your team, and enjoy the sport you love."
+  },
+  "bottom_nav": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "log": {
+    "error": "Error",
+    "check_credentials": "Please check your email and password"
+  },
+  "owner_add_field": {
+    "title": "Fill Your Football Field Information",
+    "field_name_hint": "Football field name",
+    "select_country": "Select Country",
+    "city_hint": "Football field city",
+    "capacity_hint": "Capacity of the field",
+    "choose_location": "Choose Location",
+    "pick_image": "pick an image of the field",
+    "submit": "Add Football Field",
+    "success_title": "Done1",
+    "success_message": "Your field is now added successfully",
+    "save_location": "Save Location",
+    "search_location" : "search on location"
+  },
+  "owner_home": {
+  "add_field_title": "Add Football Field",
+  "add_now": "Add Now",
+  "add_tournament_title": "Add A Tournament",
+  "your_fields": "Your Fields",
+  "see_tournaments": "See Your Tournaments",
+  "fields": "Fields",
+  "matches": "Matches",
+  "add_field": "Add Field"
+},
+"owner_tournament": {
+  "done": "Done",
+  "success_msg": "You have added a tournament successfully!",
+  "create": "Create a tournament",
+  "name": "Tournament name",
+  "description": "Description",
+  "pick_date": "Pick date",
+  "submit": "Submit",
+  "public": "Public",
+  "private": "Private",
+  "institution": "Institution Name",
+  "num_of_teams" : "number of teams",
+  "title": "Your tournaments",
+  "error_message": "There is an error right now, please reach out to our team",
+  "from": "From",
+  "to": "To",
+  "start": "Start Tournament"
+  
+},
+"date_range": {
+  "title": "Select Date Range",
+  "cancel": "Cancel",
+  "apply": "Apply"
+}
+
+}

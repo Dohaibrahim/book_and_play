@@ -1,5 +1,6 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/features/user/settings/presentation/settings_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavView extends StatefulWidget {
@@ -43,9 +44,9 @@ class _BottomNavViewState extends State<BottomNavView> {
             });
           },
           type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              label: 'Home',
+              label: 'bottom_nav.home'.tr(),
               icon: ImageIcon(
                 size: 29,
                 AssetImage('assets/icons/home_icon.png'),
@@ -53,7 +54,7 @@ class _BottomNavViewState extends State<BottomNavView> {
               ),
             ),
             BottomNavigationBarItem(
-              label: 'Settings',
+              label: 'bottom_nav.settings'.tr(),
               icon: ImageIcon(
                 size: 29,
                 AssetImage('assets/icons/settings_icon.png'),

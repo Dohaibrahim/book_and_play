@@ -72,22 +72,22 @@ class RecommendedItem extends StatelessWidget {
                     SizedBox(height: 5),
                     rateNum != null
                         ? Row(
-                          children: [
-                            ImageIcon(
-                              AssetImage('assets/icons/star_icon.png'),
-                              color: ColorManager.primaryColor,
-                              size: 17,
-                            ),
-                            Text(
-                              rateNum!,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w600,
+                            children: [
+                              ImageIcon(
+                                AssetImage('assets/icons/star_icon.png'),
+                                color: ColorManager.primaryColor,
+                                size: 17,
                               ),
-                            ),
-                          ],
-                        )
+                              Text(
+                                rateNum!,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          )
                         : SizedBox(),
                     SizedBox(height: 3),
                     Text(
@@ -123,7 +123,7 @@ class RecommendedGridView extends StatelessWidget {
     ];
     final List<String> listOfNames = ['Red Meadows', 'Shuttles Fly'];
     final List<String> listOfLocations = ['Cairo , Egypt', 'Badminton'];
-    final List<String> listOfRates = ['4.0', '4.2'];
+
     //final screenHeight = MediaQuery.sizeOf(context).height;
     return SizedBox(
       height: 250, // screenHeight * 0.19,
@@ -141,7 +141,7 @@ class RecommendedGridView extends StatelessWidget {
             capacity: '',
             title: listOfNames[index],
             location: listOfLocations[index],
-            rateNum: listOfRates[index],
+
             imagePath: listOfImage[index],
           );
         },
