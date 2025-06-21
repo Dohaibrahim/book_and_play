@@ -10,7 +10,8 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      //backgroundColor: Colors.white,
+      forceMaterialTransparency: true,
+      shadowColor: Colors.transparent,
       centerTitle: false,
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,

@@ -18,4 +18,5 @@ class Routes {
   static const String ownerTournamentsView = '/ownerTournamentsView';
   static const String teamsJoinedView = '/TeamsJoinedView';
   static const String teamsScheduledView = '/teamsScheduledView';
+  static const String ownerFieldView = '/OwnerFieldView';
 }

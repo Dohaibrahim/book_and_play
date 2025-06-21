@@ -24,7 +24,7 @@ class StartTournamentBlocConsumer extends StatelessWidget {
           onPressed: () {
             context.read<StartTournamentCubit>().startTournament(id);
           },
-          text: 'owner_tournaments.start'.tr(),
+          text: 'owner_tournament.start'.tr(),
         );
       },
     );

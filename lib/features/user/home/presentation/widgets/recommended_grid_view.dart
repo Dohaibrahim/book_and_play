@@ -9,101 +9,106 @@ class RecommendedItem extends StatelessWidget {
     required this.capacity,
     this.rateNum,
     required this.location,
+    this.onTap,
   });
   final String imagePath, title, location, capacity;
+  final void Function()? onTap;
   final String? rateNum;
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 0.8,
-      child: SizedBox(
-        height: 250,
-        width: 300,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 0,
-              right: 0,
-              child: Container(
-                height: 150, // screenHeight * 0.19,
-                width: 180,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(imagePath),
+    return GestureDetector(
+      onTap: onTap,
+      child: AspectRatio(
+        aspectRatio: 0.8,
+        child: SizedBox(
+          height: 250,
+          width: 300,
+          child: Stack(
+            children: [
+              Positioned(
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: 150, // screenHeight * 0.19,
+                  width: 180,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(imagePath),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 120,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 7, vertical: 6),
-                height: 100,
-                width: 180,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
-                      offset: Offset(0, 3),
-                      blurRadius: 8,
-                      spreadRadius: 0,
-                    ),
-                  ],
-                  color: Colors.white,
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 120,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 7, vertical: 6),
+                  height: 100,
+                  width: 180,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.15),
+                        offset: Offset(0, 3),
+                        blurRadius: 8,
+                        spreadRadius: 0,
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    rateNum != null
-                        ? Row(
-                            children: [
-                              ImageIcon(
-                                AssetImage('assets/icons/star_icon.png'),
-                                color: ColorManager.primaryColor,
-                                size: 17,
-                              ),
-                              Text(
-                                rateNum!,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600,
+                    ],
+                    color: Colors.white,
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      rateNum != null
+                          ? Row(
+                              children: [
+                                ImageIcon(
+                                  AssetImage('assets/icons/star_icon.png'),
+                                  color: ColorManager.primaryColor,
+                                  size: 17,
                                 ),
-                              ),
-                            ],
-                          )
-                        : SizedBox(),
-                    SizedBox(height: 3),
-                    Text(
-                      capacity,
-                      style: TextStyle(color: Colors.grey[700], fontSize: 13),
-                    ),
-                    SizedBox(height: 3),
-                    Text(
-                      location,
-                      style: TextStyle(color: Colors.grey[700], fontSize: 13),
-                    ),
-                  ],
+                                Text(
+                                  rateNum!,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            )
+                          : SizedBox(),
+                      SizedBox(height: 3),
+                      Text(
+                        capacity,
+                        style: TextStyle(color: Colors.grey[700], fontSize: 13),
+                      ),
+                      SizedBox(height: 3),
+                      Text(
+                        location,
+                        style: TextStyle(color: Colors.grey[700], fontSize: 13),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

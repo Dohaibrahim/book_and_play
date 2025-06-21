@@ -3,6 +3,7 @@ import 'package:book_and_play/features/auth/presentation/sign_in_view.dart';
 import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/add_field_view.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/pick_location_view.dart';
+import 'package:book_and_play/features/owner/owner_fields/presentation/owner_field_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/add_tournament_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/owner_tournaments_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/teams_joined_view.dart';
@@ -91,6 +92,11 @@ class AppRouter {
         );
       case Routes.teamsScheduledView:
         return MaterialPageRoute(builder: (_) => TeamsScheduledView());
+      case Routes.ownerFieldView:
+        return MaterialPageRoute(
+          builder: (_) => OwnerFieldView(),
+          settings: settings,
+        );
     }
     return null;
   }

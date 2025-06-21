@@ -14,7 +14,6 @@ class OwnerHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<int> fields = [1, 2, 3, 4];
     final screenHight = MediaQuery.sizeOf(context).height;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -54,10 +53,6 @@ class OwnerHomeViewBody extends StatelessWidget {
           ),
           SizedBox(height: screenHight * 0.013),
           OwnerTournaments(),
-          /*FieldAndMatchScore(
-            screenWidth: screenWidth,
-            screenHight: screenHight,
-          ),*/
           SizedBox(height: screenHight * 0.025),
           Text(
             "owner_home.your_fields".tr(),

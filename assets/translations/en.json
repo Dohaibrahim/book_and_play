@@ -122,12 +122,16 @@
   "from": "From",
   "to": "To",
   "start": "Start Tournament"
-  
+
 },
 "date_range": {
   "title": "Select Date Range",
   "cancel": "Cancel",
   "apply": "Apply"
+},
+"teams_joined": {
+  "title": "Teams Joined",
+  "error": "There is an error right now!"
 }
 
 }
