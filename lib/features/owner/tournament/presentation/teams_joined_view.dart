@@ -1,5 +1,5 @@
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_cubit.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/manager/start_tournament_cubit/start_tournament_cubit.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/generate_next_round_cubit/generate_next_round_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/teams_joined_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,7 @@ class TeamsJoinedView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => GetTournamentsTeamsCubit()),
-        BlocProvider(create: (context) => StartTournamentCubit()),
+        BlocProvider(create: (context) => GenerateNextRoundCubit()),
       ],
 
       child: Scaffold(body: TeamsJoinedViewBody(id: id)),

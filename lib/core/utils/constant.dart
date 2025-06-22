@@ -7,6 +7,7 @@ class ApiUrls {
   static const String match = '$baseURL/api/match';
   static const String tournament = '$baseURL/api/tournament';
   static const String searchPlaces = '$baseURL/api/field/search-place';
+  static const String knockoutTournaments = '$baseURL/api/knockout/tournaments';
 }
 
 class SharedPrefKeys {

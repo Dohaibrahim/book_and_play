@@ -5,8 +5,9 @@ import 'package:book_and_play/core/errors/failure.dart';
 import 'package:book_and_play/features/owner/tournament/data/data_source/tournaments_data_source.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_res.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/generate_next_round_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/get_spec_tournament_response.dart';
-import 'package:book_and_play/features/owner/tournament/data/models/start_tournaments_res.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/generate_next_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/tournaments_res.dart';
 import 'package:book_and_play/features/owner/tournament/domain/repo/add_tournament_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -74,14 +75,18 @@ class TournamentRepoImpl extends TournamentRepo {
   }
 
   @override
-  Future<Either<Failure, StartTournamentsResPonse>> startTournament(
+  Future<Either<Failure, NextRoundRes>> generateNextRound(
     String id,
+    NextRoundReq nextRoundReq,
   ) async {
     try {
-      final result = await getIt<TournamentsDataSource>().startTournament(id);
+      final result = await getIt<TournamentsDataSource>().generateNextRound(
+        id,
+        nextRoundReq,
+      );
       return result.fold(
         (failure) {
-          return Left(Failure(failure.toString()));
+          return Left(Failure(failure.message.toString()));
         },
         (data) {
           return Right(data);

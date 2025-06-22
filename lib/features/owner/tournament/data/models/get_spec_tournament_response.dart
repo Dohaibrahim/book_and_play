@@ -62,7 +62,7 @@ class Tournament {
       teams: (json['teams'] as List).map((e) => Team.fromJson(e)).toList(),
       type: json['type'],
       status: json['status'],
-      winner: json['winner'],
+      winner: json['winner'] ?? '',
     );
   }
 }
@@ -75,7 +75,7 @@ class Field {
   final int capacity;
   final bool isPaid;
   final int pricePerHour;
-  final String owner;
+  final String? owner;
   final List<dynamic> amenities;
 
   Field({
@@ -99,7 +99,7 @@ class Field {
       capacity: json['capacity'],
       isPaid: json['is_paid'],
       pricePerHour: json['price_per_hour'],
-      owner: json['owner'],
+      owner: json['owner'] ?? '',
       amenities: json['amenities'],
     );
   }

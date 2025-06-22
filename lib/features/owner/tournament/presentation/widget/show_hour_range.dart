@@ -20,7 +20,6 @@ class _ShowHourRangeState extends State<ShowHourRange> {
 
   @override
   Widget build(BuildContext context) {
-    //int endHour = selectedTime == null ? 0 : (selectedTime!.hour + 1) % 24;
     TimeOfDay endTime = selectedTime == null
         ? TimeOfDay(hour: 0, minute: 0)
         : TimeOfDay(
@@ -118,4 +117,12 @@ class MatchTimeEntity {
   final TimeOfDay to;
 
   MatchTimeEntity({required this.from, required this.to});
+  String formatTimeOfDay24(TimeOfDay time) {
+    final hour = time.hour.toString().padLeft(2, '0');
+    final minute = time.minute.toString().padLeft(2, '0');
+    return '$hour:$minute';
+  }
+
+  String get fromFormatted => formatTimeOfDay24(from);
+  String get toFormatted => formatTimeOfDay24(to);
 }

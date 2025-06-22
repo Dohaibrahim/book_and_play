@@ -1,20 +1,34 @@
+import 'dart:developer';
+
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/core/widgets/top_snackbar.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/generate_next_round_cubit/generate_next_round_cubit.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/generate_next_round_cubit/generate_next_round_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_state.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/widget/generate_next_round.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/start_tournament_bloc_consumer.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/teams_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
-class TeamsJoinedViewBody extends StatelessWidget {
+class TeamsJoinedViewBody extends StatefulWidget {
   const TeamsJoinedViewBody({super.key, required this.id});
   final String id;
+
+  @override
+  State<TeamsJoinedViewBody> createState() => _TeamsJoinedViewBodyState();
+}
+
+class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
+  int? teamsNum;
   @override
   Widget build(BuildContext context) {
-    context.read<GetTournamentsTeamsCubit>().getTeams(id);
+    context.read<GetTournamentsTeamsCubit>().getTeams(widget.id);
     final screenHeight = MediaQuery.sizeOf(context).height;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -42,7 +56,7 @@ class TeamsJoinedViewBody extends StatelessWidget {
               }
               if (state is GetTournamentsTeamsSuccessState) {
                 var teams = state.teams;
-
+                teamsNum = teams.length;
                 return Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
@@ -51,11 +65,6 @@ class TeamsJoinedViewBody extends StatelessWidget {
                       return TeamCard(
                         subTitle: formattedDate,
                         title: teams[index].name,
-                        onTap: () {
-                          //check if not startted yet , if started => validate in which round and go to it
-                          //if not started => go to see teams that joined screen
-                          //Navigator.pushNamed(context, Routes.teamsJoinedView);
-                        },
                       );
                     },
                     itemCount: teams.length,
@@ -65,7 +74,62 @@ class TeamsJoinedViewBody extends StatelessWidget {
               return SizedBox();
             },
           ),
-          StartTournamentBlocConsumer(id: id),
+
+          SizedBox(height: screenHeight * 0.005),
+          Builder(
+            builder: (innerContext) => AppButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: innerContext,
+                  backgroundColor: Colors.white,
+                  builder: (_) {
+                    return BlocProvider.value(
+                      value: innerContext.read<GenerateNextRoundCubit>(),
+                      child:
+                          BlocListener<
+                            GenerateNextRoundCubit,
+                            GenerateNextRoundState
+                          >(
+                            listener: (context, roundState) {
+                              if (roundState is GenerateNextRoundLoadingState) {
+                                Center(child: CircularProgressIndicator());
+                              }
+                              if (roundState is GenerateNextRoundSuccessState) {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                                TopSnackBar.show(
+                                  context,
+                                  title: 'Success',
+                                  message: 'The round is started successfully!',
+                                  contentType: ContentType.success,
+                                  color: ColorManager.primaryColor,
+                                );
+                              }
+
+                              if (roundState is GenerateNextRoundFailureState) {
+                                Navigator.pop(context);
+                                TopSnackBar.show(
+                                  context,
+                                  title: 'Error',
+                                  message:
+                                      'An error occurred while trying to create round.',
+                                  contentType: ContentType.failure,
+                                  color: Colors.red,
+                                );
+                              }
+                            },
+                            child: GenerateNextRound(
+                              tournamentId: widget.id,
+                              numOfTeams: teamsNum ?? 0,
+                            ),
+                          ),
+                    );
+                  },
+                );
+              },
+              text: 'Generate Next Round',
+            ),
+          ),
           SizedBox(height: screenHeight * 0.05),
         ],
       ),
