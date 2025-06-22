@@ -132,6 +132,11 @@
 "teams_joined": {
   "title": "Teams Joined",
   "error": "There is an error right now!"
+},
+"hour_range": {
+  "title": "Select Start Hour",
+  "apply": "Apply",
+  "cancel": "Cancel"
 }
 
 }

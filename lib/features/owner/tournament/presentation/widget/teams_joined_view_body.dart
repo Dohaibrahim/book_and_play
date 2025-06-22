@@ -36,7 +36,9 @@ class TeamsJoinedViewBody extends StatelessWidget {
                 );
               }
               if (state is GetTournamentsTeamsFailureState) {
-                return Center(child: Text('teams_joined.error'.tr()));
+                return Expanded(
+                  child: Center(child: Text('teams_joined.error'.tr())),
+                );
               }
               if (state is GetTournamentsTeamsSuccessState) {
                 var teams = state.teams;
