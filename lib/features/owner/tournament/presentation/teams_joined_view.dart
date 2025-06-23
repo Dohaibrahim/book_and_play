@@ -9,14 +9,19 @@ class TeamsJoinedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final id = ModalRoute.of(context)!.settings.arguments as String;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final id = args['id'];
+    final teamsNum = args['teamsNum'];
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => GetTournamentsTeamsCubit()),
         BlocProvider(create: (context) => GenerateNextRoundCubit()),
       ],
 
-      child: Scaffold(body: TeamsJoinedViewBody(id: id)),
+      child: Scaffold(
+        body: TeamsJoinedViewBody(id: id, teamsNum: teamsNum),
+      ),
     );
   }
 }

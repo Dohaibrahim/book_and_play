@@ -1,15 +1,8 @@
-import 'dart:developer';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
-import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/fetch_tournaments/fetch_tournaments_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/fetch_tournaments/ffetch_tournaments_state.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/manager/generate_next_round_cubit/generate_next_round_cubit.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/manager/generate_next_round_cubit/generate_next_round_state.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/widget/generate_next_round.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/tournament_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +64,10 @@ class OwnerTournamentViewBody extends StatelessWidget {
                               Navigator.pushNamed(
                                 context,
                                 Routes.teamsJoinedView,
-                                arguments: state.tournament[index].id,
+                                arguments: {
+                                  'id': state.tournament[index].id,
+                                  'teamsNum': state.tournament[index].maxTeams,
+                                },
                               );
                             case 'ongoing':
                               Navigator.pushNamed(

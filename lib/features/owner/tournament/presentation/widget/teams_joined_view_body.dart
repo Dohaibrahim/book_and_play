@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
@@ -10,22 +8,24 @@ import 'package:book_and_play/features/owner/tournament/presentation/manager/gen
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_tournaments_teams/get_tournaments_teams_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/generate_next_round.dart';
-import 'package:book_and_play/features/owner/tournament/presentation/widget/start_tournament_bloc_consumer.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/teams_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TeamsJoinedViewBody extends StatefulWidget {
-  const TeamsJoinedViewBody({super.key, required this.id});
+  const TeamsJoinedViewBody({
+    super.key,
+    required this.id,
+    required this.teamsNum,
+  });
   final String id;
-
+  final int? teamsNum;
   @override
   State<TeamsJoinedViewBody> createState() => _TeamsJoinedViewBodyState();
 }
 
 class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
-  int? teamsNum;
   @override
   Widget build(BuildContext context) {
     context.read<GetTournamentsTeamsCubit>().getTeams(widget.id);
@@ -56,7 +56,7 @@ class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
               }
               if (state is GetTournamentsTeamsSuccessState) {
                 var teams = state.teams;
-                teamsNum = teams.length;
+
                 return Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
@@ -74,62 +74,8 @@ class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
               return SizedBox();
             },
           ),
-
           SizedBox(height: screenHeight * 0.005),
-          Builder(
-            builder: (innerContext) => AppButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: innerContext,
-                  backgroundColor: Colors.white,
-                  builder: (_) {
-                    return BlocProvider.value(
-                      value: innerContext.read<GenerateNextRoundCubit>(),
-                      child:
-                          BlocListener<
-                            GenerateNextRoundCubit,
-                            GenerateNextRoundState
-                          >(
-                            listener: (context, roundState) {
-                              if (roundState is GenerateNextRoundLoadingState) {
-                                Center(child: CircularProgressIndicator());
-                              }
-                              if (roundState is GenerateNextRoundSuccessState) {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                                TopSnackBar.show(
-                                  context,
-                                  title: 'Success',
-                                  message: 'The round is started successfully!',
-                                  contentType: ContentType.success,
-                                  color: ColorManager.primaryColor,
-                                );
-                              }
-
-                              if (roundState is GenerateNextRoundFailureState) {
-                                Navigator.pop(context);
-                                TopSnackBar.show(
-                                  context,
-                                  title: 'Error',
-                                  message:
-                                      'An error occurred while trying to create round.',
-                                  contentType: ContentType.failure,
-                                  color: Colors.red,
-                                );
-                              }
-                            },
-                            child: GenerateNextRound(
-                              tournamentId: widget.id,
-                              numOfTeams: teamsNum ?? 0,
-                            ),
-                          ),
-                    );
-                  },
-                );
-              },
-              text: 'Generate Next Round',
-            ),
-          ),
+          BottomSheetBuilder(widget: widget, teamsNum: widget.teamsNum),
           SizedBox(height: screenHeight * 0.05),
         ],
       ),
@@ -138,5 +84,75 @@ class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
 
   String formatDate(DateTime date) {
     return DateFormat('d MMMM yyyy').format(date);
+  }
+}
+
+class BottomSheetBuilder extends StatelessWidget {
+  const BottomSheetBuilder({
+    super.key,
+    required this.widget,
+    required this.teamsNum,
+  });
+
+  final TeamsJoinedViewBody widget;
+  final int? teamsNum;
+
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+      builder: (innerContext) => AppButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: innerContext,
+            backgroundColor: Colors.white,
+            builder: (_) {
+              return BlocProvider.value(
+                value: innerContext.read<GenerateNextRoundCubit>(),
+                child:
+                    BlocListener<
+                      GenerateNextRoundCubit,
+                      GenerateNextRoundState
+                    >(
+                      listener: (context, roundState) {
+                        if (roundState is GenerateNextRoundLoadingState) {
+                          Center(child: CircularProgressIndicator());
+                        }
+                        if (roundState is GenerateNextRoundSuccessState) {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          TopSnackBar.show(
+                            context,
+                            title: 'Success',
+                            message: 'The round is started successfully!',
+                            contentType: ContentType.success,
+                            color: ColorManager.primaryColor,
+                          );
+                        }
+
+                        if (roundState is GenerateNextRoundFailureState) {
+                          Navigator.pop(context);
+                          TopSnackBar.show(
+                            context,
+                            title: 'Error',
+                            message:
+                                'An error occurred while trying to create round.',
+                            contentType: ContentType.failure,
+                            color: Colors.red,
+                          );
+                        }
+                      },
+                      child: GenerateNextRound(
+                        tournamentId: widget.id,
+                        numOfTeams: teamsNum ?? 0,
+                      ),
+                    ),
+              );
+            },
+          );
+        },
+        text: 'Generate Next Round',
+      ),
+    );
   }
 }
