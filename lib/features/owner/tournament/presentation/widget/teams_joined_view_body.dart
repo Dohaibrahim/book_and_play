@@ -129,7 +129,6 @@ class BottomSheetBuilder extends StatelessWidget {
                             color: ColorManager.primaryColor,
                           );
                         }
-
                         if (roundState is GenerateNextRoundFailureState) {
                           Navigator.pop(context);
                           TopSnackBar.show(

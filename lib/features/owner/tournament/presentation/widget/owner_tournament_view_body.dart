@@ -73,6 +73,7 @@ class OwnerTournamentViewBody extends StatelessWidget {
                               Navigator.pushNamed(
                                 context,
                                 Routes.teamsScheduledView,
+                                arguments: state.tournament[index].id,
                               );
                             case 'finished':
                             /*Navigator.pushNamed(

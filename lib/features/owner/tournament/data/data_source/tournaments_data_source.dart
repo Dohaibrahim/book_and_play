@@ -9,6 +9,7 @@ import 'package:book_and_play/features/owner/tournament/data/models/add_tourname
 import 'package:book_and_play/features/owner/tournament/data/models/generate_next_round_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/get_spec_tournament_response.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/generate_next_res.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/teams_matches_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/tournaments_res.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -28,6 +29,8 @@ abstract class TournamentsDataSource {
     String id,
     NextRoundReq nextRoundReq,
   );
+
+  Future<Either<Failure, TeamsMatchesRes>> getMatches(String tournamentId);
 }
 
 class TournamentsDataSourceImpl extends TournamentsDataSource {
@@ -93,6 +96,23 @@ class TournamentsDataSourceImpl extends TournamentsDataSource {
       );
       var response = NextRoundRes.fromJson(requset.data);
 
+      return Right(response);
+    } on DioException catch (e) {
+      return Left(Failure('connection error : ${e.toString()}'));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, TeamsMatchesRes>> getMatches(
+    String tournamentId,
+  ) async {
+    try {
+      var request = await getIt<DioClient>().get(
+        '${ApiUrls.knockoutTournaments}/$tournamentId/matches',
+      );
+      var response = TeamsMatchesRes.fromJson(request.data);
       return Right(response);
     } on DioException catch (e) {
       return Left(Failure('connection error : ${e.toString()}'));

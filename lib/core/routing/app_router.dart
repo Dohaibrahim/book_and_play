@@ -91,7 +91,10 @@ class AppRouter {
           settings: settings,
         );
       case Routes.teamsScheduledView:
-        return MaterialPageRoute(builder: (_) => TeamsScheduledView());
+        return MaterialPageRoute(
+          builder: (_) => TeamsScheduledView(),
+          settings: settings,
+        );
       case Routes.ownerFieldView:
         return MaterialPageRoute(
           builder: (_) => OwnerFieldView(),

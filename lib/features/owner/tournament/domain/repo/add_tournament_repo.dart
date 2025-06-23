@@ -4,6 +4,7 @@ import 'package:book_and_play/features/owner/tournament/data/models/add_tourname
 import 'package:book_and_play/features/owner/tournament/data/models/generate_next_round_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/get_spec_tournament_response.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/generate_next_res.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/teams_matches_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/tournaments_res.dart';
 import 'package:dartz/dartz.dart';
 
@@ -22,4 +23,6 @@ abstract class TournamentRepo {
     String id,
     NextRoundReq nextRoundReq,
   );
+
+  Future<Either<Failure, TeamsMatchesRes>> getMatches(String tournamentId);
 }

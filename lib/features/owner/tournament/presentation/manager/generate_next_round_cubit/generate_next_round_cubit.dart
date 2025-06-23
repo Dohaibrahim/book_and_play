@@ -13,7 +13,7 @@ class GenerateNextRoundCubit extends Cubit<GenerateNextRoundState> {
     final result = await GenerateNextRoundUsecase(id: id).call(nextRoundReq);
     result.fold(
       (failure) {
-        log('at cuuubit : ${failure.message}');
+        log('error at cuuubit : ${failure.message}');
         emit(GenerateNextRoundFailureState(errorMessage: failure.message));
       },
       (data) {
