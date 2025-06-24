@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
@@ -5,6 +7,7 @@ import 'package:book_and_play/features/owner/tournament/data/models/teams_matche
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/add_score.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/widget/match_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -73,7 +76,9 @@ class _TeamsScheduledViewBodyState extends State<TeamsScheduledViewBody> {
                             showModalBottomSheet(
                               context: context,
                               builder: (context) {
+                                log(currentMatches[index].id);
                                 return AddScore(
+                                  matchId: currentMatches[index].id,
                                   teamA: currentMatches[index].teamA,
                                   teamB: currentMatches[index].teamB,
                                   initialScoreTeamA:
@@ -84,90 +89,23 @@ class _TeamsScheduledViewBodyState extends State<TeamsScheduledViewBody> {
                               },
                             );
                           },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 20),
-                            height: 170,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.transparent),
-                              borderRadius: BorderRadius.circular(20),
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                  'assets/images/match_card1.png',
-                                ),
-                              ),
-                              boxShadow: <BoxShadow>[
-                                BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.10),
-                                  offset: Offset(0, 5),
-                                  blurRadius: 8,
-                                  spreadRadius: 0,
-                                ),
-                              ],
+                          child: MatchCard(
+                            teamsAName: currentMatches[index].teamA.name,
+                            date: formatToReadableDate(
+                              currentMatches[index].date.toString(),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              //crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Text(
-                                  currentMatches[index].teamA.name,
-                                  style: TextStyles.font24BlackBold.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      formatToReadableDate(
-                                        currentMatches[index].date.toString(),
-                                      ),
-                                      style: TextStyles.font14BlackMedium
-                                          .copyWith(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                          ),
-                                    ),
-                                    Text(
-                                      '${currentMatches[index].time.start} : ${currentMatches[index].time.end}',
-                                      style: TextStyles.font14BlackMedium
-                                          .copyWith(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                          ),
-                                    ),
-                                    SizedBox(height: 1),
-                                    Text(
-                                      currentMatches[index].score.teamA != null
-                                          ? '${currentMatches[index].score.teamA} - ${currentMatches[index].score.teamB}'
-                                          : 'Add Score',
-                                      style: TextStyles.font14BlackMedium
-                                          .copyWith(
-                                            color: Colors.white,
-                                            fontSize: 19,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                    SizedBox(height: 20),
-                                  ],
-                                ),
-                                Text(
-                                  currentMatches[index].teamB.name,
-                                  style: TextStyles.font24BlackBold.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
+                            time:
+                                '${currentMatches[index].time.start} : ${currentMatches[index].time.end}',
+                            score: currentMatches[index].score.teamA != null
+                                ? '${currentMatches[index].score.teamA} - ${currentMatches[index].score.teamB}'
+                                : 'Add Score',
+                            teamsBName: currentMatches[index].teamB.name,
                           ),
                         ),
                       );
                     },
                   ),
                 ),
-                //Expanded(child: SizedBox()),
                 AppButton(
                   onPressed: () {},
                   text: 'Start first round of matches',
@@ -188,66 +126,3 @@ class _TeamsScheduledViewBodyState extends State<TeamsScheduledViewBody> {
     return formatter.format(date);
   }
 }
-
-
-
-
-
-
-/*
-Future<DateTime?> timeAndDatePicker(BuildContext context) async {
-  DateTime? selectedDateTime;
-
-  final DateTime? pickedDate = await showDatePicker(
-    context: context,
-    initialDate: DateTime.now(),
-    firstDate: DateTime.now().subtract(Duration(days: 1)),
-    lastDate: DateTime.now().add(Duration(days: 365)),
-    builder: (BuildContext context, Widget? child) {
-      return Theme(
-        data: ThemeData.light().copyWith(
-          colorScheme: ColorScheme.dark(
-            primary: ColorManager.primaryColor,
-            onPrimary: Colors.black,
-            surface: Colors.white,
-            onSurface: Colors.black,
-          ),
-        ),
-        child: child!,
-      );
-    },
-  );
-
-  if (pickedDate != null) {
-    final TimeOfDay? pickedTime = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-      builder: (BuildContext context, Widget? child) {
-        return Theme(
-          data: ThemeData.light().copyWith(
-            colorScheme: ColorScheme.light(
-              primary: ColorManager.primaryColor,
-              onPrimary: Colors.black,
-              surface: Colors.white,
-              onSurface: Colors.black,
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-
-    if (pickedTime != null) {
-      selectedDateTime = DateTime(
-        pickedDate.year,
-        pickedDate.month,
-        pickedDate.day,
-        pickedTime.hour,
-        pickedTime.minute,
-      );
-    }
-  }
-
-  return selectedDateTime;
-}
- */
