@@ -27,12 +27,18 @@ class GenerateNextRound extends StatelessWidget {
             for (var time in times) {
               timesReq.add(
                 TimeReq(
-                  start: time.formatTimeOfDay24(time.from),
-                  end: time.formatTimeOfDay24(time.to),
+                  start:
+                      '${time.from.hour.toString().padLeft(2, '0')}:${time.from.minute.toString().padLeft(2, '0')}', // time.formatTimeOfDay24(time.from),
+                  end: addOneHour(
+                    '${time.from.hour.toString().padLeft(2, '0')}:${time.from.minute.toString().padLeft(2, '0')}',
+                  ),
                 ),
               );
               log(
                 "From: ${time.from.format(context)}, To: ${time.to.format(context)}",
+              );
+              log(
+                'nexttt ${time.from.hour.toString().padLeft(2, '0')}:${time.from.minute.toString().padLeft(2, '0')},,, ${addOneHour('${time.from.hour.toString().padLeft(2, '0')}:${time.from.minute.toString().padLeft(2, '0')}')}',
               );
             }
             context.read<GenerateNextRoundCubit>().generateRound(
@@ -43,5 +49,16 @@ class GenerateNextRound extends StatelessWidget {
         );
       },
     );
+  }
+
+  String addOneHour(String timeStr) {
+    final parts = timeStr.split(':');
+    int hour = int.parse(parts[0]);
+    int minute = int.parse(parts[1]);
+    if (hour == 24 && minute == 0) {
+      hour = 0;
+    }
+    hour = (hour + 1) % 24;
+    return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
   }
 }

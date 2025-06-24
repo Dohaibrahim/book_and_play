@@ -74,6 +74,8 @@ class _TeamsScheduledViewBodyState extends State<TeamsScheduledViewBody> {
                               context: context,
                               builder: (context) {
                                 return AddScore(
+                                  teamA: currentMatches[index].teamA,
+                                  teamB: currentMatches[index].teamB,
                                   initialScoreTeamA:
                                       currentMatches[index].score.teamA,
                                   initialScoreTeamB:
