@@ -1,9 +1,10 @@
 import 'package:book_and_play/core/routing/routes.dart';
+import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/features/user/home/presentation/widgets/book_now.dart';
 import 'package:book_and_play/features/user/home/presentation/widgets/browse_your_booking.dart';
 import 'package:book_and_play/features/user/home/presentation/widgets/home_app_bar.dart';
-import 'package:book_and_play/features/user/home/presentation/widgets/recommended_grid_view.dart';
+import 'package:book_and_play/features/user/home/presentation/widgets/latest_tournaments.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,8 @@ class HomeViewBody extends StatelessWidget {
     final screenHight = MediaQuery.sizeOf(context).height;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: ListView(
-        //crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           HomeAppBar(),
           SizedBox(height: screenHight * 0.03),
@@ -39,12 +40,30 @@ class HomeViewBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: screenHight * 0.03),
-          Text(
-            'home.recommended'.tr(),
-            style: TextStyles.font24BlackBold.copyWith(fontSize: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'home.recommended'.tr(),
+                style: TextStyles.font24BlackBold.copyWith(fontSize: 20),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.tournamentsView);
+                },
+                child: Text(
+                  'See All',
+                  style: TextStyles.font14BlackMedium.copyWith(
+                    color: ColorManager.primaryColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(height: screenHight * 0.007),
-          RecommendedGridView(),
+          Expanded(child: LatestTournaments(fetchAll: false)),
         ],
       ),
     );

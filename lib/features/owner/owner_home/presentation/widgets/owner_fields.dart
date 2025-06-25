@@ -1,8 +1,8 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class RecommendedItem extends StatelessWidget {
-  const RecommendedItem({
+class OwnerFields extends StatelessWidget {
+  const OwnerFields({
     super.key,
     required this.imagePath,
     required this.title,
@@ -142,7 +142,7 @@ class RecommendedGridView extends StatelessWidget {
         ),
         itemCount: listOfImage.length, // list.length,
         itemBuilder: (context, index) {
-          return RecommendedItem(
+          return OwnerFields(
             capacity: '',
             title: listOfNames[index],
             location: listOfLocations[index],

@@ -2,7 +2,7 @@ import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/manager/owner_field_cubit.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/manager/owner_field_state.dart';
-import 'package:book_and_play/features/user/home/presentation/widgets/recommended_grid_view.dart';
+import 'package:book_and_play/features/owner/owner_home/presentation/widgets/owner_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +44,7 @@ class FieldsGridView extends StatelessWidget {
             ),
             itemCount: state.fields.length, // list.length,
             itemBuilder: (context, index) {
-              return RecommendedItem(
+              return OwnerFields(
                 onTap: () {
                   Navigator.pushNamed(
                     context,

@@ -17,6 +17,10 @@ import 'package:book_and_play/features/user/Bottom_nav/presentation/bottom_nav_v
 import 'package:book_and_play/features/onboarding/presentation/onboarding_view.dart';
 import 'package:book_and_play/features/owner/owner_home/presentation/owner_home_view.dart';
 import 'package:book_and_play/features/user/settings/presentation/about_us_view.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/players_of_team_view.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/register_team_view.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/tournament_details_view.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/tournaments_view.dart';
 import 'package:book_and_play/features/user/user_booking/presentation/user_booked_field_view.dart';
 import 'package:book_and_play/features/user/user_booking/presentation/user_booking_view.dart';
 import 'package:flutter/material.dart';
@@ -100,6 +104,17 @@ class AppRouter {
           builder: (_) => OwnerFieldView(),
           settings: settings,
         );
+      case Routes.tournamentsView:
+        return MaterialPageRoute(builder: (_) => const TournamentsView());
+      case Routes.tournamentDetailsView:
+        return MaterialPageRoute(
+          builder: (_) => const TournamentDetailsView(),
+          settings: settings,
+        );
+      case Routes.registerTeamView:
+        return MaterialPageRoute(builder: (_) => const RegisterTeamView());
+      case Routes.playersOfTeamView:
+        return MaterialPageRoute(builder: (_) => const PlayersOfTeamView());
     }
     return null;
   }

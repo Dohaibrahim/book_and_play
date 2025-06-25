@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:book_and_play/core/widgets/tournament_status_card.dart';
 import 'package:flutter/material.dart';
 
 class TournamentCard extends StatelessWidget {
@@ -47,24 +48,7 @@ class TournamentCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(subTitle, style: TextStyles.font14BlackMedium),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: tournamentStatus == TournamentStatus.upcoming.name
-                        ? Color(0xffFAA60A)
-                        : tournamentStatus == TournamentStatus.finished.name
-                        ? Color(0xffFB120A)
-                        : Color(0xff23CF5F),
-                    border: Border.all(color: Colors.transparent),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    tournamentStatus,
-                    style: TextStyles.font14BlackMedium.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
+                TournamentStatusCard(tournamentStatus: tournamentStatus),
               ],
             ),
           ],
