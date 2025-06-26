@@ -30,11 +30,11 @@ class LatestTournaments extends StatelessWidget {
             itemBuilder: (context, index) {
               return TournamentCard(
                 name: state.tournaments[index].name,
-                fieldName: state.tournaments[index].name,
+                fieldName: state.tournaments[index].description,
                 location: 'Cairo , Egypt',
                 date:
                     '${formatDate(state.tournaments[index].startDate)} - ${formatDate(state.tournaments[index].endDate)}',
-                status: 'ongoing',
+                status: state.tournaments[index].status,
               );
             },
           );
@@ -71,7 +71,7 @@ class TournamentCard extends StatelessWidget {
         );
       },
       child: Container(
-        height: 160,
+        height: 140,
         margin: EdgeInsets.only(bottom: 15),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         decoration: BoxDecoration(
@@ -92,9 +92,17 @@ class TournamentCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
+                SizedBox(
+                  width: screenWidth * 0.50,
+                  child: Text(
+                    fieldName,
+                    maxLines: 2,
+                    style: TextStyle(color: Colors.grey[700]),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
 
-                Text(fieldName, style: TextStyle(color: Colors.grey[700])),
-                Row(
+                /*Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Image.asset(
@@ -110,9 +118,8 @@ class TournamentCard extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-
-                Text('Knockout'),
+                ),*/
+                Text('Type : Knockout'),
               ],
             ),
             Column(
