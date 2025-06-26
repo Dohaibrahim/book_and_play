@@ -2,32 +2,50 @@ import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/tournament_status_card.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/manager/fetch_tournaments/fetch_tournaments_cubit.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/manager/fetch_tournaments/fetch_tournaments_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class LatestTournaments extends StatelessWidget {
   const LatestTournaments({super.key, required this.fetchAll});
   final bool fetchAll;
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.zero,
-      children: [
-        TournamentCard(
-          name: 'Goal Masters',
-          fieldName: 'at Sportage stadium',
-          location: 'Cairo , Egypt',
-          date: '3 May : 1 June ',
-          status: 'ongoing',
-        ),
-        TournamentCard(
-          name: 'Goal Masters',
-          fieldName: 'at Sportage stadium',
-          location: 'Cairo , Egypt',
-          date: '3 May : 1 June ',
-          status: 'upcoming',
-        ),
-      ],
+    context.read<FetchTournamentsCubit>().fetchTournaments();
+    return BlocBuilder<FetchTournamentsCubit, FetchTournamentsState>(
+      builder: (context, state) {
+        if (state is FetchTournamentsLoadingState) {
+          return Center(
+            child: CircularProgressIndicator(color: ColorManager.primaryColor),
+          );
+        }
+        if (state is FetchTournamentsSuccessState) {
+          return ListView.builder(
+            padding: EdgeInsets.zero,
+            itemCount: fetchAll == true
+                ? state.tournaments.length
+                : state.tournaments.take(5).length,
+            itemBuilder: (context, index) {
+              return TournamentCard(
+                name: state.tournaments[index].name,
+                fieldName: state.tournaments[index].name,
+                location: 'Cairo , Egypt',
+                date:
+                    '${formatDate(state.tournaments[index].startDate)} - ${formatDate(state.tournaments[index].endDate)}',
+                status: 'ongoing',
+              );
+            },
+          );
+        }
+        return SizedBox();
+      },
     );
+  }
+
+  String formatDate(DateTime date) {
+    return DateFormat('d MMMM').format(date);
   }
 }
 
@@ -43,6 +61,7 @@ class TournamentCard extends StatelessWidget {
   final String name, fieldName, location, date, status;
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
@@ -65,9 +84,13 @@ class TournamentCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  name,
-                  style: TextStyles.font24BlackBold.copyWith(fontSize: 20),
+                SizedBox(
+                  width: screenWidth * 0.50,
+                  child: Text(
+                    name,
+                    style: TextStyles.font24BlackBold.copyWith(fontSize: 18),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
 
                 Text(fieldName, style: TextStyle(color: Colors.grey[700])),
@@ -101,6 +124,7 @@ class TournamentCard extends StatelessWidget {
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 10),
                 TournamentStatusCard(tournamentStatus: status),

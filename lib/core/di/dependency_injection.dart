@@ -19,6 +19,10 @@ import 'package:book_and_play/features/user/booking/data/data_source/booking_rem
 import 'package:book_and_play/features/user/booking/data/repos/booking_repo_impl.dart';
 import 'package:book_and_play/features/user/booking/domain/repo/booking_repo.dart';
 import 'package:book_and_play/features/user/booking/domain/usecase/fetch_fields_usecase.dart';
+import 'package:book_and_play/features/user/tournaments/data/data_source/user_tournaments_remote_data_source.dart';
+import 'package:book_and_play/features/user/tournaments/data/repo/user_tournament_repo_impl.dart';
+import 'package:book_and_play/features/user/tournaments/domain/repo/user_tournament_repo.dart';
+import 'package:book_and_play/features/user/tournaments/domain/usecase/fetch_tournaments_usecase.dart';
 import 'package:book_and_play/features/user/user_booking/data/data_source/user_booking_remote_data_source.dart';
 import 'package:book_and_play/features/user/user_booking/data/repo/user_booking_repo_impl.dart';
 import 'package:book_and_play/features/user/user_booking/domain/repo/user_booking_repo.dart';
@@ -79,4 +83,14 @@ void setupServiceLocator() {
   );
 
   getIt.registerSingleton<AddFieldRepo>(AddFieldRepoImpl());
+
+  getIt.registerSingleton<UserTournamentsRemoteDataSource>(
+    UserTournamentsRemoteDataSourceImpl(),
+  );
+
+  getIt.registerSingleton<UserTournamentRepo>(UserTournamentRepoImpl());
+
+  getIt.registerSingleton<UserFetchTournamentsUsecase>(
+    UserFetchTournamentsUsecase(),
+  );
 }
