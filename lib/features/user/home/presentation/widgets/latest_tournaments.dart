@@ -29,6 +29,7 @@ class LatestTournaments extends StatelessWidget {
                 : state.tournaments.take(5).length,
             itemBuilder: (context, index) {
               return TournamentCard(
+                id: state.tournaments[index].id,
                 name: state.tournaments[index].name,
                 fieldName: state.tournaments[index].description,
                 location: 'Cairo , Egypt',
@@ -57,8 +58,9 @@ class TournamentCard extends StatelessWidget {
     required this.location,
     required this.date,
     required this.status,
+    required this.id,
   });
-  final String name, fieldName, location, date, status;
+  final String name, fieldName, location, date, status, id;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
@@ -67,7 +69,7 @@ class TournamentCard extends StatelessWidget {
         Navigator.pushNamed(
           context,
           Routes.tournamentDetailsView,
-          arguments: {},
+          arguments: id,
         );
       },
       child: Container(
