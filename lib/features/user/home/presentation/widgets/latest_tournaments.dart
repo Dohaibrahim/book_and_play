@@ -32,7 +32,7 @@ class LatestTournaments extends StatelessWidget {
                 id: state.tournaments[index].id,
                 name: state.tournaments[index].name,
                 fieldName: state.tournaments[index].description,
-                location: 'Cairo , Egypt',
+
                 date:
                     '${formatDate(state.tournaments[index].startDate)} - ${formatDate(state.tournaments[index].endDate)}',
                 status: state.tournaments[index].status,
@@ -55,12 +55,11 @@ class TournamentCard extends StatelessWidget {
     super.key,
     required this.name,
     required this.fieldName,
-    required this.location,
     required this.date,
     required this.status,
     required this.id,
   });
-  final String name, fieldName, location, date, status, id;
+  final String name, fieldName, date, status, id;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
@@ -103,24 +102,6 @@ class TournamentCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-
-                /*Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      'assets/icons/maps_marker_icon.png',
-                      width: 20,
-                      height: 25,
-                    ),
-                    Text(
-                      location,
-                      style: TextStyles.font14BlackMedium.copyWith(
-                        color: ColorManager.primaryColor,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),*/
                 Text('Type : Knockout'),
               ],
             ),

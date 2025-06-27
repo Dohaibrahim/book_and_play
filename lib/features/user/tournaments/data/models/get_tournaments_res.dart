@@ -21,7 +21,7 @@ class Tournament {
   final DateTime startDate;
   final DateTime endDate;
   final int maxTeams;
-  final List<String> fieldIds;
+  final List<Field> fieldIds;
   final bool isPrivate;
   final String? institution;
   final CreatedBy createdBy;
@@ -42,7 +42,7 @@ class Tournament {
     required this.maxTeams,
     required this.fieldIds,
     required this.isPrivate,
-    required this.institution,
+    this.institution,
     required this.createdBy,
     required this.teams,
     required this.type,
@@ -61,7 +61,9 @@ class Tournament {
       startDate: DateTime.parse(json['start_date']),
       endDate: DateTime.parse(json['end_date']),
       maxTeams: json['max_teams'],
-      fieldIds: List<String>.from(json['field_ids']),
+      fieldIds: (json['field_ids'] as List)
+          .map((f) => Field.fromJson(f))
+          .toList(),
       isPrivate: json['is_private'],
       institution: json['institution'],
       createdBy: CreatedBy.fromJson(json['createdBy']),
@@ -72,6 +74,36 @@ class Tournament {
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       v: json['__v'],
+    );
+  }
+}
+
+class Field {
+  final String id;
+  final String name;
+  final Location location;
+
+  Field({required this.id, required this.name, required this.location});
+
+  factory Field.fromJson(Map<String, dynamic> json) {
+    return Field(
+      id: json['_id'],
+      name: json['name'],
+      location: Location.fromJson(json['location']),
+    );
+  }
+}
+
+class Location {
+  final String type;
+  final List<double> coordinates;
+
+  Location({required this.type, required this.coordinates});
+
+  factory Location.fromJson(Map<String, dynamic> json) {
+    return Location(
+      type: json['type'],
+      coordinates: List<double>.from(json['coordinates']),
     );
   }
 }

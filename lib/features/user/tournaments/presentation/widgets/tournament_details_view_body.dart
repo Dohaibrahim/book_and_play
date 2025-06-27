@@ -91,11 +91,22 @@ class TournamentDetailsViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 Text(
                   state.tournament.description,
                   style: TextStyle(fontSize: 18, color: Colors.grey[700]),
                 ),
+                SizedBox(height: 10),
+                state.tournament.isPrivate
+                    ? Text(
+                        'For ${state.tournament.institution} only',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )
+                    : SizedBox(),
                 Text(
                   'From ${formatDate(state.tournament.startDate)}',
                   style: TextStyle(fontSize: 18),
