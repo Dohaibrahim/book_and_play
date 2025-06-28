@@ -176,7 +176,7 @@ class TournamentDetailsViewBody extends StatelessWidget {
                 state.tournament.teams.isEmpty
                     ? Expanded(
                         child: Center(
-                          child: Text('There are no Teams Joined till now'),
+                          child: Text('Be the first team who join!'),
                         ),
                       )
                     : Expanded(
@@ -199,7 +199,11 @@ class TournamentDetailsViewBody extends StatelessWidget {
                     ? SizedBox()
                     : AppButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, Routes.registerTeamView);
+                          Navigator.pushNamed(
+                            context,
+                            Routes.registerTeamView,
+                            arguments: id,
+                          );
                         },
                         text: 'Join',
                         textStyle: TextStyle(

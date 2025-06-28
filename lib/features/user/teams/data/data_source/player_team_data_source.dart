@@ -1,0 +1,35 @@
+import 'package:book_and_play/core/di/dependency_injection.dart';
+import 'package:book_and_play/core/errors/failure.dart';
+import 'package:book_and_play/core/utils/api_service.dart';
+import 'package:book_and_play/core/utils/constant.dart';
+import 'package:book_and_play/features/user/teams/data/models/team_create_req.dart';
+import 'package:book_and_play/features/user/teams/data/models/team_create_res.dart';
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+
+abstract class PlayerTeamDataSource {
+  Future<Either<Failure, TeamCreateResponse>> creatTeam(
+    CreateTeamRequest creatTeamReq,
+  );
+}
+
+class PlayerTeamDataSourceImpl extends PlayerTeamDataSource {
+  @override
+  Future<Either<Failure, TeamCreateResponse>> creatTeam(
+    CreateTeamRequest creatTeamReq,
+  ) async {
+    try {
+      final formData = await creatTeamReq.toFormData();
+      final request = await getIt<DioClient>().post(
+        '${ApiUrls.team}/create',
+        data: formData,
+      );
+      var response = TeamCreateResponse.fromJson(request.data);
+      return Right(response);
+    } on DioException catch (e) {
+      return Left(Failure("connection error : ${e.message}"));
+    } catch (e) {
+      return Left(Failure("error at data source : ${e.toString()}"));
+    }
+  }
+}

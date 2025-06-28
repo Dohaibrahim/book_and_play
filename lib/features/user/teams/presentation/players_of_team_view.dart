@@ -1,4 +1,4 @@
-import 'package:book_and_play/features/user/tournaments/presentation/widgets/players_of_team_view_body.dart';
+import 'package:book_and_play/features/user/teams/presentation/widgets/players_of_team_view_body.dart';
 import 'package:flutter/material.dart';
 
 class PlayersOfTeamView extends StatelessWidget {

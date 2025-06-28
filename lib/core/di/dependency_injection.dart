@@ -19,6 +19,10 @@ import 'package:book_and_play/features/user/booking/data/data_source/booking_rem
 import 'package:book_and_play/features/user/booking/data/repos/booking_repo_impl.dart';
 import 'package:book_and_play/features/user/booking/domain/repo/booking_repo.dart';
 import 'package:book_and_play/features/user/booking/domain/usecase/fetch_fields_usecase.dart';
+import 'package:book_and_play/features/user/teams/data/data_source/player_team_data_source.dart';
+import 'package:book_and_play/features/user/teams/data/repo/plater_team_repo_impl.dart';
+import 'package:book_and_play/features/user/teams/domain/repo/plater_team_repo.dart';
+import 'package:book_and_play/features/user/teams/domain/usecase/creat_team_usecase.dart';
 import 'package:book_and_play/features/user/tournaments/data/data_source/user_tournaments_remote_data_source.dart';
 import 'package:book_and_play/features/user/tournaments/data/repo/user_tournament_repo_impl.dart';
 import 'package:book_and_play/features/user/tournaments/domain/repo/user_tournament_repo.dart';
@@ -93,4 +97,10 @@ void setupServiceLocator() {
   getIt.registerSingleton<UserFetchTournamentsUsecase>(
     UserFetchTournamentsUsecase(),
   );
+
+  getIt.registerSingleton<PlayerTeamDataSource>(PlayerTeamDataSourceImpl());
+
+  getIt.registerSingleton<PlayerTeamRepo>(PlayerTeamRepoImpl());
+
+  getIt.registerSingleton<CreatTeamUsecase>(CreatTeamUsecase());
 }
