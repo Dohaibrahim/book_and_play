@@ -6,8 +6,9 @@ class AllFieldsRes {
 
   factory AllFieldsRes.fromJson(Map<String, dynamic> json) {
     var fieldsFromJson = json['fields'] as List;
-    List<Field> fieldsList =
-        fieldsFromJson.map((i) => Field.fromJson(i)).toList();
+    List<Field> fieldsList = fieldsFromJson
+        .map((i) => Field.fromJson(i))
+        .toList();
     return AllFieldsRes(fields: fieldsList, message: json['message']);
   }
 }
@@ -15,7 +16,7 @@ class AllFieldsRes {
 class Field {
   final Location location;
   final String id, name, city, country;
-  final List<dynamic> amenities;
+  final List<Amenities> amenities;
   final bool isPaid;
   final int capacity;
   final int? pricePerHour;
@@ -41,8 +42,45 @@ class Field {
       country: json['country'],
       capacity: json['capacity'],
       isPaid: json['is_paid'],
-      amenities: json['amenities'],
+      amenities: (json['amenities'] as List)
+          .map((a) => Amenities.fromJson(a))
+          .toList(),
       pricePerHour: json['price_per_hour'],
+    );
+  }
+}
+
+class Amenities {
+  final bool parking;
+  final bool ballRent;
+  final bool toilets;
+  final bool changingRooms;
+  final bool cafeteria;
+  final bool lightingQuality;
+  final bool fieldQuality;
+  final String id;
+
+  Amenities({
+    required this.parking,
+    required this.ballRent,
+    required this.toilets,
+    required this.changingRooms,
+    required this.cafeteria,
+    required this.lightingQuality,
+    required this.fieldQuality,
+    required this.id,
+  });
+
+  factory Amenities.fromJson(Map<String, dynamic> json) {
+    return Amenities(
+      parking: json['parking'],
+      ballRent: json['ball_rent'],
+      toilets: json['toilets'],
+      changingRooms: json['changing_rooms'],
+      cafeteria: json['cafeteria'],
+      lightingQuality: json['lighting_quality'],
+      fieldQuality: json['field_quality'],
+      id: json['_id'],
     );
   }
 }

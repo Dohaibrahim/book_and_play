@@ -2,6 +2,7 @@ import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/tournament_status_card.dart';
+import 'package:book_and_play/features/user/tournaments/data/models/get_tournaments_res.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/fetch_tournaments/fetch_tournaments_cubit.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/fetch_tournaments/fetch_tournaments_state.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,10 @@ class LatestTournaments extends StatelessWidget {
                 : state.tournaments.take(5).length,
             itemBuilder: (context, index) {
               return TournamentCard(
+                fields: state.tournaments[index].fieldIds,
                 id: state.tournaments[index].id,
                 name: state.tournaments[index].name,
                 fieldName: state.tournaments[index].description,
-
                 date:
                     '${formatDate(state.tournaments[index].startDate)} - ${formatDate(state.tournaments[index].endDate)}',
                 status: state.tournaments[index].status,
@@ -58,8 +59,10 @@ class TournamentCard extends StatelessWidget {
     required this.date,
     required this.status,
     required this.id,
+    required this.fields,
   });
   final String name, fieldName, date, status, id;
+  final List<Field> fields;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
@@ -68,7 +71,7 @@ class TournamentCard extends StatelessWidget {
         Navigator.pushNamed(
           context,
           Routes.tournamentDetailsView,
-          arguments: id,
+          arguments: {"id": id, "fields": fields},
         );
       },
       child: Container(

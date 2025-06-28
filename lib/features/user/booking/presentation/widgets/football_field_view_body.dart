@@ -4,6 +4,7 @@ import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/features/user/booking/data/models/all_fields_res.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_cubit.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/fetch_field_by_id/fetch_field_by_id_state.dart';
 import 'package:book_and_play/features/user/booking/presentation/widgets/location_button.dart';
@@ -22,7 +23,9 @@ class FootballFieldViewBody extends StatelessWidget {
     return BlocBuilder<FetchFieldByIdCubit, FetchFieldByIdState>(
       builder: (context, state) {
         if (state is FetchFieldByIdLoadingState) {
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(color: ColorManager.primaryColor),
+          );
         } else if (state is FetchFieldByIdSuccessState) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -108,7 +111,11 @@ class FootballFieldViewBody extends StatelessWidget {
                             )
                           : SizedBox(),
                       state.field.amenities.isNotEmpty
-                          ? AmenitiesListView(amenties: state.field.amenities)
+                          ? Expanded(
+                              child: AmenitiesListView(
+                                amenties: state.field.amenities,
+                              ),
+                            )
                           : SizedBox(),
                       Expanded(child: SizedBox()),
                       //Expanded(child: AvailableSlotsListView()),
@@ -144,20 +151,42 @@ class FootballFieldViewBody extends StatelessWidget {
 
 class AmenitiesListView extends StatelessWidget {
   const AmenitiesListView({super.key, required this.amenties});
-  final List<dynamic> amenties;
+  final List<Amenities> amenties;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: amenties.length,
-      itemBuilder: (context, index) {
-        return Text(
-          amenties[index], // 'Toilets',
-          style: TextStyles.font14BlackMedium.copyWith(
-            color: Colors.grey[700],
-            fontSize: 16,
-          ),
-        );
-      },
+    final amenity = amenties.first;
+
+    final available = {
+      'Parking': amenity.parking,
+      'Ball Rent': amenity.ballRent,
+      'Toilets': amenity.toilets,
+      'Changing Rooms': amenity.changingRooms,
+      'Cafeteria': amenity.cafeteria,
+      'Lighting Quality': amenity.lightingQuality,
+      'Field Quality': amenity.fieldQuality,
+    };
+
+    final visibleAmenities = available.entries
+        .where((entry) => entry.value)
+        .map((entry) => entry.key)
+        .toList();
+
+    return SizedBox(
+      height: 100,
+      child: ListView.builder(
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        itemCount: amenties.length,
+        itemBuilder: (context, index) {
+          return Text(
+            visibleAmenities[index],
+            style: TextStyles.font14BlackMedium.copyWith(
+              color: Colors.grey[700],
+              fontSize: 16,
+            ),
+          );
+        },
+      ),
     );
   }
 }

@@ -4,6 +4,8 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/tournament_status_card.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/teams_card.dart';
+import 'package:book_and_play/features/user/booking/presentation/football_field_view.dart';
+import 'package:book_and_play/features/user/tournaments/data/models/get_tournaments_res.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/get_specific_tournament/get_specific_tournament_cubit.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/get_specific_tournament/get_specific_tournament_state.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +13,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class TournamentDetailsViewBody extends StatelessWidget {
-  const TournamentDetailsViewBody({super.key, required this.id});
+  const TournamentDetailsViewBody({
+    super.key,
+    required this.id,
+    required this.fields,
+  });
   final String id;
+  final List<Field> fields;
   @override
   Widget build(BuildContext context) {
     context.read<GetSpecificTournamentCubit>().getTournament(id);
@@ -50,41 +57,81 @@ class TournamentDetailsViewBody extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'at Sportage stadium',
-                      style: TextStyles.font24BlackBold.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 23,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'get info',
-                        style: TextStyle(
-                          color: ColorManager.primaryColor,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
+                    fields.length > 1
+                        ? Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Fields',
+                                style: TextStyles.font24BlackBold.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              ...fields.map((field) {
+                                return TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => FootballFieldView(
+                                          fieldId: field.id,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  style: TextButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    minimumSize: Size(0, 0),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                  ),
+                                  child: Text(
+                                    field.name,
+                                    style: TextStyles.font24BlackBold.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      color: ColorManager.primaryColor,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ],
+                          )
+                        : Text(
+                            fields[0].name,
+                            style: TextStyles.font24BlackBold.copyWith(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 23,
+                            ),
+                          ),
+                    fields.length > 1
+                        ? SizedBox()
+                        : TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      FootballFieldView(fieldId: fields[0].id),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'get info',
+                              style: TextStyle(
+                                color: ColorManager.primaryColor,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
                   ],
                 ),
                 Row(
                   children: [
-                    Image.asset(
-                      'assets/icons/maps_marker_icon.png',
-                      width: 30,
-                      height: 30,
-                    ),
-                    Text(
-                      'Cairo , Egypt',
-                      style: TextStyles.font14BlackMedium.copyWith(
-                        color: ColorManager.primaryColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                      ),
-                    ),
                     Expanded(child: SizedBox()),
                     TournamentStatusCard(
                       tournamentStatus: state.tournament.status,
@@ -160,17 +207,6 @@ class TournamentDetailsViewBody extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                SizedBox(height: 10),
-                AppButton(
-                  onPressed: () {},
-                  text: 'Football field details',
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  buttonColor: Color(0xffF4FAF4),
-                ),
                 SizedBox(height: 30),
               ],
             );

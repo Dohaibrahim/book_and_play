@@ -8,10 +8,14 @@ class TournamentDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as String;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return BlocProvider(
       create: (context) => GetSpecificTournamentCubit(),
-      child: Scaffold(body: TournamentDetailsViewBody(id: args)),
+
+      child: Scaffold(
+        body: TournamentDetailsViewBody(id: args['id'], fields: args['fields']),
+      ),
     );
   }
 }
