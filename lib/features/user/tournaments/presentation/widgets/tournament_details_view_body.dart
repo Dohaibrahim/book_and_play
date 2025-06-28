@@ -8,6 +8,7 @@ import 'package:book_and_play/features/user/booking/presentation/football_field_
 import 'package:book_and_play/features/user/tournaments/data/models/get_tournaments_res.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/get_specific_tournament/get_specific_tournament_cubit.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/get_specific_tournament/get_specific_tournament_state.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/widgets/team_info_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -211,6 +212,8 @@ class TournamentDetailsViewBody extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                SizedBox(height: 10),
+                TeamInfoButton(teams: state.tournament.teams),
                 SizedBox(height: 30),
               ],
             );

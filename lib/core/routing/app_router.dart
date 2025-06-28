@@ -117,7 +117,10 @@ class AppRouter {
           settings: settings,
         );
       case Routes.playersOfTeamView:
-        return MaterialPageRoute(builder: (_) => const PlayersOfTeamView());
+        return MaterialPageRoute(
+          builder: (_) => const PlayersOfTeamView(),
+          settings: settings,
+        );
     }
     return null;
   }

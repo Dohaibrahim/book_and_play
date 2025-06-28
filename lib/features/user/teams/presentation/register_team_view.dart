@@ -18,17 +18,12 @@ class RegisterTeamView extends StatelessWidget {
       child: Scaffold(
         body: BlocListener<PlayerTeamCubit, PlayerTeamState>(
           listener: (context, state) {
-            if (state is PlayerTeamLoadingState) {
-              Expanded(
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: ColorManager.primaryColor,
-                  ),
-                ),
-              );
-            }
             if (state is PlayerTeamSuccessState) {
-              Navigator.pushReplacementNamed(context, Routes.playersOfTeamView);
+              Navigator.pushReplacementNamed(
+                context,
+                Routes.playersOfTeamView,
+                arguments: {'id': state.team.id, 'teamName': state.team.name},
+              );
             }
             if (state is PlayerTeamFailureState) {
               TopSnackBar.show(
