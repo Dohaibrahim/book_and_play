@@ -167,7 +167,7 @@ class AmenitiesListView extends StatelessWidget {
     };
 
     final visibleAmenities = available.entries
-        .where((entry) => entry.value)
+        .where((entry) => entry.value!)
         .map((entry) => entry.key)
         .toList();
 

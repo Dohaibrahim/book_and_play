@@ -61,25 +61,25 @@ class Amenities {
   final String id;
 
   Amenities({
-    required this.parking,
-    required this.ballRent,
-    required this.toilets,
-    required this.changingRooms,
-    required this.cafeteria,
-    required this.lightingQuality,
-    required this.fieldQuality,
+    this.parking = false,
+    this.ballRent = false,
+    this.toilets = false,
+    this.changingRooms = false,
+    this.cafeteria = false,
+    this.lightingQuality = false,
+    this.fieldQuality = false,
     required this.id,
   });
 
   factory Amenities.fromJson(Map<String, dynamic> json) {
     return Amenities(
-      parking: json['parking'],
-      ballRent: json['ball_rent'],
-      toilets: json['toilets'],
-      changingRooms: json['changing_rooms'],
-      cafeteria: json['cafeteria'],
-      lightingQuality: json['lighting_quality'],
-      fieldQuality: json['field_quality'],
+      parking: json['parking'] ?? false,
+      ballRent: json['ball_rent'] ?? false,
+      toilets: json['toilets'] ?? false,
+      changingRooms: json['changing_rooms'] ?? false,
+      cafeteria: json['cafeteria'] ?? false,
+      lightingQuality: json['lighting_quality'] ?? false,
+      fieldQuality: json['field_quality'] ?? false,
       id: json['_id'],
     );
   }
