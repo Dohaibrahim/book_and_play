@@ -5,6 +5,7 @@ import 'package:book_and_play/core/utils/shared_pref.dart';
 import 'package:book_and_play/features/user/settings/presentation/widgets/settings_item.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SettingsViewBody extends StatelessWidget {
   const SettingsViewBody({super.key});
@@ -23,7 +24,7 @@ class SettingsViewBody extends StatelessWidget {
         } else {
           final userInfo =
               snapshot.data ??
-              {'username': 'User', 'email': 'user@example.com'};
+              {'username': 'User', 'email': 'user@example.com', 'id': ''};
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -65,6 +66,26 @@ class SettingsViewBody extends StatelessWidget {
               ),
               Divider(color: Colors.grey, thickness: 1),
               SizedBox(height: 10),
+              Padding(
+                padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'ID : ${userInfo['id']}',
+                      style: TextStyles.font14BlackMedium.copyWith(
+                        fontSize: 18,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Clipboard.setData(ClipboardData(text: userInfo['id']!));
+                      },
+                      icon: Icon(Icons.copy, size: 20),
+                    ),
+                  ],
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -118,5 +139,8 @@ Future<Map<String, String?>> _getUserInfo() async {
   final email = await SharedPrefHelper.getStringNullable(
     SharedPrefKeys.userEmail,
   );
-  return {'username': username, 'email': email};
+  final userId = await SharedPrefHelper.getStringNullable(
+    SharedPrefKeys.userid,
+  );
+  return {'username': username, 'email': email, 'id': userId};
 }
