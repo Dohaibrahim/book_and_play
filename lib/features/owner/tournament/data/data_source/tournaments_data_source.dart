@@ -4,6 +4,9 @@ import 'package:book_and_play/core/di/dependency_injection.dart';
 import 'package:book_and_play/core/errors/failure.dart';
 import 'package:book_and_play/core/utils/api_service.dart';
 import 'package:book_and_play/core/utils/constant.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_score_error_model.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_score_req.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_score_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/generate_next_round_req.dart';
@@ -31,6 +34,11 @@ abstract class TournamentsDataSource {
   );
 
   Future<Either<Failure, TeamsMatchesRes>> getMatches(String tournamentId);
+
+  Future<Either<AddScoreErrorModel, AddScoreRes>> addScore(
+    String matchId,
+    AddScoreReq addScoreReq,
+  );
 }
 
 class TournamentsDataSourceImpl extends TournamentsDataSource {
@@ -122,6 +130,48 @@ class TournamentsDataSourceImpl extends TournamentsDataSource {
       return Left(Failure('connection error : ${e.toString()}'));
     } catch (e) {
       return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AddScoreErrorModel, AddScoreRes>> addScore(
+    String matchId,
+    AddScoreReq addScoreReq,
+  ) async {
+    try {
+      var request = await getIt<DioClient>().patch(
+        '${ApiUrls.knockout}/match/$matchId/result',
+        data: addScoreReq.toJson(),
+      );
+      var response = AddScoreRes.fromJson(request.data);
+      return Right(response);
+    } on DioException catch (e) {
+      if (e.response != null && e.response?.data != null) {
+        final data = e.response?.data;
+        try {
+          return Left(AddScoreErrorModel.fromJson(data));
+        } catch (_) {
+          return Left(
+            AddScoreErrorModel(
+              error: 'Unknown',
+              message: 'Failed to parse error response',
+              code: e.response?.statusCode ?? 0,
+            ),
+          );
+        }
+      } else {
+        return Left(
+          AddScoreErrorModel(
+            error: 'No Response',
+            message: 'No response received from server',
+            code: e.response?.statusCode ?? 0,
+          ),
+        );
+      }
+    } catch (e) {
+      return Left(
+        AddScoreErrorModel(error: 'Exception', message: e.toString(), code: 0),
+      );
     }
   }
 }

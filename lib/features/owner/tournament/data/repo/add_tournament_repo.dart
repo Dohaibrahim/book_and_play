@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:book_and_play/core/di/dependency_injection.dart';
 import 'package:book_and_play/core/errors/failure.dart';
 import 'package:book_and_play/features/owner/tournament/data/data_source/tournaments_data_source.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_score_req.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_score_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/generate_next_round_req.dart';
@@ -105,6 +107,29 @@ class TournamentRepoImpl extends TournamentRepo {
     try {
       final result = await getIt<TournamentsDataSource>().getMatches(
         tournamentId,
+      );
+      return result.fold(
+        (failure) {
+          return Left(Failure(failure.message.toString()));
+        },
+        (data) {
+          return Right(data);
+        },
+      );
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, AddScoreRes>> addScore(
+    String matchId,
+    AddScoreReq addScoreReq,
+  ) async {
+    try {
+      final result = await getIt<TournamentsDataSource>().addScore(
+        matchId,
+        addScoreReq,
       );
       return result.fold(
         (failure) {

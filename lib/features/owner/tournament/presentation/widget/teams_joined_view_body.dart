@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
@@ -26,7 +28,7 @@ class TeamsJoinedViewBody extends StatefulWidget {
 }
 
 class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
-  bool isTeamsEmpty = true;
+  bool isTeamsEmpty = false;
   @override
   Widget build(BuildContext context) {
     context.read<GetTournamentsTeamsCubit>().getTeams(widget.id);
@@ -67,29 +69,42 @@ class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
                     ),
                   );
                 }
-                isTeamsEmpty = false;
-                return Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) {
-                      var formattedDate = formatDate(teams[index].createdAt);
-                      return TeamCard(
-                        subTitle: formattedDate,
-                        title: teams[index].name,
-                      );
-                    },
-                    itemCount: teams.length,
+                return SizedBox(
+                  height: screenHeight * 0.79,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, index) {
+                            var formattedDate = formatDate(
+                              teams[index].createdAt,
+                            );
+                            return TeamCard(
+                              subTitle: formattedDate,
+                              title: teams[index].name,
+                            );
+                          },
+                          itemCount: teams.length,
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.005),
+                      isTeamsEmpty == true
+                          ? SizedBox()
+                          : BottomSheetBuilder(
+                              widget: widget,
+                              teamsNum: widget.teamsNum,
+                              isTeamsEmpty: isTeamsEmpty,
+                            ),
+                    ],
                   ),
                 );
               }
               return SizedBox();
             },
           ),
-          SizedBox(height: screenHeight * 0.005),
-          isTeamsEmpty == false
-              ? BottomSheetBuilder(widget: widget, teamsNum: widget.teamsNum)
-              : SizedBox(),
-          SizedBox(height: screenHeight * 0.05),
+
+          //SizedBox(height: screenHeight * 0.05),
         ],
       ),
     );
@@ -105,10 +120,12 @@ class BottomSheetBuilder extends StatelessWidget {
     super.key,
     required this.widget,
     required this.teamsNum,
+    required this.isTeamsEmpty,
   });
 
   final TeamsJoinedViewBody widget;
   final int? teamsNum;
+  final bool isTeamsEmpty;
 
   @override
   Widget build(BuildContext context) {

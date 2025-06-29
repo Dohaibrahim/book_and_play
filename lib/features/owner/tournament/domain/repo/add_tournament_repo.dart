@@ -1,4 +1,6 @@
 import 'package:book_and_play/core/errors/failure.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_score_req.dart';
+import 'package:book_and_play/features/owner/tournament/data/models/add_score_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_req.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/add_tournament_res.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/generate_next_round_req.dart';
@@ -25,4 +27,9 @@ abstract class TournamentRepo {
   );
 
   Future<Either<Failure, TeamsMatchesRes>> getMatches(String tournamentId);
+
+  Future<Either<Failure, AddScoreRes>> addScore(
+    String matchId,
+    AddScoreReq addScoreReq,
+  );
 }

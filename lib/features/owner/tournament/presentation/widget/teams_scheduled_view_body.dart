@@ -82,9 +82,9 @@ class _TeamsScheduledViewBodyState extends State<TeamsScheduledViewBody> {
                                   teamA: currentMatches[index].teamA,
                                   teamB: currentMatches[index].teamB,
                                   initialScoreTeamA:
-                                      currentMatches[index].score.teamA,
+                                      currentMatches[index].score.teamA ?? 0,
                                   initialScoreTeamB:
-                                      currentMatches[index].score.teamB,
+                                      currentMatches[index].score.teamB ?? 0,
                                 );
                               },
                             );

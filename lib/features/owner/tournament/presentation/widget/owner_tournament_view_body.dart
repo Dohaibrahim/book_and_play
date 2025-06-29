@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
@@ -46,6 +48,13 @@ class OwnerTournamentViewBody extends StatelessWidget {
                 );
               }
               if (state is FetchTournamentsSuccessState) {
+                if (state.tournament.isEmpty) {
+                  return Expanded(
+                    child: Center(
+                      child: Text('You havn\'t any tournaments yet'),
+                    ),
+                  );
+                }
                 return Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
