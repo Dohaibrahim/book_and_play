@@ -13,7 +13,7 @@ abstract class TournamentRepo {
     AddTournamentReq addTournamentReq,
   );
 
-  Future<Either<Failure, TournamentResponse>> fetchAllTournaments();
+  Future<Either<Failure, TournamentsResponse>> fetchAllTournaments();
 
   Future<Either<Failure, SpecificTournamentResponse>> getTournamentTeams(
     String id,

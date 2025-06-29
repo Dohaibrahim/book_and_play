@@ -5,9 +5,9 @@ import 'package:book_and_play/features/owner/tournament/data/models/tournaments_
 import 'package:book_and_play/features/owner/tournament/domain/repo/add_tournament_repo.dart';
 import 'package:dartz/dartz.dart';
 
-class FetchTournamentsUsecase extends UseCase<TournamentResponse, NoParam> {
+class FetchTournamentsUsecase extends UseCase<TournamentsResponse, NoParam> {
   @override
-  Future<Either<Failure, TournamentResponse>> call([NoParam? param]) async {
+  Future<Either<Failure, TournamentsResponse>> call([NoParam? param]) async {
     return await getIt<TournamentRepo>().fetchAllTournaments();
   }
 }

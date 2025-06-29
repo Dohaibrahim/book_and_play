@@ -78,8 +78,7 @@ class _PlayersOfTeamViewBodyState extends State<PlayersOfTeamViewBody> {
                   TopSnackBar.show(
                     context,
                     title: 'Error',
-                    message:
-                        state.message, //'There are an error , try again later',
+                    message: 'The player ID you entered not valid',
                     contentType: ContentType.failure,
                     color: Colors.red,
                   );

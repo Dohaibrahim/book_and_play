@@ -26,6 +26,7 @@ class TeamsJoinedViewBody extends StatefulWidget {
 }
 
 class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
+  bool isTeamsEmpty = true;
   @override
   Widget build(BuildContext context) {
     context.read<GetTournamentsTeamsCubit>().getTeams(widget.id);
@@ -56,7 +57,17 @@ class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
               }
               if (state is GetTournamentsTeamsSuccessState) {
                 var teams = state.teams;
-
+                if (teams.isEmpty) {
+                  return Expanded(
+                    child: Center(
+                      child: Text(
+                        'There are no teams joined yet',
+                        style: TextStyles.font14BlackMedium,
+                      ),
+                    ),
+                  );
+                }
+                isTeamsEmpty = false;
                 return Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
@@ -75,7 +86,9 @@ class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
             },
           ),
           SizedBox(height: screenHeight * 0.005),
-          BottomSheetBuilder(widget: widget, teamsNum: widget.teamsNum),
+          isTeamsEmpty == false
+              ? BottomSheetBuilder(widget: widget, teamsNum: widget.teamsNum)
+              : SizedBox(),
           SizedBox(height: screenHeight * 0.05),
         ],
       ),

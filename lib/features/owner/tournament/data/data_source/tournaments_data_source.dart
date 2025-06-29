@@ -19,7 +19,7 @@ abstract class TournamentsDataSource {
     AddTournamentReq addTournamentReq,
   );
 
-  Future<Either<Failure, TournamentResponse>> fetchAllTournaments();
+  Future<Either<Failure, TournamentsResponse>> fetchAllTournaments();
 
   Future<Either<Failure, SpecificTournamentResponse>> getTournamentTeams(
     String id,
@@ -54,14 +54,18 @@ class TournamentsDataSourceImpl extends TournamentsDataSource {
   }
 
   @override
-  Future<Either<Failure, TournamentResponse>> fetchAllTournaments() async {
+  Future<Either<Failure, TournamentsResponse>> fetchAllTournaments() async {
     try {
-      var request = await getIt<DioClient>().get('${ApiUrls.tournament}/all');
-      var response = TournamentResponse.fromJson(request.data);
+      var request = await getIt<DioClient>().get(
+        '${ApiUrls.tournament}/my-field-tournaments',
+      );
+      var response = TournamentsResponse.fromJson(request.data);
       return Right(response);
     } on DioException catch (e) {
       return Left(Failure('connection error : ${e.toString()}'));
-    } catch (e) {
+    } catch (e, s) {
+      log('❌ Error parsing response: $e');
+      log('🔍 Stack: $s');
       return Left(Failure(e.toString()));
     }
   }

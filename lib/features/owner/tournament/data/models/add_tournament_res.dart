@@ -33,7 +33,6 @@ class Tournament {
   final dynamic? winner;
   final DateTime createdAt;
   final DateTime updatedAt;
-  final int v;
 
   Tournament({
     required this.id,
@@ -52,7 +51,6 @@ class Tournament {
     this.winner,
     required this.createdAt,
     required this.updatedAt,
-    required this.v,
   });
 
   factory Tournament.fromJson(Map<String, dynamic> json) {
@@ -73,7 +71,6 @@ class Tournament {
       winner: json['winner'] ?? '',
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
-      v: json['__v'],
     );
   }
 
@@ -95,7 +92,6 @@ class Tournament {
       'winner': winner,
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),
-      '__v': v,
     };
   }
 }

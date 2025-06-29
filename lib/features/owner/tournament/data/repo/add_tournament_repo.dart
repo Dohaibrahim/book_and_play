@@ -38,7 +38,7 @@ class TournamentRepoImpl extends TournamentRepo {
   }
 
   @override
-  Future<Either<Failure, TournamentResponse>> fetchAllTournaments() async {
+  Future<Either<Failure, TournamentsResponse>> fetchAllTournaments() async {
     try {
       final result = await getIt<TournamentsDataSource>().fetchAllTournaments();
       return result.fold(

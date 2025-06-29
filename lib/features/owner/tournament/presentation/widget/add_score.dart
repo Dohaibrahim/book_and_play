@@ -104,6 +104,7 @@ class _AddScoreState extends State<AddScore> {
             onPressed: () {
               formKey.currentState!.save();
               log('${scoreForA} , ${scoreForB}');
+              //log(widget.matchId);
               log(widget.teamA.id);
             },
             text: 'Add',
