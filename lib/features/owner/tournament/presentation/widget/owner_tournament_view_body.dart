@@ -85,14 +85,12 @@ class OwnerTournamentViewBody extends StatelessWidget {
                                 arguments: state.tournament[index].id,
                               );
                             case 'finished':
-                            /*Navigator.pushNamed(
+                              Navigator.pushNamed(
                                 context,
-                                Routes.teamsJoinedView,
-                              );*/
+                                Routes.finalResultView,
+                                arguments: state.tournament[index].id,
+                              );
                           }
-
-                          //check if not startted yet , if started => validate in which round and go to it
-                          //if not started => go to see teams that joined screen
                         },
                       );
                     },

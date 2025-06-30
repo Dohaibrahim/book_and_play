@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
-import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/teams_matches_res.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/generate_next_round_cubit/generate_next_round_cubit.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/manager/generate_next_round_cubit/generate_next_round_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/add_score.dart';
+import 'package:book_and_play/features/owner/tournament/presentation/widget/bottom_sheet_builder.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/match_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -106,9 +108,14 @@ class _TeamsScheduledViewBodyState extends State<TeamsScheduledViewBody> {
                     },
                   ),
                 ),
-                AppButton(
-                  onPressed: () {},
-                  text: 'Start first round of matches',
+                BlocBuilder<GenerateNextRoundCubit, GenerateNextRoundState>(
+                  builder: (context, state) {
+                    return BottomSheetBuilder(
+                      tournamentId: widget.id,
+                      teamsNum: currentMatches.length,
+                      isTeamsEmpty: currentMatches.isEmpty ? true : false,
+                    );
+                  },
                 ),
                 SizedBox(height: screenHeight * 0.05),
               ],

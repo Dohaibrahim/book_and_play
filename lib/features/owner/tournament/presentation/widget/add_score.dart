@@ -124,6 +124,9 @@ class _AddScoreState extends State<AddScore> {
                     color: Colors.red,
                   );
                 }
+                if (state is AddScoreSuccessState) {
+                  Navigator.pop(context);
+                }
               },
               builder: (context, state) {
                 if (state is AddScoreLoadingState) {
