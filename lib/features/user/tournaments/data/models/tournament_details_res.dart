@@ -18,12 +18,13 @@ class Tournament {
   final DateTime endDate;
   final int maxTeams;
   final bool isPrivate;
-  final String institution;
+  final String? institution;
   final CreatedBy createdBy;
   final String status;
   final List<Team> teams;
-  final String? winner;
+  final Winner? winner;
   final String currentRound;
+  final List<Field> fields;
 
   Tournament({
     required this.id,
@@ -33,12 +34,13 @@ class Tournament {
     required this.endDate,
     required this.maxTeams,
     required this.isPrivate,
-    required this.institution,
+    this.institution,
     required this.createdBy,
     required this.status,
     required this.teams,
     required this.winner,
     required this.currentRound,
+    required this.fields,
   });
 
   factory Tournament.fromJson(Map<String, dynamic> json) {
@@ -56,8 +58,11 @@ class Tournament {
       teams: (json['teams'] as List)
           .map((teamJson) => Team.fromJson(teamJson))
           .toList(),
-      winner: json['winner'],
+      winner: json['winner'] != null ? Winner.fromJson(json['winner']) : null,
       currentRound: json['current_round'],
+      fields: (json['fields'] as List)
+          .map((fieldJson) => Field.fromJson(fieldJson))
+          .toList(),
     );
   }
 }
@@ -85,6 +90,47 @@ class Team {
       id: json['_id'],
       name: json['name'],
       members: List<String>.from(json['members']),
+    );
+  }
+}
+
+class Winner {
+  final String id;
+  final String name;
+
+  Winner({required this.id, required this.name});
+
+  factory Winner.fromJson(Map<String, dynamic> json) {
+    return Winner(id: json['_id'], name: json['name']);
+  }
+}
+
+class Field {
+  final String id;
+  final String name;
+  final Location location;
+
+  Field({required this.id, required this.name, required this.location});
+
+  factory Field.fromJson(Map<String, dynamic> json) {
+    return Field(
+      id: json['_id'],
+      name: json['name'],
+      location: Location.fromJson(json['location']),
+    );
+  }
+}
+
+class Location {
+  final String type;
+  final List<double> coordinates;
+
+  Location({required this.type, required this.coordinates});
+
+  factory Location.fromJson(Map<String, dynamic> json) {
+    return Location(
+      type: json['type'],
+      coordinates: List<double>.from(json['coordinates']),
     );
   }
 }
