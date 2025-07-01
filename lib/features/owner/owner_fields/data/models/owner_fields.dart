@@ -7,9 +7,9 @@ class FieldResponse {
   factory FieldResponse.fromJson(Map<String, dynamic> json) {
     return FieldResponse(
       message: json['message'],
-      fields: List<OwnerField>.from(
-        json['fields'].map((x) => OwnerField.fromJson(x)),
-      ),
+      fields: (json['fields'] as List)
+          .map((item) => OwnerField.fromJson(item))
+          .toList(),
     );
   }
 }
@@ -21,10 +21,12 @@ class OwnerField {
   final String country;
   final int capacity;
   final bool isPaid;
-  final double pricePerHour;
+  final int pricePerHour;
   final String owner;
-  final List<dynamic> amenities;
+  final String? image;
+  final String? locationInfo;
   final Location location;
+  final List<Amenity> amenities;
 
   OwnerField({
     required this.id,
@@ -35,8 +37,10 @@ class OwnerField {
     required this.isPaid,
     required this.pricePerHour,
     required this.owner,
-    required this.amenities,
     required this.location,
+    this.image,
+    this.locationInfo,
+    required this.amenities,
   });
 
   factory OwnerField.fromJson(Map<String, dynamic> json) {
@@ -47,21 +51,16 @@ class OwnerField {
       country: json['country'],
       capacity: json['capacity'],
       isPaid: json['is_paid'],
-      pricePerHour: (json['price_per_hour'] as num).toDouble(),
+      pricePerHour: json['price_per_hour'],
       owner: json['owner'],
-      amenities: json['amenities'],
+      image: json['image'],
+      locationInfo: json['location_info'],
       location: Location.fromJson(json['location']),
+      amenities: (json['amenities'] as List)
+          .map((item) => Amenity.fromJson(item))
+          .toList(),
     );
   }
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is OwnerField && other.id == id;
-  }
-
-  @override
-  int get hashCode => id.hashCode;
 }
 
 class Location {
@@ -73,9 +72,20 @@ class Location {
   factory Location.fromJson(Map<String, dynamic> json) {
     return Location(
       type: json['type'],
-      coordinates: List<double>.from(
-        json['coordinates'].map((x) => x.toDouble()),
-      ),
+      coordinates: (json['coordinates'] as List)
+          .map((e) => (e as num).toDouble())
+          .toList(),
     );
+  }
+}
+
+class Amenity {
+  final bool? parking;
+  final String? id;
+
+  Amenity({this.parking, this.id});
+
+  factory Amenity.fromJson(Map<String, dynamic> json) {
+    return Amenity(parking: json['parking'], id: json['_id']);
   }
 }

@@ -4,18 +4,23 @@ import 'package:flutter/material.dart';
 class OwnerFields extends StatelessWidget {
   const OwnerFields({
     super.key,
-    required this.imagePath,
+    this.image,
     required this.title,
     required this.capacity,
     this.rateNum,
     required this.location,
     this.onTap,
   });
-  final String imagePath, title, location, capacity;
+  final String title, location, capacity;
+  final String? image;
   final void Function()? onTap;
   final String? rateNum;
   @override
   Widget build(BuildContext context) {
+    final imageProvider = (image != null && image!.isNotEmpty)
+        ? NetworkImage(image!)
+        : AssetImage('assets/images/football_stadium_demo.jpg')
+              as ImageProvider;
     return GestureDetector(
       onTap: onTap,
       child: AspectRatio(
@@ -35,7 +40,7 @@ class OwnerFields extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage(imagePath),
+                      image: imageProvider,
                     ),
                   ),
                 ),
@@ -114,7 +119,7 @@ class OwnerFields extends StatelessWidget {
     );
   }
 }
-
+/*
 class RecommendedGridView extends StatelessWidget {
   const RecommendedGridView({super.key});
 
@@ -122,10 +127,6 @@ class RecommendedGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final spacing = screenWidth * 0.07; // 5% of screen width
-    final List<String> listOfImage = [
-      'assets/images/football_stadium_demo.jpg',
-      'assets/images/stadium_image.jpg',
-    ];
     final List<String> listOfNames = ['Red Meadows', 'Shuttles Fly'];
     final List<String> listOfLocations = ['Cairo , Egypt', 'Badminton'];
 
@@ -147,10 +148,11 @@ class RecommendedGridView extends StatelessWidget {
             title: listOfNames[index],
             location: listOfLocations[index],
 
-            imagePath: listOfImage[index],
+            image: listOfImage[index],
           );
         },
       ),
     );
   }
 }
+*/
