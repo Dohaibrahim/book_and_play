@@ -68,6 +68,10 @@ class _SearchBarBlocBuilderState extends State<SearchBarBlocBuilder> {
                         height: 90,
                         child: GestureDetector(
                           onTap: () {
+                            log("Tapped on: ${place.name}");
+                            log(
+                              "Controller is null? ${widget.googleMapController == null}",
+                            );
                             widget.googleMapController?.animateCamera(
                               CameraUpdate.newLatLng(
                                 LatLng(place.location.lat, place.location.lng),

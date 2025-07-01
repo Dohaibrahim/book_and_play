@@ -13,13 +13,7 @@ class FieldsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<OwnerFieldCubit>().getFields();
     final screenWidth = MediaQuery.of(context).size.width;
-    final spacing = screenWidth * 0.07; // 5% of screen width
-    final List<String> listOfImage = [
-      'assets/images/football_stadium_demo.jpg',
-      'assets/images/stadium_image.jpg',
-      'assets/images/football_stadium_demo.jpg',
-      'assets/images/stadium_image.jpg',
-    ];
+    final spacing = screenWidth * 0.07;
 
     return BlocBuilder<OwnerFieldCubit, OwnerFieldState>(
       builder: (context, state) {
@@ -33,7 +27,6 @@ class FieldsGridView extends StatelessWidget {
             child: Text('There are an error occured , please contact our team'),
           );
         }
-
         if (state is OwnerFieldSuccessState) {
           return GridView.builder(
             padding: EdgeInsets.all(0),

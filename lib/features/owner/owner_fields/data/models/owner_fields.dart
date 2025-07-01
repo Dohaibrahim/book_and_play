@@ -81,11 +81,35 @@ class Location {
 
 class Amenity {
   final bool? parking;
-  final String? id;
+  final bool? ballRent;
+  final bool? toilets;
+  final bool? changingRooms;
+  final bool? cafeteria;
+  final bool? lightingQuality;
+  final bool? fieldQuality;
+  final String id;
 
-  Amenity({this.parking, this.id});
+  Amenity({
+    this.parking,
+    this.ballRent,
+    this.toilets,
+    this.changingRooms,
+    this.cafeteria,
+    this.lightingQuality,
+    this.fieldQuality,
+    required this.id,
+  });
 
   factory Amenity.fromJson(Map<String, dynamic> json) {
-    return Amenity(parking: json['parking'], id: json['_id']);
+    return Amenity(
+      parking: json['parking'],
+      ballRent: json['ball_rent'],
+      toilets: json['toilets'],
+      changingRooms: json['changing_rooms'],
+      cafeteria: json['cafeteria'],
+      lightingQuality: json['lighting_quality'],
+      fieldQuality: json['field_quality'],
+      id: json['_id'],
+    );
   }
 }

@@ -6,6 +6,26 @@ class Failure {
   Failure(this.message);
 }
 
+class ErrorResponse extends Failure {
+  final String error;
+  final String message;
+  final int code;
+
+  ErrorResponse({
+    required this.error,
+    required this.message,
+    required this.code,
+  }) : super(message);
+
+  factory ErrorResponse.fromJson(Map<String, dynamic> json) {
+    return ErrorResponse(
+      error: json['error'] ?? '',
+      message: json['message'] ?? '',
+      code: json['code'] ?? 0,
+    );
+  }
+}
+
 class ServerFailure extends Failure {
   ServerFailure(super.message);
   factory ServerFailure.fromDiorError(DioException e) {

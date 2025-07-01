@@ -32,6 +32,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
   double? longtiude, latitude;
   bool isCountrySelected = false;
   File? image;
+  String? locationDesc;
   int? capacityNumber;
 
   Future<void> _pickImage() async {
@@ -161,11 +162,21 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                 textStyle: TextStyle(fontSize: 17),
                 buttonWidth: screenWidth * 0.86,
               ),
-
+              SizedBox(height: 10),
+              Padding(
+                padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
+                child: AppTextFormField(
+                  hintText: 'location description (ex: landmarks)',
+                  onSaved: (data) {
+                    locationDesc = data;
+                  },
+                  hintStyle: TextStyle(color: Colors.black),
+                ),
+              ),
               SizedBox(height: 10),
               MaterialButton(
                 height: 45,
-                minWidth: screenWidth * 0.80,
+                minWidth: screenWidth * 0.86,
                 color: ColorManager.textColor,
                 onPressed: _pickImage,
                 shape: OutlineInputBorder(
@@ -181,7 +192,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.30),
+              SizedBox(height: screenHeight * 0.25),
               BlocConsumer<AddFieldCubit, AddFieldState>(
                 listener: (context, state) {
                   if (state is AddFieldSuccessState) {
@@ -218,7 +229,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                               location: Location(
                                 coordinates: [latitude!, longtiude!],
                               ),
-                              locationInfo: 'near to mostorad bridge',
+                              locationInfo: locationDesc!,
                             ),
                           );
                         }
