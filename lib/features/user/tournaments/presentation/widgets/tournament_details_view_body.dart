@@ -239,7 +239,9 @@ class TournamentDetailsViewBody extends StatelessWidget {
                         ),
                       ),
                 SizedBox(height: 10),
-                TeamInfoButton(teams: state.tournament.teams),
+                state.tournament.status == 'upcoming'
+                    ? TeamInfoButton(teams: state.tournament.teams)
+                    : SizedBox(),
                 SizedBox(height: 30),
               ],
             );

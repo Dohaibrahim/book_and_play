@@ -143,12 +143,14 @@ class _AddTournamentViewBodyState extends State<AddTournamentViewBody> {
                   ),
                 ],
               ),
-              AppTextFormField(
-                hintText: 'owner_tournament.institution'.tr(),
-                onSaved: (data) {
-                  institutionName = data!;
-                },
-              ),
+              isPrivateSelected
+                  ? AppTextFormField(
+                      hintText: 'owner_tournament.institution'.tr(),
+                      onSaved: (data) {
+                        institutionName = data!;
+                      },
+                    )
+                  : SizedBox(),
               SizedBox(height: screenHeight * 0.01),
               AddFieldDropButton(
                 onChanged: (value) {
