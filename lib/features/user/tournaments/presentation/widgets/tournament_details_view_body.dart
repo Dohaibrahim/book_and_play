@@ -194,6 +194,32 @@ class TournamentDetailsViewBody extends StatelessWidget {
                         ),
                       ),
                 SizedBox(height: 20),
+                state.tournament.status == 'ongoing'
+                    ? AppButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.roundsView,
+                            arguments: state.tournament.id,
+                          );
+                        },
+                        text: 'View Your Matches & Rounds',
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    : SizedBox(),
+                state.tournament.status == 'finished'
+                    ? AppButton(
+                        onPressed: () {},
+                        text: 'View Winner',
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    : SizedBox(),
                 state.tournament.status != 'upcoming' ||
                         state.tournament.maxTeams ==
                             state.tournament.teams.length

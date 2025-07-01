@@ -75,10 +75,6 @@ class FootballFieldViewBody extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: screenHeight * 0.03),
-                      /*SizedBox(
-                    height: screenHeight * 0.07,
-                    child: DataBookingSelection(),
-                  ),*/
                       SizedBox(
                         height: screenHeight * 0.04,
                         child: Row(

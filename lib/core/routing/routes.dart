@@ -24,4 +24,6 @@ class Routes {
   static const String registerTeamView = '/registerTeamView';
   static const String playersOfTeamView = '/playersOfTeamView';
   static const String finalResultView = '/finalResultView';
+  static const String roundsView = '/roundsView';
+  static const String matchDetailesView = '/matchDetailesView';
 }

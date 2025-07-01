@@ -13,7 +13,6 @@ class PlayersOfTeamViewBody extends StatefulWidget {
     required this.teamName,
   });
   final String teamId, teamName;
-
   @override
   State<PlayersOfTeamViewBody> createState() => _PlayersOfTeamViewBodyState();
 }

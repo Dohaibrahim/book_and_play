@@ -20,6 +20,8 @@ import 'package:book_and_play/features/owner/owner_home/presentation/owner_home_
 import 'package:book_and_play/features/user/settings/presentation/about_us_view.dart';
 import 'package:book_and_play/features/user/teams/presentation/players_of_team_view.dart';
 import 'package:book_and_play/features/user/teams/presentation/register_team_view.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/match_detailes_view.dart';
+import 'package:book_and_play/features/user/tournaments/presentation/rounds_view.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/tournament_details_view.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/tournaments_view.dart';
 import 'package:book_and_play/features/user/user_booking/presentation/user_booked_field_view.dart';
@@ -125,6 +127,16 @@ class AppRouter {
       case Routes.finalResultView:
         return MaterialPageRoute(
           builder: (_) => const FinalResultView(),
+          settings: settings,
+        );
+      case Routes.roundsView:
+        return MaterialPageRoute(
+          builder: (_) => const RoundsView(),
+          settings: settings,
+        );
+      case Routes.matchDetailesView:
+        return MaterialPageRoute(
+          builder: (_) => MatchDetailesView(),
           settings: settings,
         );
     }
