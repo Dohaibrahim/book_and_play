@@ -115,7 +115,9 @@ class _PickLocationViewBodyState extends State<PickLocationViewBody> {
       children: [
         GoogleMap(
           onMapCreated: (controller) async {
-            googleMapController = controller;
+            setState(() {
+              googleMapController = controller;
+            });
             initMapStyle();
           },
           markers: markers,

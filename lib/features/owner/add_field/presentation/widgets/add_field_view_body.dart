@@ -207,6 +207,13 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
                   }
                 },
                 builder: (context, state) {
+                  if (state is AddFieldLoadingState) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: ColorManager.primaryColor,
+                      ),
+                    );
+                  }
                   return AppButton(
                     onPressed: () {
                       log(
