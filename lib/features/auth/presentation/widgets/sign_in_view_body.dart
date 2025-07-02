@@ -70,6 +70,13 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               SizedBox(height: screenHeight * 0.10),
               BlocBuilder<SigninCubit, SigninState>(
                 builder: (context, state) {
+                  if (state is SigninLoadingState) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: ColorManager.primaryColor,
+                      ),
+                    );
+                  }
                   return Center(
                     child: AppButton(
                       text: 'signin.button'.tr(),

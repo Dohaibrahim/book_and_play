@@ -106,6 +106,13 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               SizedBox(height: screenHeight * 0.10),
               BlocBuilder<SignupCubit, SignupState>(
                 builder: (context, state) {
+                  if (state is SignupLoading) {
+                    Center(
+                      child: CircularProgressIndicator(
+                        color: ColorManager.primaryColor,
+                      ),
+                    );
+                  }
                   return Center(
                     child: AppButton(
                       height: 45,
