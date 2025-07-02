@@ -27,6 +27,12 @@ class FootballFieldViewBody extends StatelessWidget {
             child: CircularProgressIndicator(color: ColorManager.primaryColor),
           );
         } else if (state is FetchFieldByIdSuccessState) {
+          final imageProvider =
+              (state.field.image != null && state.field.image!.isNotEmpty)
+              ? NetworkImage(state.field.image!)
+              : AssetImage('assets/images/football_stadium_demo.jpg')
+                    as ImageProvider;
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -37,7 +43,7 @@ class FootballFieldViewBody extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('assets/images/stadium_image.jpg'),
+                    image: imageProvider,
                   ),
                 ),
               ),
@@ -93,10 +99,11 @@ class FootballFieldViewBody extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'Egypt 11371, Cairo, 69 Mostafa El Nahas Street, Nasr City',
+                        state.field.locationInfo ??
+                            'No location description provided',
                         style: TextStyles.font14BlackMedium.copyWith(
                           color: Colors.grey[700],
-                          fontSize: 16,
+                          fontSize: 17,
                         ),
                       ),
                       SizedBox(height: screenHeight * 0.03),

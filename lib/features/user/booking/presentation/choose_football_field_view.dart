@@ -13,7 +13,6 @@ class ChooseFootballFieldView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.sizeOf(context).height;
     return BlocProvider(
       create: (context) =>
           FetchFieldsCubit(fetchFieldsUsecase: getIt<FetchFieldsUsecase>()),
@@ -26,18 +25,52 @@ class ChooseFootballFieldView extends StatelessWidget {
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            children: [
-              BookingSearchBar(screenHeight: screenHeight),
-              SizedBox(height: screenHeight * 0.01),
-              SizedBox(
-                height: screenHeight * 0.77,
-                child: ChooseFootballFieldViewBody(),
-              ),
-            ],
-          ),
+          child: SearchForFields(),
         ),
       ),
+    );
+  }
+}
+
+class SearchForFields extends StatefulWidget {
+  const SearchForFields({super.key});
+
+  @override
+  State<SearchForFields> createState() => _SearchForFieldsState();
+}
+
+class _SearchForFieldsState extends State<SearchForFields> {
+  final TextEditingController _searchController = TextEditingController();
+  String _searchText = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(() {
+      setState(() {
+        _searchText = _searchController.text;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    return Column(
+      children: [
+        BookingSearchBar(
+          controller: _searchController,
+          screenHeight: screenHeight,
+        ),
+        SizedBox(height: 20),
+        Expanded(child: ChooseFootballFieldViewBody(searchText: _searchText)),
+      ],
     );
   }
 }

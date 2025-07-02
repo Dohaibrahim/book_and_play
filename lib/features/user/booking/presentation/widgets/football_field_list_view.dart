@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FootballFieldListView extends StatelessWidget {
-  const FootballFieldListView({super.key});
-
+  const FootballFieldListView({super.key, required this.searchText});
+  final String searchText;
   @override
   Widget build(BuildContext context) {
     context.read<FetchFieldsCubit>().fetchFields();
@@ -17,10 +17,25 @@ class FootballFieldListView extends StatelessWidget {
         if (state is FetchFieldsLoadingState) {
           return Center(child: const CircularProgressIndicator());
         } else if (state is FetchFieldsSuccessState) {
+          List<Field> fields;
+          fields = state.fields.where((item) {
+            final searchLower = searchText.toLowerCase();
+            return item.name.toLowerCase().contains(searchLower) ||
+                item.city.toLowerCase().contains(searchLower) ||
+                item.country.toLowerCase().contains(searchLower);
+          }).toList();
+          if (fields.isEmpty) {
+            return Center(
+              child: Text(
+                'No results found for "$searchText"',
+                style: TextStyles.font14BlackMedium,
+              ),
+            );
+          }
           return ListView.builder(
-            itemCount: state.fields.length,
+            itemCount: fields.length,
             itemBuilder: (context, index) {
-              return FootballFieldCard(field: state.fields[index]);
+              return FootballFieldCard(field: fields[index]);
             },
           );
         }
@@ -35,6 +50,10 @@ class FootballFieldCard extends StatelessWidget {
   final Field field;
   @override
   Widget build(BuildContext context) {
+    final imageProvider = (field.image != null && field.image!.isNotEmpty)
+        ? NetworkImage(field.image!)
+        : AssetImage('assets/images/football_stadium_demo.jpg')
+              as ImageProvider;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
@@ -61,7 +80,7 @@ class FootballFieldCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/images/stadium_image.jpg'),
+                      image: imageProvider,
                     ),
                   ),
                 ),

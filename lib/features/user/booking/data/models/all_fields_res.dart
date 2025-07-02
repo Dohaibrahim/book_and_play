@@ -14,14 +14,18 @@ class AllFieldsRes {
 }
 
 class Field {
+  final String? image;
   final Location location;
   final String id, name, city, country;
   final List<Amenities> amenities;
   final bool isPaid;
   final int capacity;
   final int? pricePerHour;
+  final String? locationInfo;
 
   Field({
+    this.image,
+    this.locationInfo,
     required this.location,
     required this.id,
     required this.name,
@@ -37,7 +41,9 @@ class Field {
     return Field(
       location: Location.fromJson(json['location']),
       id: json['_id'],
+      image: json['image'],
       name: json['name'],
+      locationInfo: json['location_info'],
       city: json['city'],
       country: json['country'],
       capacity: json['capacity'],

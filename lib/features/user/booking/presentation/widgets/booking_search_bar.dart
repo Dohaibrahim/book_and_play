@@ -2,41 +2,21 @@ import 'package:book_and_play/core/widgets/app_text_form_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class BookingSearchBar extends StatefulWidget {
-  const BookingSearchBar({super.key, required this.screenHeight});
+class BookingSearchBar extends StatelessWidget {
+  const BookingSearchBar({
+    super.key,
+    required this.screenHeight,
+    required this.controller,
+  });
 
   final double screenHeight;
-
-  @override
-  State<BookingSearchBar> createState() => _BookingSearchBarState();
-}
-
-class _BookingSearchBarState extends State<BookingSearchBar> {
-  final TextEditingController _searchController = TextEditingController();
-  String _searchText = '';
-
-  @override
-  void initState() {
-    super.initState();
-    _searchController.addListener(() {
-      setState(() {
-        _searchText = _searchController.text;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.screenHeight * 0.05,
+      height: screenHeight * 0.05,
       child: AppTextFormField(
-        controller: _searchController,
+        controller: controller,
         fillColor: Colors.grey[700],
         hintText: 'user_book.search_hint'.tr(),
         suffixIcon: Icon(Icons.search, size: 25),
