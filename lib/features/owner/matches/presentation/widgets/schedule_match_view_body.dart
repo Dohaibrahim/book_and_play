@@ -26,6 +26,7 @@ class _ScheduleMatchViewBodyState extends State<ScheduleMatchViewBody> {
   DateTime? pickedDate;
   List<String> currentPlayers = [];
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final playersController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
@@ -50,8 +51,9 @@ class _ScheduleMatchViewBodyState extends State<ScheduleMatchViewBody> {
                     onSaved: (data) {
                       playersNum = int.parse(data ?? '0');
                     },
+                    controller: playersController,
                     keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: [LengthLimitingTextInputFormatter(2)],
                   ),
                   SizedBox(height: 20),
                   AppButton(
@@ -93,7 +95,7 @@ class _ScheduleMatchViewBodyState extends State<ScheduleMatchViewBody> {
           CreateMatchButton(
             startTime: startTime,
             endTime: endTime,
-            playersNum: playersNum,
+            playersNum: int.tryParse(playersController.text), // playersNum,
             pickedDate: pickedDate,
             currentPlayers: currentPlayers,
             formKey: formKey,
