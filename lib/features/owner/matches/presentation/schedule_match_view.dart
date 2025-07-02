@@ -20,6 +20,7 @@ class ScheduleMatchView extends StatelessWidget {
         body: BlocListener<CreateMatchCubit, CreateMatchState>(
           listener: (context, state) {
             if (state is CreateMatchSuccessState) {
+              Navigator.pop(context);
               TopSnackBar.show(
                 context,
                 title: 'Success',

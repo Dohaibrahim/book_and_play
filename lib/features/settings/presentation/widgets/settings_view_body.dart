@@ -179,9 +179,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
             AppButton(
               onPressed: () async {
                 Navigator.pop(context);
-
                 context.setLocale(Locale('ar'));
-
                 await getUserRole() == 'owner'
                     ? Navigator.pushReplacementNamed(
                         context,

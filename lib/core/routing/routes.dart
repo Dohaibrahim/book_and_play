@@ -5,7 +5,7 @@ class Routes {
   static const String userBottomNavView = '/userBottomNavView';
   static const String ownerBottomNavView = '/ownerBottomNavView';
   static const String userBookingView = '/userBookingView';
-  static const String bookingView = '/bookingView';
+  //static const String bookingView = '/bookingView';
   static const String chooseFootballFieldView = '/chooseFootballFieldView';
   static const String footballFieldView = '/footballFieldView';
   static const String userBookedFieldView = '/userBookedFieldView';
@@ -28,4 +28,5 @@ class Routes {
   static const String matchDetailesView = '/matchDetailesView';
   static const String changePasswordView = '/changePasswordView';
   static const String scheduleMatchView = '/scheduleMatchView';
+  static const String ownerMatchesView = '/ownerMatchesView';
 }

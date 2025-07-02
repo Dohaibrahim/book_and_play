@@ -5,6 +5,7 @@ import 'package:book_and_play/features/owner/add_field/presentation/add_field_vi
 import 'package:book_and_play/features/owner/add_field/presentation/pick_location_view.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/owner_field_view.dart';
 import 'package:book_and_play/features/owner/matches/presentation/schedule_match_view.dart';
+import 'package:book_and_play/features/owner/owner_fields/presentation/owner_matches_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/add_tournament_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/final_result_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/owner_tournaments_view.dart';
@@ -60,10 +61,10 @@ class AppRouter {
         );
       case Routes.userBookingView:
         return MaterialPageRoute(builder: (_) => UserBookingView());
-      case Routes.bookingView:
+      /*case Routes.bookingView:
         return MaterialPageRoute(
           builder: (builder) => const LocationSelectionView(),
-        );
+        );*/
       case Routes.chooseFootballFieldView:
         return MaterialPageRoute(
           builder: (_) => const ChooseFootballFieldView(),
@@ -149,6 +150,11 @@ class AppRouter {
       case Routes.scheduleMatchView:
         return MaterialPageRoute(
           builder: (_) => const ScheduleMatchView(),
+          settings: settings,
+        );
+      case Routes.ownerMatchesView:
+        return MaterialPageRoute(
+          builder: (_) => const OwnerMatchesView(),
           settings: settings,
         );
     }

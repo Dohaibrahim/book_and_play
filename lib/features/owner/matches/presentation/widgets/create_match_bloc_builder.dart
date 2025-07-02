@@ -60,7 +60,11 @@ class CreateMatchButton extends StatelessWidget {
                   status: 'open',
                 ),
               );
-            } else {
+            }
+            if (startTime == null ||
+                endTime == null ||
+                playersNum == null ||
+                pickedDate == null) {
               TopSnackBar.show(
                 context,
                 title: 'Warning',

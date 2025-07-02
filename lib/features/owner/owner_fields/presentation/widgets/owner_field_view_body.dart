@@ -68,12 +68,27 @@ class OwnerFieldViewBody extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(
                 context,
+                Routes.ownerMatchesView,
+                arguments: args.id,
+              );
+            },
+            text: 'Your Matches',
+            textStyle: TextStyle(fontSize: 17),
+          ),
+        ),
+        SizedBox(height: 6),
+        Padding(
+          padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+          child: AppButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
                 Routes.scheduleMatchView,
                 arguments: args,
               );
             },
             text: 'Schedule Matches',
-            textStyle: TextStyle(fontSize: 20),
+            textStyle: TextStyle(fontSize: 17),
           ),
         ),
         SizedBox(height: 6),
@@ -87,7 +102,7 @@ class OwnerFieldViewBody extends StatelessWidget {
               );
             },
             text: 'Delete Field',
-            textStyle: TextStyle(fontSize: 20),
+            textStyle: TextStyle(fontSize: 17),
             buttonColor: Colors.red[700],
           ),
         ),

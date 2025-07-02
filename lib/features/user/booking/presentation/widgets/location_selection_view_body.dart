@@ -2,6 +2,7 @@ import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/user/booking/presentation/widgets/booking_google_map.dart';
 import 'package:flutter/material.dart';
 
+/*
 class LocationSelectionViewBody extends StatefulWidget {
   const LocationSelectionViewBody({super.key});
 
@@ -29,7 +30,6 @@ class _LocationSelectionViewBodyState extends State<LocationSelectionViewBody> {
                 top: screenHeight * 0.08,
                 right: 20,
                 left: 20,
-                //TODO : change it to text field
                 child: SearchBar(
                   hintText: 'Search on a Football field',
                   textInputAction: TextInputAction.go,
@@ -44,7 +44,6 @@ class _LocationSelectionViewBodyState extends State<LocationSelectionViewBody> {
                 left: 20,
                 right: 20,
                 child: AppButton(onPressed: () {}, text: 'Next'),
-                //AppButton(onPressed: () {}, text: 'Next'),
               ),
             ],
           ),
@@ -52,4 +51,4 @@ class _LocationSelectionViewBodyState extends State<LocationSelectionViewBody> {
       ],
     );
   }
-}
+}*/

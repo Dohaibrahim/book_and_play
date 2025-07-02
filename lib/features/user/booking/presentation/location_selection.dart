@@ -1,6 +1,6 @@
 import 'package:book_and_play/features/user/booking/presentation/widgets/location_selection_view_body.dart';
 import 'package:flutter/material.dart';
-
+/*
 class LocationSelectionView extends StatelessWidget {
   const LocationSelectionView({super.key});
 
@@ -9,3 +9,4 @@ class LocationSelectionView extends StatelessWidget {
     return const Scaffold(body: LocationSelectionViewBody());
   }
 }
+*/
