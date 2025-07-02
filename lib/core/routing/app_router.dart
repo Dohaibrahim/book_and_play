@@ -4,6 +4,7 @@ import 'package:book_and_play/features/auth/presentation/sign_up_view.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/add_field_view.dart';
 import 'package:book_and_play/features/owner/add_field/presentation/pick_location_view.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/owner_field_view.dart';
+import 'package:book_and_play/features/owner/matches/presentation/schedule_match_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/add_tournament_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/final_result_view.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/owner_tournaments_view.dart';
@@ -143,6 +144,11 @@ class AppRouter {
       case Routes.changePasswordView:
         return MaterialPageRoute(
           builder: (_) => const ChangePasswordView(),
+          settings: settings,
+        );
+      case Routes.scheduleMatchView:
+        return MaterialPageRoute(
+          builder: (_) => const ScheduleMatchView(),
           settings: settings,
         );
     }

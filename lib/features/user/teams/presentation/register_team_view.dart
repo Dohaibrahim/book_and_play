@@ -1,6 +1,5 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/routing/routes.dart';
-import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/user/teams/presentation/manager/player_team_cubit/player_team_cubit.dart';
 import 'package:book_and_play/features/user/teams/presentation/manager/player_team_cubit/player_team_state.dart';

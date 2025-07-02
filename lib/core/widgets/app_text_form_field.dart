@@ -1,5 +1,6 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppTextFormField extends StatelessWidget {
   final InputBorder? focusedBorder;
@@ -16,15 +17,19 @@ class AppTextFormField extends StatelessWidget {
   final String? initialValue; // New nullable initialValue parameter
   final Color? fillColor;
   final BorderSide? focusedBorderSide, errorBorderSide, enabledBorderSide;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
   const AppTextFormField({
     super.key,
     this.focusedBorder,
+    this.inputFormatters,
     this.focusedBorderSide,
     this.enabledBorderSide,
     this.errorBorderSide,
     this.enabledBorder,
     this.inputTextStyle,
     this.hintStyle,
+    this.keyboardType,
     required this.hintText,
     this.fillColor,
     this.isObscureText,
@@ -39,6 +44,8 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: inputFormatters,
+      keyboardType: keyboardType,
       cursorColor: Colors.green[800],
       controller: controller,
       initialValue: initialValue, // Set initialValue here

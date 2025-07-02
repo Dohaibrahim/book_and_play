@@ -77,6 +77,9 @@ class Location {
           .toList(),
     );
   }
+  Map<String, dynamic> toJson() {
+    return {'type': type, 'coordinates': coordinates};
+  }
 }
 
 class Amenity {

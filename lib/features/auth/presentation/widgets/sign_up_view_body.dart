@@ -107,7 +107,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               BlocBuilder<SignupCubit, SignupState>(
                 builder: (context, state) {
                   if (state is SignupLoading) {
-                    Center(
+                    return Center(
                       child: CircularProgressIndicator(
                         color: ColorManager.primaryColor,
                       ),

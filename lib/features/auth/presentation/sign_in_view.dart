@@ -40,9 +40,6 @@ class SignInView extends StatelessWidget {
                       Routes.ownerBottomNavView,
                     );
             }
-            if (state is SigninLoadingState) {
-              CircularProgressIndicator(color: ColorManager.primaryColor);
-            }
           },
           child: SignInViewBody(userRole: args),
         ),
