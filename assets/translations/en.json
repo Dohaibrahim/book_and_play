@@ -137,6 +137,11 @@
   "title": "Select Start Hour",
   "apply": "Apply",
   "cancel": "Cancel"
-}
+},
+  "change_language": "Change Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "add_match": "Add Match",
+  "max_players": "Max number of players at each team"
 
 }

@@ -23,10 +23,10 @@ import 'package:book_and_play/features/user/booking/data/data_source/booking_rem
 import 'package:book_and_play/features/user/booking/data/repos/booking_repo_impl.dart';
 import 'package:book_and_play/features/user/booking/domain/repo/booking_repo.dart';
 import 'package:book_and_play/features/user/booking/domain/usecase/fetch_fields_usecase.dart';
-import 'package:book_and_play/features/user/settings/data/data_source/settings_remote_data_source.dart';
-import 'package:book_and_play/features/user/settings/data/repo/settings_repo_impl.dart';
-import 'package:book_and_play/features/user/settings/domain/repo/settings_repo.dart';
-import 'package:book_and_play/features/user/settings/domain/usecase/change_password_usecase.dart';
+import 'package:book_and_play/features/settings/data/data_source/settings_remote_data_source.dart';
+import 'package:book_and_play/features/settings/data/repo/settings_repo_impl.dart';
+import 'package:book_and_play/features/settings/domain/repo/settings_repo.dart';
+import 'package:book_and_play/features/settings/domain/usecase/change_password_usecase.dart';
 import 'package:book_and_play/features/user/teams/data/data_source/player_team_data_source.dart';
 import 'package:book_and_play/features/user/teams/data/repo/plater_team_repo_impl.dart';
 import 'package:book_and_play/features/user/teams/domain/repo/plater_team_repo.dart';

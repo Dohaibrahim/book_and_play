@@ -2,7 +2,8 @@ import 'package:book_and_play/core/routing/routes.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/utils/constant.dart';
 import 'package:book_and_play/core/utils/shared_pref.dart';
-import 'package:book_and_play/features/user/settings/presentation/widgets/settings_item.dart';
+import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/features/settings/presentation/widgets/settings_item.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -112,6 +113,19 @@ class SettingsViewBody extends StatelessWidget {
                     ),
                     SizedBox(height: screenHeight * 0.017),
                     SettingsIcon(
+                      screenHeight: screenHeight,
+                      text: 'Change language',
+                      onTap: () {
+                        showBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return ChangeLanguage(screenHeight: screenHeight);
+                          },
+                        );
+                      },
+                    ),
+                    SizedBox(height: screenHeight * 0.017),
+                    SettingsIcon(
                       onTap: () async {
                         await SharedPrefHelper.removeData(
                           SharedPrefKeys.userToken,
@@ -138,6 +152,74 @@ class SettingsViewBody extends StatelessWidget {
   }
 }
 
+class ChangeLanguage extends StatefulWidget {
+  const ChangeLanguage({super.key, required this.screenHeight});
+
+  final double screenHeight;
+
+  @override
+  State<ChangeLanguage> createState() => _ChangeLanguageState();
+}
+
+class _ChangeLanguageState extends State<ChangeLanguage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.grey[200]!),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      height: widget.screenHeight * 0.45,
+      child: Padding(
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(context);
+
+                context.setLocale(Locale('ar'));
+
+                await getUserRole() == 'owner'
+                    ? Navigator.pushReplacementNamed(
+                        context,
+                        Routes.ownerBottomNavView,
+                      )
+                    : Navigator.pushReplacementNamed(
+                        context,
+                        Routes.userBottomNavView,
+                      );
+              },
+              text: 'arabic',
+            ),
+            AppButton(onPressed: () {}, text: 'Chinese'),
+            AppButton(
+              onPressed: () async {
+                context.setLocale(Locale('en'));
+                await getUserRole() == 'owner'
+                    ? Navigator.pushReplacementNamed(
+                        context,
+                        Routes.ownerBottomNavView,
+                      )
+                    : Navigator.pushReplacementNamed(
+                        context,
+                        Routes.userBottomNavView,
+                      );
+              },
+              text: 'english',
+            ),
+            AppButton(onPressed: () {}, text: 'Frensh'),
+            AppButton(onPressed: () {}, text: 'Italian'),
+            AppButton(onPressed: () {}, text: 'Spanish'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 Future<Map<String, String?>> _getUserInfo() async {
   final username = await SharedPrefHelper.getStringNullable(
     SharedPrefKeys.username,
@@ -148,5 +230,13 @@ Future<Map<String, String?>> _getUserInfo() async {
   final userId = await SharedPrefHelper.getStringNullable(
     SharedPrefKeys.userid,
   );
+
   return {'username': username, 'email': email, 'id': userId};
+}
+
+Future<String> getUserRole() async {
+  final userRole = await SharedPrefHelper.getStringNullable(
+    SharedPrefKeys.userRole,
+  );
+  return userRole!;
 }

@@ -1,5 +1,5 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
-import 'package:book_and_play/features/user/settings/presentation/settings_view.dart';
+import 'package:book_and_play/features/settings/presentation/settings_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

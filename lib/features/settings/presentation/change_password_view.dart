@@ -1,9 +1,9 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/widgets/top_snackbar.dart';
-import 'package:book_and_play/features/user/settings/presentation/manager/change_pass_cubit/change_pass_cubit.dart';
-import 'package:book_and_play/features/user/settings/presentation/manager/change_pass_cubit/change_pass_state.dart';
-import 'package:book_and_play/features/user/settings/presentation/widgets/change_password_view_body.dart';
+import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_cubit.dart';
+import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_state.dart';
+import 'package:book_and_play/features/settings/presentation/widgets/change_password_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

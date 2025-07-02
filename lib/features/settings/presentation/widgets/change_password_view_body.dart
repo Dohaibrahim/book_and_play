@@ -2,9 +2,9 @@ import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/password_text_form_field.dart';
-import 'package:book_and_play/features/user/settings/data/models/change_pass_req.dart';
-import 'package:book_and_play/features/user/settings/presentation/manager/change_pass_cubit/change_pass_cubit.dart';
-import 'package:book_and_play/features/user/settings/presentation/manager/change_pass_cubit/change_pass_state.dart';
+import 'package:book_and_play/features/settings/data/models/change_pass_req.dart';
+import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_cubit.dart';
+import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

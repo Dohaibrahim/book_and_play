@@ -2,8 +2,8 @@ import 'package:book_and_play/core/di/dependency_injection.dart';
 import 'package:book_and_play/core/errors/failure.dart';
 import 'package:book_and_play/core/utils/api_service.dart';
 import 'package:book_and_play/core/utils/constant.dart';
-import 'package:book_and_play/features/user/settings/data/models/change_pass_req.dart';
-import 'package:book_and_play/features/user/settings/data/models/change_pass_res.dart';
+import 'package:book_and_play/features/settings/data/models/change_pass_req.dart';
+import 'package:book_and_play/features/settings/data/models/change_pass_res.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 

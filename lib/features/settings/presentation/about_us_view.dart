@@ -1,4 +1,4 @@
-import 'package:book_and_play/features/user/settings/presentation/widgets/about_us_view_body.dart';
+import 'package:book_and_play/features/settings/presentation/widgets/about_us_view_body.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
