@@ -57,7 +57,7 @@ class HomeAppBar extends StatelessWidget {
           // TextStyles.font24BlackBold
         ],
       ),
-      actions: [
+      /*actions: [
         Container(
           width: 40,
           height: 40,
@@ -79,7 +79,7 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
         ),
-      ],
+      ],*/
     );
   }
 }
