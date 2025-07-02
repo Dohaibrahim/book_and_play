@@ -11,6 +11,7 @@ abstract class MatchesRemoteDataSource {
   Future<Either<ErrorResponse, CreateMatchRes>> createMatch(
     CreateMatchReq createMatchReq,
   );
+  Future<Either<Failure, String>> deleteMatch(String matchId);
 }
 
 class MatchesRemoteDataSourceImpl extends MatchesRemoteDataSource {
@@ -52,6 +53,21 @@ class MatchesRemoteDataSourceImpl extends MatchesRemoteDataSource {
       return Left(
         ErrorResponse(error: 'Exception', message: e.toString(), code: 0),
       );
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> deleteMatch(String matchId) async {
+    try {
+      final request = await getIt<DioClient>().delete(
+        '${ApiUrls.match}/delete/$matchId',
+      );
+      final response = request['message'];
+      return Right(response);
+    } on DioException catch (e) {
+      return Left(Failure(e.message.toString()));
+    } catch (e) {
+      return Left(Failure(e.toString()));
     }
   }
 }

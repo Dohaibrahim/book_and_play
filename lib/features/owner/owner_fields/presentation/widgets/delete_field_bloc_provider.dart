@@ -44,7 +44,7 @@ class DeleteFieldBlocProvider extends StatelessWidget {
           return AlertDialog(
             title: SizedBox(),
             content: Text(
-              'Are you sure you want to permanently delete your account?',
+              'Are you sure you want to permanently delete your field?',
               textAlign: TextAlign.center,
               style: TextStyles.font24BlackBold.copyWith(
                 fontSize: 16,

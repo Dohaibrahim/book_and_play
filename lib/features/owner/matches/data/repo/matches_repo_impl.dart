@@ -23,4 +23,17 @@ class MatchesRepoImpl extends MatchesRepo {
       },
     );
   }
+
+  @override
+  Future<Either<Failure, String>> deleteMatch(String matchId) async {
+    final result = await getIt<MatchesRemoteDataSource>().deleteMatch(matchId);
+    return result.fold(
+      (failure) {
+        return Left(Failure(failure.message));
+      },
+      (data) {
+        return Right(data);
+      },
+    );
+  }
 }

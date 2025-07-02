@@ -7,4 +7,5 @@ abstract class MatchesRepo {
   Future<Either<Failure, CreateMatchRes>> createMatch(
     CreateMatchReq createMatchReq,
   );
+  Future<Either<Failure, String>> deleteMatch(String matchId);
 }

@@ -69,7 +69,7 @@ class OwnerFieldViewBody extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 Routes.ownerMatchesView,
-                arguments: args.id,
+                arguments: args,
               );
             },
             text: 'Your Matches',

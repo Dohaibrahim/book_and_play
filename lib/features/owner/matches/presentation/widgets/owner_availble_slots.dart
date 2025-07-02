@@ -1,6 +1,9 @@
 import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
-import 'package:book_and_play/core/widgets/app_button.dart';
+import 'package:book_and_play/features/owner/matches/presentation/manager/delete_match/delete_match_cubit.dart';
+import 'package:book_and_play/features/owner/matches/presentation/widgets/add_time_button.dart';
+import 'package:book_and_play/features/owner/matches/presentation/widgets/delete_match_bloc_builder.dart';
+import 'package:book_and_play/features/owner/owner_fields/data/models/owner_fields.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/get_available_matches/get_available_matches_cubit.dart';
 import 'package:book_and_play/features/user/booking/presentation/manager/get_available_matches/get_available_matches_state.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -8,8 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OwnerAvailableSlotsListView extends StatefulWidget {
-  const OwnerAvailableSlotsListView({super.key});
-
+  const OwnerAvailableSlotsListView({
+    super.key,
+    required this.deleteMatchCubit,
+    required this.ownerField,
+  });
+  final DeleteMatchCubit deleteMatchCubit;
+  final OwnerField ownerField;
   @override
   State<OwnerAvailableSlotsListView> createState() =>
       _OwnerAvailableSlotsListViewState();
@@ -19,11 +27,8 @@ class _OwnerAvailableSlotsListViewState
     extends State<OwnerAvailableSlotsListView> {
   int? selectedIndex;
   late final List<String> dates;
-  String? matchId;
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.sizeOf(context).width;
-    final screenHeight = MediaQuery.sizeOf(context).height;
     return BlocBuilder<GetAvailableMatchesCubit, GetAvailableMatchesState>(
       builder: (context, state) {
         if (state is GetAvailableMatchesLoadingState) {
@@ -33,7 +38,21 @@ class _OwnerAvailableSlotsListViewState
         } else if (state is GetAvailableMatchesSuccessState) {
           final matches = state.matches;
           if (matches.isEmpty) {
-            return Center(child: Text('user_book.no_available_matches'.tr()));
+            return Padding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Text('user_book.no_available_matches'.tr()),
+                    ),
+                  ),
+                  AddTimeButton(ownerField: widget.ownerField),
+                  SizedBox(height: 50),
+                ],
+              ),
+            );
           }
           return Padding(
             padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
@@ -51,7 +70,6 @@ class _OwnerAvailableSlotsListViewState
                           onTap: () {
                             setState(() {
                               selectedIndex = index;
-                              matchId = match.id;
                             });
                           },
                           child: Container(
@@ -81,7 +99,17 @@ class _OwnerAvailableSlotsListViewState
                                 ),
                                 IconButton(
                                   padding: EdgeInsets.zero,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => BlocProvider.value(
+                                        value: widget.deleteMatchCubit,
+                                        child: DeleteMatchBlocBuilder(
+                                          matchId: matches[index].id,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                   icon: Icon(
                                     Icons.delete,
                                     size: 26,
@@ -96,11 +124,7 @@ class _OwnerAvailableSlotsListViewState
                     },
                   ),
                 ),
-                AppButton(
-                  onPressed: () {},
-                  text: 'Add Time',
-                  textStyle: TextStyle(fontSize: 17),
-                ),
+                AddTimeButton(ownerField: widget.ownerField),
                 SizedBox(height: 20),
               ],
             ),
