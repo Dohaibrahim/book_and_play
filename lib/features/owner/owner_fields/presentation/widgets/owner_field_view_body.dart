@@ -95,8 +95,7 @@ class OwnerFieldViewBody extends StatelessWidget {
                         TopSnackBar.show(
                           context,
                           title: 'Error',
-                          message: state
-                              .errorMessage, //'there are an error happened trying delete your field',
+                          message: state.errorMessage,
                           contentType: ContentType.failure,
                           color: Colors.red,
                         );

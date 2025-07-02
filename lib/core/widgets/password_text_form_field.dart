@@ -4,8 +4,9 @@ import '../../../../../core/widgets/app_text_form_field.dart';
 
 class PasswordTextFormField extends StatefulWidget {
   final Function(String?)? onSaved;
+  final String? hintText;
 
-  const PasswordTextFormField({super.key, this.onSaved});
+  const PasswordTextFormField({super.key, this.onSaved, this.hintText});
 
   @override
   State<PasswordTextFormField> createState() => _PasswordTextFormFieldState();
@@ -19,7 +20,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
     return AppTextFormField(
       onSaved: widget.onSaved,
       isObscureText: isObscure,
-      hintText: 'signin.password'.tr(),
+      hintText: widget.hintText ?? 'signin.password'.tr(),
       suffixIcon: Padding(
         padding: const EdgeInsets.all(8.0),
         child: IconButton(

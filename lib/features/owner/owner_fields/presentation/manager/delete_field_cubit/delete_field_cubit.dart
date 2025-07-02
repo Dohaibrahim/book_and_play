@@ -10,7 +10,7 @@ class DeleteFieldCubit extends Cubit<DeleteFieldState> {
     var result = await DeleteFieldUsecase(fieldId: fieldId).call();
     result.fold(
       (failure) {
-        emit(DeleteFieldFailureState(errorMessage: failure.message.toString()));
+        emit(DeleteFieldFailureState(errorMessage: failure.message));
       },
       (fields) {
         emit(DeleteFieldSuccessState());

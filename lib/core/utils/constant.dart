@@ -10,6 +10,7 @@ class ApiUrls {
   static const String knockout = '$baseURL/api/knockout';
   static const String knockoutTournaments = '$baseURL/api/knockout/tournaments';
   static const String team = '$baseURL/api/team';
+  static const String changePassword = '$baseURL/api/auth/changepassword';
 }
 
 class SharedPrefKeys {

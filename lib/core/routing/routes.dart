@@ -26,4 +26,5 @@ class Routes {
   static const String finalResultView = '/finalResultView';
   static const String roundsView = '/roundsView';
   static const String matchDetailesView = '/matchDetailesView';
+  static const String changePasswordView = '/changePasswordView';
 }

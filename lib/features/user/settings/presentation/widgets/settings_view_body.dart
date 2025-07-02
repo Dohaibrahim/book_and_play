@@ -102,7 +102,13 @@ class SettingsViewBody extends StatelessWidget {
                     SettingsIcon(
                       screenHeight: screenHeight,
                       text: 'user_settings.change_password'.tr(),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          Routes.changePasswordView,
+                          arguments: userInfo['email'],
+                        );
+                      },
                     ),
                     SizedBox(height: screenHeight * 0.017),
                     SettingsIcon(
