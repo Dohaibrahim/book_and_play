@@ -48,14 +48,12 @@ class OnboardingViewBody extends StatelessWidget {
             width: screenWidth * 0.70,
             height: 50,
             child: AppButton(
-              //buttonWidth: screenWidth * 0.70,
-              //height: 50,
               textStyle: TextStyles.font14BlackMedium.copyWith(
                 color: Colors.white,
                 fontSize: 17,
               ),
               onPressed: () {
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamed(
                   context,
                   Routes.signUpView,
                   arguments: 'player',
@@ -69,10 +67,8 @@ class OnboardingViewBody extends StatelessWidget {
             height: 50,
             width: screenWidth * 0.70,
             child: AppButton(
-              //height: 50,
-              //buttonWidth: screenWidth * 0.60,
               onPressed: () {
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamed(
                   context,
                   Routes.signUpView,
                   arguments: 'owner',
