@@ -17,9 +17,16 @@ void main() async {
   bool isLoggedInUser = userToken != null && userToken.isNotEmpty;
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('ar')],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+        Locale('fr'),
+        Locale('it'),
+        Locale('pt'),
+        Locale('zh'),
+      ],
       path: 'assets/translations',
-      fallbackLocale: const Locale('ar'),
+      fallbackLocale: const Locale('en'),
       startLocale: const Locale('en'),
       child: MyApp(isLoggedInUser: isLoggedInUser, userRole: userRole ?? ''),
     ),

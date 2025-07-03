@@ -4,7 +4,7 @@
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "button": "تسجيل الدخول",
-    "no_account": "ليس لديك حساب؟",
+    "no_account": "لا تملك حساباً؟",
     "signup": "إنشاء حساب"
   },
   "signup": {
@@ -13,41 +13,40 @@
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "confirm_password": "تأكيد كلمة المرور",
-    "select_country": "اختر بلدك",
-    "submit": "تسجيل",
-    "country_required": "يجب اختيار الدولة",
+    "select_country": "اختر دولتك",
+    "submit": "إنشاء حساب",
+    "country_required": "الدولة مطلوبة",
     "already_have_account": "لديك حساب بالفعل؟",
     "login": "تسجيل الدخول"
   },
   "onboarding": {
-    "welcome": "مرحبًا بك في بوك آند بلاي!",
-    "subtitle": "كرة القدم قريبة منك\n أسرع، أسهل، وأكثر متعة!",
-    "continue_as": "تابع كـ ..",
+    "welcome": "مرحباً بك في Book and Play!",
+    "subtitle": "كرة القدم بالقرب منك\nبسرعة وسهولة ومتعة أكثر!",
+    "continue_as": "أكمل كـ ..",
     "player": "لاعب",
     "owner": "مالك ملعب كرة قدم"
   },
-  
   "home": {
-    "card1_title": "احجز، العب، افز!",
+    "card1_title": "احجز، العب، اربح!",
     "card1_subtitle": "احجز الآن",
     "card2_title": "تواصل، تحدث، والعب",
-    "card2_subtitle": "ارسل رسالة الآن",
+    "card2_subtitle": "راسل الآن",
     "card3_title": "اعثر على لاعبين جدد",
-    "card3_subtitle": "بث مباشر",
+    "card3_subtitle": "إرسال عام",
     "your_booking": "حجوزاتك",
     "browse_your_booking": "تصفح حجوزاتك",
-    "recommended": "أحدث البطولات"
+    "recommended": "أحدث البطولات",
+    "see_all": "عرض الكل"
   },
   "player_home_appbar": {
-    "welcome_back": "مرحبًا بعودتك،",
+    "welcome_back": "مرحباً بعودتك،",
     "error": "خطأ:",
     "default_user": "مستخدم"
   },
   "user_booking": {
-    "error_message": "حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا أو التواصل مع فريق الدعم.",
+    "error_message": "حدث خطأ، يرجى المحاولة لاحقاً أو التواصل مع فريقنا.",
     "no_matches": "لا توجد مباريات محجوزة بعد"
   },
-  
   "user_book": {
     "browse_fields": "تصفح ملاعب كرة القدم",
     "search_hint": "ابحث عن مكان أو موقع",
@@ -57,23 +56,25 @@
     "get_directions": "احصل على الاتجاهات",
     "no_available_matches": "لا توجد مباريات متاحة",
     "confirm_booking": "تأكيد الحجز",
-    "error_booking_title": "حدث خطأ في الحجز!",
+    "error_booking_title": "خطأ في الحجز!",
     "success_booking_title": "تهانينا!",
     "success_booking_sub": "تم الحجز بنجاح",
     "select_date_prompt": "يرجى تحديد تاريخ لعرض المباريات"
   },
-  
   "user_settings": {
-    "about_us": "معلومات عنا",
+    "about_us": "من نحن",
     "change_password": "تغيير كلمة المرور",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "change_language": "تغيير اللغة",
+    "id_label": "المعرف :",
+    "error_loading": "حدث خطأ أثناء تحميل الإعدادات"
   },
   "about_us": {
-    "title": "احجز والعب",
-    "p1": "احجز والعب هو رفيقك المثالي لتنظيم والاستمتاع بمباريات كرة القدم في منطقتك. سواء كنت لاعبًا تبحث عن مباراة للانضمام إليها أو مالك ملعب يدير الحجوزات، يجمع تطبيقنا مجتمع كرة القدم في مكان واحد.",
-    "p2": "يمكن للاعبين بسهولة اكتشاف وحجز المباريات في الملاعب القريبة، والتواصل والدردشة مع زملائهم، والمشاركة في بطولات مثيرة لعرض مهاراتهم.",
-    "p3": "بالنسبة لأصحاب الملاعب، يوفر احجز والعب منصة سلسة لإضافة تفاصيل الملاعب، وجدولة المباريات، وإدارة الحجوزات بسهولة — لضمان أن تبقى ملاعبك نشطة ومرئية دائمًا للاعبين المحليين.",
-    "p4": "انضم إلى مجتمع متنامٍ يعشق اللعبة. مع احجز والعب، لم يكن العثور على مباراة أو تكوين فريق أو الاستمتاع بكرة القدم أسهل من أي وقت مضى."
+    "title": "Book And Play",
+    "p1": "Book and Play هو رفيقك المثالي لتنظيم والاستمتاع بمباريات كرة القدم في منطقتك.",
+    "p2": "يمكن للاعبين بسهولة اكتشاف وحجز المباريات، والتواصل مع زملاء الفريق، والمشاركة في البطولات.",
+    "p3": "أما ملاك الملاعب، فيمكنهم إضافة التفاصيل، وجدولة المباريات، وإدارة الحجوزات بسهولة.",
+    "p4": "انضم إلى مجتمع متنامي يحب كرة القدم. مع Book and Play، لم يكن العثور على مباراة أسهل من قبل!"
   },
   "bottom_nav": {
     "home": "الرئيسية",
@@ -84,67 +85,228 @@
     "check_credentials": "يرجى التحقق من البريد الإلكتروني وكلمة المرور"
   },
   "owner_add_field": {
-    "title": "املأ معلومات ملعب كرة القدم",
-    "field_name_hint": "اسم ملعب كرة القدم",
+    "title": "أدخل معلومات ملعبك",
+    "field_name_hint": "اسم الملعب",
     "select_country": "اختر الدولة",
-    "city_hint": "مدينة ملعب كرة القدم",
-    "capacity_hint": "سعة الملعب",
+    "city_hint": "مدينة الملعب",
+    "capacity_hint": "السعة",
     "choose_location": "اختر الموقع",
     "pick_image": "اختر صورة للملعب",
-    "submit": "أضف ملعب كرة القدم",
-    "success_title": "تم",
-    "success_message": "تمت إضافة الملعب بنجاح",
-    "save_location": "احفظ الموقع",
-    "search_location" : "ابحث عن موقع"
+    "submit": "أضف الملعب",
+    "success_title": "تم!",
+    "success_message": "تمت إضافة ملعبك بنجاح",
+    "save_location": "حفظ الموقع",
+    "search_location": "ابحث عن الموقع",
+    "location_info": "وصف الموقع (مثال: معالم قريبة)"
   },
   "owner_home": {
-  "add_field_title": "أضف ملعب كرة قدم",
-  "add_now": "أضف الآن",
-  "add_tournament_title": "أضف بطولة",
-  "your_fields": "ملاعبك",
-  "see_tournaments": "عرض البطولات الخاصة بك",
-  "fields": "الملاعب",
-  "matches": "المباريات",
-  "add_field": "إضافة ملعب"
-},
-"owner_tournament": {
-  "done": "تم",
-  "success_msg": "لقد قمت بإضافة البطولة بنجاح!",
-  "create": "إنشاء بطولة",
-  "name": "اسم البطولة",
-  "description": "الوصف",
-  "pick_date": "اختر التاريخ",
-  "submit": "إرسال",
-  "public": "عامة",
-  "private": "خاصة",
-  "institution": "اسم المؤسسة",
-  "num_of_teams" : "عدد الفريق",
-  "title": "بطولاتك",
-  "error_message": "حدث خطأ الآن، يرجى التواصل مع فريق الدعم",
-  "from": "من",
-  "to": "إلى",
-  "start": "ابدأ البطولة"
-},
-"date_range": {
-  "title": "اختر نطاق التاريخ",
-  "cancel": "إلغاء",
-  "apply": "تطبيق"
-},
-"teams_joined": {
-  "title": "الفرق المنضمة",
-  "error": "حدث خطأ في الوقت الحالي!"
-},
-"hour_range": {
-  "title": "حدد ساعة البدء",
-  "apply": "تفعيل",
-  "cancel": "إلغاء"
-},
-
+    "add_field_title": "أضف ملعباً",
+    "add_now": "أضف الآن",
+    "add_tournament_title": "أضف بطولة",
+    "your_fields": "ملاعبك",
+    "see_tournaments": "عرض بطولاتك",
+    "fields": "الملاعب",
+    "matches": "المباريات",
+    "add_field": "إضافة ملعب"
+  },
+  "owner_tournament": {
+    "done": "تم",
+    "success_msg": "تمت إضافة البطولة بنجاح!",
+    "create": "إنشاء بطولة",
+    "name": "اسم البطولة",
+    "description": "الوصف",
+    "pick_date": "اختر التاريخ",
+    "submit": "إرسال",
+    "public": "عامة",
+    "private": "خاصة",
+    "institution": "اسم المؤسسة",
+    "num_of_teams": "عدد الفرق",
+    "title": "بطولاتك",
+    "error_message": "حدث خطأ حالياً، يرجى التواصل مع فريقنا",
+    "from": "من",
+    "to": "إلى",
+    "start": "بدء البطولة",
+    "error_messagee": "فشل تحميل البطولات",
+    "empty_message": "لم تقم بإضافة بطولات حتى الآن"
+  },
+  "date_range": {
+    "title": "اختر النطاق الزمني",
+    "cancel": "إلغاء",
+    "apply": "تأكيد"
+  },
+  "teams_joined": {
+    "title": "الفرق المشاركة",
+    "error": "حدث خطأ حالياً!",
+    "empty_message": "لا توجد فرق مشاركة بعد"
+  },
+  "hour_range": {
+    "title": "اختر وقت البداية",
+    "apply": "تأكيد",
+    "cancel": "إلغاء"
+  },
   "change_language": "تغيير اللغة",
   "english": "الإنجليزية",
   "arabic": "العربية",
-  "add_match": "أضف مباراة",
-  "max_players": "أقصى عدد من اللاعبين لكل فريق"
-
-
+  "add_match": "إضافة مباراة",
+  "max_players": "أقصى عدد للاعبين في كل فريق",
+  "warning_title": "تحذير",
+  "permission_warning_message": "يرجى منح الأذونات للتطبيق.",
+  "enable_location_message": "يجب تفعيل الموقع أولاً",
+  "success_title": "نجاح",
+  "error_title": "خطأ",
+  "schedule_match_title": "جدولة مباراة لـ {fieldName}",
+  "max_players_hint": "أقصى عدد للاعبين في كل فريق",
+  "pick_date_button": "اختر تاريخاً",
+  "weekly_note": "ملاحظة: سيكون هذا التاريخ متاحاً أسبوعياً",
+  "enter_player_id_warning": "يرجى إدخال معرف اللاعب قبل الإضافة",
+  "add_player_hint": "أضف معرف اللاعب",
+  "add_time_button": "أضف وقت",
+  "add_match_button": "أضف مباراة",
+  "enter_required_data_warning": "يرجى إدخال جميع البيانات المطلوبة",
+  "delete_match_confirmation": "هل أنت متأكد من حذف هذه المباراة بشكل دائم؟",
+  "cancel_button": "إلغاء",
+  "confirm_button": "تأكيد",
+  "pick_start_time_warning": "يرجى اختيار وقت البدء أولاً",
+  "from_label": "من",
+  "to_label": "إلى",
+  "pick_start_time_button": "اختر وقت البدء",
+  "pick_end_time_button": "اختر وقت الانتهاء",
+  "field_deleted_success": "تم حذف الملعب بنجاح!",
+  "delete_field_confirmation": "هل أنت متأكد من حذف الملعب بشكل دائم؟",
+  "your_matches_button": "مبارياتك",
+  "schedule_matches_button": "جدولة المباريات",
+  "delete_field_button": "حذف الملعب",
+  "field_capacity_label": "ملعب كرة قدم {capacity} × {capacity}",
+  "match_result_title": "نتيجة المباراة",
+  "vs_label": "ضد",
+  "score_warning_message": "يجب إدخال نتيجة مختلفة لكل فريق",
+  "add_score_button": "أضف النتيجة",
+  "done_button": "تم",
+  "generate_next_round_button": "إنشاء الجولة التالية",
+  "round_started_success_message": "تم بدء الجولة بنجاح!",
+  "round_started_error_message": "حدث خطأ أثناء بدء الجولة.",
+  "final_result_title": "النتيجة النهائية",
+  "final_result_error_prefix": "خطأ: {message}",
+  "month": {
+    "january": "يناير",
+    "february": "فبراير",
+    "march": "مارس",
+    "april": "أبريل",
+    "may": "مايو",
+    "june": "يونيو",
+    "july": "يوليو",
+    "august": "أغسطس",
+    "september": "سبتمبر",
+    "october": "أكتوبر",
+    "november": "نوفمبر",
+    "december": "ديسمبر"
+  },
+  "schedule_date": {
+    "missing_title": "بعض القيم مفقودة",
+    "missing_message": "يرجى تحديد الأوقات لجميع المباريات.",
+    "header_title": "حدد الوقت لكل مباراة",
+    "submit_button": "ابدأ الجولة التالية"
+  },
+  "show_hour_range": {
+    "from": "من",
+    "to": "إلى",
+    "select": "اختر الوقت"
+  },
+  "change_password": {
+    "title": "تغيير كلمة المرور",
+    "old_hint": "كلمة المرور القديمة",
+    "new_hint": "كلمة المرور الجديدة",
+    "button": "تغيير كلمة المرور"
+  },
+  "search": {
+    "no_results": "لا توجد نتائج لـ \"{query}\""
+  },
+  "amenities": {
+    "parking": "موقف سيارات",
+    "ball_rent": "استئجار كرة",
+    "toilets": "دورات مياه",
+    "changing_rooms": "غرف تبديل الملابس",
+    "cafeteria": "كافيتيريا",
+    "lighting_quality": "إضاءة جيدة",
+    "field_quality": "جودة الملعب"
+  },
+  "field_view": {
+    "no_location_info": "لا يوجد وصف للموقع",
+    "book_now": "احجز الآن"
+  },
+  "tournament_card": {
+    "type": "النوع: {}",
+    "knockout": "إقصائي"
+  },
+  "register_team": {
+    "error_title": "خطأ",
+    "error_message": "حدث خطأ أثناء التسجيل!"
+  },
+  "add_player": {
+    "success_title": "نجاح",
+    "success_message": "تم إضافة اللاعب بنجاح إلى فريقك!",
+    "error_title": "خطأ",
+    "error_message": "معرف اللاعب غير صالح",
+    "warning_title": "تحذير",
+    "warning_message": "يرجى إدخال معرف اللاعب الذي تريد إضافته",
+    "button_text": "إضافة لاعب"
+  },
+  "players_team": {
+    "type_id_hint": "أدخل معرف اللاعب"
+  },
+  "user_team": {
+    "register_title": "سجل فريقك",
+    "team_name_hint": "اسم الفريق",
+    "pick_logo": "اختر شعار الفريق",
+    "data_required": "البيانات مطلوبة",
+    "fill_all_data": "يرجى التأكد من إدخال جميع البيانات",
+    "next": "التالي"
+  },
+  "tournaments": {
+    "title": "البطولات المتاحة"
+  },
+  "match_details": {
+    "title": "تفاصيل المباراة",
+    "not_played": "لم تُلعب بعد",
+    "field_name": "ملعب كرة القدم",
+    "no_location_info": "لا يوجد وصف للموقع",
+    "done": "تم"
+  },
+  "round_stage": {
+    "quarter_final": "في مرحلة ربع النهائي",
+    "semi_final": "في مرحلة نصف النهائي",
+    "final": "في المرحلة النهائية",
+    "finished": "منتهية"
+  },
+  "match": {
+    "vs": "ضد"
+  },
+  "team_info": {
+    "see_your_team": "عرض فريقك"
+  },
+  "tournament": {
+    "fields": "الملاعب",
+    "get_info": "احصل على المعلومات",
+    "error": "خطأ",
+    "private_for": "لـ",
+    "only": "فقط",
+    "from": "من",
+    "to": "إلى",
+    "type": "النوع",
+    "teams_joined": "الفرق المشاركة",
+    "be_first": "كن أول فريق ينضم!",
+    "view_matches_rounds": "عرض مبارياتك والجولات",
+    "view_winner": "عرض الفائز",
+    "join": "انضم"
+  },
+  "filter": {
+    "next_week": "الأسبوع القادم",
+    "today": "اليوم",
+    "three_days": "3 أيام",
+    "last_week": "الأسبوع الماضي",
+    "last_month": "الشهر الماضي"
+  },
+  "button": {
+    "done": "تم"
+  }
 }

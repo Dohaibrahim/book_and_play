@@ -1,0 +1,312 @@
+{
+  "signin": {
+    "title": "Connectez-vous à votre compte",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "button": "Se connecter",
+    "no_account": "Vous n'avez pas de compte ?",
+    "signup": "S'inscrire"
+  },
+  "signup": {
+    "title": "Créer un compte",
+    "name": "Nom",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirm_password": "Confirmez le mot de passe",
+    "select_country": "Sélectionnez votre pays",
+    "submit": "S'inscrire",
+    "country_required": "Le pays est requis",
+    "already_have_account": "Vous avez déjà un compte ?",
+    "login": "Connexion"
+  },
+  "onboarding": {
+    "welcome": "Bienvenue sur Book and Play !",
+    "subtitle": "Du football près de chez vous\nplus rapidement, plus facilement, et plus amusant !",
+    "continue_as": "Continuer en tant que ..",
+    "player": "Joueur",
+    "owner": "Propriétaire de terrain"
+  },
+  "home": {
+    "card1_title": "Réservez, Jouez, Gagnez !",
+    "card1_subtitle": "Réserver maintenant",
+    "card2_title": "Connectez-vous, discutez et jouez",
+    "card2_subtitle": "Envoyer un message",
+    "card3_title": "Trouvez de nouveaux joueurs",
+    "card3_subtitle": "Diffuser",
+    "your_booking": "Votre réservation",
+    "browse_your_booking": "Parcourir vos réservations",
+    "recommended": "Derniers tournois",
+    "see_all": "Voir tout"
+  },
+  "player_home_appbar": {
+    "welcome_back": "Bon retour,",
+    "error": "Erreur :",
+    "default_user": "Utilisateur"
+  },
+  "user_booking": {
+    "error_message": "Une erreur s'est produite, veuillez réessayer plus tard ou contacter notre équipe.",
+    "no_matches": "Aucun match réservé pour le moment"
+  },
+  "user_book": {
+    "browse_fields": "Parcourir les terrains",
+    "search_hint": "Rechercher un lieu ou une position",
+    "location_info": "Informations de localisation :",
+    "amenities": "Équipements :",
+    "book_now": "Réserver maintenant",
+    "get_directions": "Obtenir l’itinéraire",
+    "no_available_matches": "Aucun match disponible",
+    "confirm_booking": "Confirmer la réservation",
+    "error_booking_title": "Erreur lors de la réservation !",
+    "success_booking_title": "Félicitations !",
+    "success_booking_sub": "Votre réservation a été effectuée avec succès",
+    "select_date_prompt": "Veuillez sélectionner une date pour voir les matchs"
+  },
+  "user_settings": {
+    "about_us": "À propos de nous",
+    "change_password": "Changer le mot de passe",
+    "logout": "Se déconnecter",
+    "change_language": "Changer la langue",
+    "id_label": "ID :",
+    "error_loading": "Erreur de chargement des paramètres"
+  },
+  "about_us": {
+    "title": "Book And Play",
+    "p1": "Book and Play est votre compagnon ultime pour organiser et profiter des matchs de football dans votre région.",
+    "p2": "Les joueurs peuvent facilement découvrir et réserver des matchs, discuter avec d'autres, et participer à des championnats.",
+    "p3": "Pour les propriétaires de terrains, gérez facilement vos réservations et rendez vos terrains visibles.",
+    "p4": "Rejoignez une communauté croissante passionnée par le football avec Book and Play."
+  },
+  "bottom_nav": {
+    "home": "Accueil",
+    "settings": "Paramètres"
+  },
+  "log": {
+    "error": "Erreur",
+    "check_credentials": "Veuillez vérifier votre e-mail et votre mot de passe"
+  },
+  "owner_add_field": {
+    "title": "Remplissez les informations de votre terrain",
+    "field_name_hint": "Nom du terrain",
+    "select_country": "Sélectionner un pays",
+    "city_hint": "Ville",
+    "capacity_hint": "Capacité du terrain",
+    "choose_location": "Choisir l’emplacement",
+    "pick_image": "Choisir une image",
+    "submit": "Ajouter le terrain",
+    "success_title": "Fait !",
+    "success_message": "Votre terrain a été ajouté avec succès",
+    "save_location": "Sauvegarder l'emplacement",
+    "search_location": "Rechercher un emplacement",
+    "location_info": "description de l’emplacement (ex : points de repère)"
+  },
+  "owner_home": {
+    "add_field_title": "Ajouter un terrain",
+    "add_now": "Ajouter maintenant",
+    "add_tournament_title": "Ajouter un tournoi",
+    "your_fields": "Vos terrains",
+    "see_tournaments": "Voir vos tournois",
+    "fields": "Terrains",
+    "matches": "Matchs",
+    "add_field": "Ajouter un terrain"
+  },
+  "owner_tournament": {
+    "done": "Terminé",
+    "success_msg": "Vous avez ajouté un tournoi avec succès !",
+    "create": "Créer un tournoi",
+    "name": "Nom du tournoi",
+    "description": "Description",
+    "pick_date": "Choisir une date",
+    "submit": "Soumettre",
+    "public": "Public",
+    "private": "Privé",
+    "institution": "Nom de l’institution",
+    "num_of_teams": "Nombre d'équipes",
+    "title": "Vos tournois",
+    "error_message": "Une erreur est survenue, veuillez contacter notre équipe",
+    "from": "Du",
+    "to": "Au",
+    "start": "Démarrer le tournoi",
+    "error_messagee": "Échec du chargement des tournois",
+    "empty_message": "Vous n'avez encore ajouté aucun tournoi"
+  },
+  "date_range": {
+    "title": "Sélectionner une période",
+    "cancel": "Annuler",
+    "apply": "Appliquer"
+  },
+  "teams_joined": {
+    "title": "Équipes inscrites",
+    "error": "Une erreur est survenue !",
+    "empty_message": "Aucune équipe inscrite pour le moment"
+  },
+  "hour_range": {
+    "title": "Sélectionner l’heure de début",
+    "apply": "Appliquer",
+    "cancel": "Annuler"
+  },
+  "change_language": "Changer la langue",
+  "english": "Anglais",
+  "arabic": "Arabe",
+  "add_match": "Ajouter un match",
+  "max_players": "Nombre max. de joueurs par équipe",
+  "warning_title": "Avertissement",
+  "permission_warning_message": "Veuillez autoriser l'application.",
+  "enable_location_message": "Activez d'abord votre position",
+  "success_title": "Succès",
+  "error_title": "Erreur",
+  "schedule_match_title": "Programmer un match pour {fieldName}",
+  "max_players_hint": "Nombre max. de joueurs par équipe",
+  "pick_date_button": "Choisir une date",
+  "weekly_note": "Remarque : cette date sera disponible chaque semaine",
+  "enter_player_id_warning": "Veuillez entrer un ID de joueur avant d’en ajouter un nouveau.",
+  "add_player_hint": "Ajouter l’ID du joueur",
+  "add_time_button": "Ajouter une heure",
+  "add_match_button": "Ajouter le match",
+  "enter_required_data_warning": "Veuillez entrer toutes les données requises",
+  "delete_match_confirmation": "Voulez-vous vraiment supprimer ce match ?",
+  "cancel_button": "Annuler",
+  "confirm_button": "Confirmer",
+  "pick_start_time_warning": "Veuillez d'abord choisir une heure de début",
+  "from_label": "De",
+  "to_label": "À",
+  "pick_start_time_button": "Choisir l'heure de début",
+  "pick_end_time_button": "Choisir l'heure de fin",
+  "field_deleted_success": "Votre terrain a été supprimé avec succès !",
+  "delete_field_confirmation": "Voulez-vous vraiment supprimer définitivement ce terrain ?",
+  "your_matches_button": "Vos matchs",
+  "schedule_matches_button": "Programmer des matchs",
+  "delete_field_button": "Supprimer le terrain",
+  "field_capacity_label": "Terrain de football {capacity} x {capacity}",
+  "match_result_title": "Résultat du match",
+  "vs_label": "VS",
+  "score_warning_message": "Ajoutez les scores, ils ne doivent pas être égaux",
+  "add_score_button": "Ajouter un score",
+  "done_button": "Terminé",
+  "generate_next_round_button": "Générer le tour suivant",
+  "round_started_success_message": "Le tour a commencé avec succès !",
+  "round_started_error_message": "Erreur lors de la création du tour.",
+  "final_result_title": "Résultat",
+  "final_result_error_prefix": "Erreur : {message}",
+  "month": {
+    "january": "Janvier",
+    "february": "Février",
+    "march": "Mars",
+    "april": "Avril",
+    "may": "Mai",
+    "june": "Juin",
+    "july": "Juillet",
+    "august": "Août",
+    "september": "Septembre",
+    "october": "Octobre",
+    "november": "Novembre",
+    "december": "Décembre"
+  },
+  "schedule_date": {
+    "missing_title": "Des valeurs sont manquantes",
+    "missing_message": "Veuillez définir des horaires pour tous les matchs.",
+    "header_title": "Définir l’horaire pour chaque match",
+    "submit_button": "Démarrer le prochain tour"
+  },
+  "show_hour_range": {
+    "from": "De",
+    "to": "À",
+    "select": "Sélectionner une heure"
+  },
+  "change_password": {
+    "title": "Changer votre mot de passe",
+    "old_hint": "Ancien mot de passe",
+    "new_hint": "Nouveau mot de passe",
+    "button": "Changer le mot de passe"
+  },
+  "search": {
+    "no_results": "Aucun résultat trouvé pour \"{query}\""
+  },
+  "amenities": {
+    "parking": "Parking",
+    "ball_rent": "Location de ballon",
+    "toilets": "Toilettes",
+    "changing_rooms": "Vestiaires",
+    "cafeteria": "Cafétéria",
+    "lighting_quality": "Qualité de l’éclairage",
+    "field_quality": "Qualité du terrain"
+  },
+  "field_view": {
+    "no_location_info": "Aucune description de l'emplacement",
+    "book_now": "Réserver maintenant"
+  },
+  "tournament_card": {
+    "type": "Type : {}",
+    "knockout": "Élimination directe"
+  },
+  "register_team": {
+    "error_title": "Erreur",
+    "error_message": "Une erreur est survenue lors de l'inscription !"
+  },
+  "add_player": {
+    "success_title": "Succès",
+    "success_message": "Le joueur a été ajouté à votre équipe !",
+    "error_title": "Erreur",
+    "error_message": "L'ID du joueur est invalide",
+    "warning_title": "Avertissement",
+    "warning_message": "Vous devez saisir l’ID du joueur",
+    "button_text": "Ajouter le joueur"
+  },
+  "players_team": {
+    "type_id_hint": "Saisir l’ID du joueur"
+  },
+  "user_team": {
+    "register_title": "Inscrivez votre équipe",
+    "team_name_hint": "Nom de l'équipe",
+    "pick_logo": "Choisir le logo de votre équipe",
+    "data_required": "Données requises",
+    "fill_all_data": "Veuillez remplir toutes les données",
+    "next": "Suivant"
+  },
+  "tournaments": {
+    "title": "Tournois disponibles"
+  },
+  "match_details": {
+    "title": "Détails du match",
+    "not_played": "Pas encore joué",
+    "field_name": "Terrain de football",
+    "no_location_info": "Aucune description de l'emplacement",
+    "done": "Terminé"
+  },
+  "round_stage": {
+    "quarter_final": "Quart de finale",
+    "semi_final": "Demi-finale",
+    "final": "Finale",
+    "finished": "Terminé"
+  },
+  "match": {
+    "vs": "VS"
+  },
+  "team_info": {
+    "see_your_team": "Voir votre équipe"
+  },
+  "tournament": {
+    "fields": "Terrains",
+    "get_info": "Obtenir les infos",
+    "error": "Erreur",
+    "private_for": "Pour",
+    "only": "seulement",
+    "from": "Du",
+    "to": "Au",
+    "type": "Type",
+    "teams_joined": "Équipes inscrites",
+    "be_first": "Soyez la première équipe à vous inscrire !",
+    "view_matches_rounds": "Voir vos matchs et tours",
+    "view_winner": "Voir le gagnant",
+    "join": "Rejoindre"
+  },
+  "filter": {
+    "next_week": "La semaine prochaine",
+    "today": "Aujourd’hui",
+    "three_days": "3 jours",
+    "last_week": "La semaine dernière",
+    "last_month": "Le mois dernier"
+  },
+  "button": {
+    "done": "Terminé"
+  }
+}

@@ -193,7 +193,22 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
               },
               text: 'arabic',
             ),
-            AppButton(onPressed: () {}, text: 'Chinese'),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                context.setLocale(Locale('zh'));
+                await getUserRole() == 'owner'
+                    ? Navigator.pushReplacementNamed(
+                        context,
+                        Routes.ownerBottomNavView,
+                      )
+                    : Navigator.pushReplacementNamed(
+                        context,
+                        Routes.userBottomNavView,
+                      );
+              },
+              text: 'Chinese',
+            ),
             AppButton(
               onPressed: () async {
                 context.setLocale(Locale('en'));
@@ -209,9 +224,54 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
               },
               text: 'english',
             ),
-            AppButton(onPressed: () {}, text: 'Frensh'),
-            AppButton(onPressed: () {}, text: 'Italian'),
-            AppButton(onPressed: () {}, text: 'Spanish'),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                context.setLocale(Locale('fr'));
+                await getUserRole() == 'owner'
+                    ? Navigator.pushReplacementNamed(
+                        context,
+                        Routes.ownerBottomNavView,
+                      )
+                    : Navigator.pushReplacementNamed(
+                        context,
+                        Routes.userBottomNavView,
+                      );
+              },
+              text: 'Frensh',
+            ),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                context.setLocale(Locale('it'));
+                await getUserRole() == 'owner'
+                    ? Navigator.pushReplacementNamed(
+                        context,
+                        Routes.ownerBottomNavView,
+                      )
+                    : Navigator.pushReplacementNamed(
+                        context,
+                        Routes.userBottomNavView,
+                      );
+              },
+              text: 'Italian',
+            ),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                context.setLocale(Locale('pt'));
+                await getUserRole() == 'owner'
+                    ? Navigator.pushReplacementNamed(
+                        context,
+                        Routes.ownerBottomNavView,
+                      )
+                    : Navigator.pushReplacementNamed(
+                        context,
+                        Routes.userBottomNavView,
+                      );
+              },
+              text: 'Portuguese',
+            ),
           ],
         ),
       ),

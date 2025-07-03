@@ -1,0 +1,312 @@
+{
+  "signin": {
+    "title": "登录您的账户",
+    "email": "电子邮箱",
+    "password": "密码",
+    "button": "登录",
+    "no_account": "没有账户？",
+    "signup": "注册"
+  },
+  "signup": {
+    "title": "创建账户",
+    "name": "姓名",
+    "email": "电子邮箱",
+    "password": "密码",
+    "confirm_password": "确认密码",
+    "select_country": "选择您的国家",
+    "submit": "注册",
+    "country_required": "国家是必填项",
+    "already_have_account": "已经有账户？",
+    "login": "登录"
+  },
+  "onboarding": {
+    "welcome": "欢迎来到 Book and Play！",
+    "subtitle": "附近踢球\n更快、更方便、更有趣！",
+    "continue_as": "继续身份为 ..",
+    "player": "球员",
+    "owner": "球场所有者"
+  },
+  "home": {
+    "card1_title": "预订，踢球，赢得胜利！",
+    "card1_subtitle": "立即预订",
+    "card2_title": "连接、聊天、踢球",
+    "card2_subtitle": "立即消息",
+    "card3_title": "寻找新球员",
+    "card3_subtitle": "广播",
+    "your_booking": "您的预订",
+    "browse_your_booking": "浏览您的预订",
+    "recommended": "最新锦标赛",
+    "see_all": "查看全部"
+  },
+  "player_home_appbar": {
+    "welcome_back": "欢迎回来，",
+    "error": "错误：",
+    "default_user": "用户"
+  },
+  "user_booking": {
+    "error_message": "出现错误，请稍后重试或联系我们的团队。",
+    "no_matches": "尚未预订比赛"
+  },
+  "user_book": {
+    "browse_fields": "浏览足球场",
+    "search_hint": "搜索地点或位置",
+    "location_info": "位置信息：",
+    "amenities": "设施：",
+    "book_now": "立即预订",
+    "get_directions": "获取路线",
+    "no_available_matches": "暂无可用比赛",
+    "confirm_booking": "确认预订",
+    "error_booking_title": "预订出错！",
+    "success_booking_title": "恭喜！",
+    "success_booking_sub": "您已成功预订",
+    "select_date_prompt": "请选择日期以查看比赛"
+  },
+  "user_settings": {
+    "about_us": "关于我们",
+    "change_password": "修改密码",
+    "logout": "退出登录",
+    "change_language": "更改语言",
+    "id_label": "ID：",
+    "error_loading": "加载设置出错"
+  },
+  "about_us": {
+    "title": "Book And Play",
+    "p1": "Book and Play 是您在本地组织和参与足球比赛的终极伴侣。",
+    "p2": "球员可以轻松发现并预订附近的比赛，连接并与队友聊天，还可以参加令人兴奋的锦标赛。",
+    "p3": "场地主人可以添加球场信息，安排比赛并轻松管理预订。",
+    "p4": "加入热爱足球的社区。从未如此轻松找到比赛、组建球队并享受足球乐趣。"
+  },
+  "bottom_nav": {
+    "home": "首页",
+    "settings": "设置"
+  },
+  "log": {
+    "error": "错误",
+    "check_credentials": "请检查您的电子邮箱和密码"
+  },
+  "owner_add_field": {
+    "title": "填写您的足球场信息",
+    "field_name_hint": "足球场名称",
+    "select_country": "选择国家",
+    "city_hint": "足球场所在城市",
+    "capacity_hint": "场地容量",
+    "choose_location": "选择位置",
+    "pick_image": "选择足球场图片",
+    "submit": "添加足球场",
+    "success_title": "完成！",
+    "success_message": "您的场地已成功添加",
+    "save_location": "保存位置",
+    "search_location": "搜索位置",
+    "location_info": "位置描述（例如：地标）"
+  },
+  "owner_home": {
+    "add_field_title": "添加足球场",
+    "add_now": "立即添加",
+    "add_tournament_title": "添加锦标赛",
+    "your_fields": "您的场地",
+    "see_tournaments": "查看您的锦标赛",
+    "fields": "场地",
+    "matches": "比赛",
+    "add_field": "添加场地"
+  },
+  "owner_tournament": {
+    "done": "完成",
+    "success_msg": "您已成功添加锦标赛！",
+    "create": "创建锦标赛",
+    "name": "锦标赛名称",
+    "description": "描述",
+    "pick_date": "选择日期",
+    "submit": "提交",
+    "public": "公开",
+    "private": "私有",
+    "institution": "机构名称",
+    "num_of_teams": "队伍数量",
+    "title": "您的锦标赛",
+    "error_message": "当前出现错误，请联系我们的团队",
+    "from": "从",
+    "to": "到",
+    "start": "开始锦标赛",
+    "error_messagee": "加载锦标赛失败",
+    "empty_message": "您尚未添加任何锦标赛"
+  },
+  "date_range": {
+    "title": "选择日期范围",
+    "cancel": "取消",
+    "apply": "应用"
+  },
+  "teams_joined": {
+    "title": "已加入的队伍",
+    "error": "当前发生错误！",
+    "empty_message": "尚未有队伍加入"
+  },
+  "hour_range": {
+    "title": "选择开始时间",
+    "apply": "应用",
+    "cancel": "取消"
+  },
+  "change_language": "更改语言",
+  "english": "英语",
+  "arabic": "阿拉伯语",
+  "add_match": "添加比赛",
+  "max_players": "每队最多球员数",
+  "warning_title": "警告",
+  "permission_warning_message": "请授予应用权限。",
+  "enable_location_message": "您需要先启用位置",
+  "success_title": "成功",
+  "error_title": "错误",
+  "schedule_match_title": "为 {fieldName} 安排比赛",
+  "max_players_hint": "每队最多球员数",
+  "pick_date_button": "选择日期",
+  "weekly_note": "注意：此日期将每周提供给球员",
+  "enter_player_id_warning": "请在添加前输入球员ID",
+  "add_player_hint": "添加球员ID",
+  "add_time_button": "添加时间",
+  "add_match_button": "添加比赛",
+  "enter_required_data_warning": "请输入所有必填数据",
+  "delete_match_confirmation": "确定永久删除此比赛吗？",
+  "cancel_button": "取消",
+  "confirm_button": "确认",
+  "pick_start_time_warning": "请先选择开始时间",
+  "from_label": "从",
+  "to_label": "到",
+  "pick_start_time_button": "选择开始时间",
+  "pick_end_time_button": "选择结束时间",
+  "field_deleted_success": "您的场地已成功删除！",
+  "delete_field_confirmation": "确定永久删除您的场地吗？",
+  "your_matches_button": "您的比赛",
+  "schedule_matches_button": "安排比赛",
+  "delete_field_button": "删除场地",
+  "field_capacity_label": "{capacity} x {capacity} 足球场",
+  "match_result_title": "比赛结果",
+  "vs_label": "对",
+  "score_warning_message": "请先添加比分，且比分不能相等",
+  "add_score_button": "添加比分",
+  "done_button": "完成",
+  "generate_next_round_button": "生成下一轮",
+  "round_started_success_message": "比赛已成功开始！",
+  "round_started_error_message": "创建下一轮时发生错误。",
+  "final_result_title": "最终结果",
+  "final_result_error_prefix": "错误：{message}",
+  "month": {
+    "january": "一月",
+    "february": "二月",
+    "march": "三月",
+    "april": "四月",
+    "may": "五月",
+    "june": "六月",
+    "july": "七月",
+    "august": "八月",
+    "september": "九月",
+    "october": "十月",
+    "november": "十一月",
+    "december": "十二月"
+  },
+  "schedule_date": {
+    "missing_title": "缺少部分数据",
+    "missing_message": "请为所有比赛选择时间。",
+    "header_title": "为每场比赛设置时间",
+    "submit_button": "开始下一轮"
+  },
+  "show_hour_range": {
+    "from": "从",
+    "to": "到",
+    "select": "选择时间"
+  },
+  "change_password": {
+    "title": "更改您的密码",
+    "old_hint": "旧密码",
+    "new_hint": "新密码",
+    "button": "更改密码"
+  },
+  "search": {
+    "no_results": "未找到 \"{query}\" 的结果"
+  },
+  "amenities": {
+    "parking": "停车场",
+    "ball_rent": "球租赁",
+    "toilets": "厕所",
+    "changing_rooms": "更衣室",
+    "cafeteria": "小卖部",
+    "lighting_quality": "照明质量",
+    "field_quality": "场地质量"
+  },
+  "field_view": {
+    "no_location_info": "未提供位置信息",
+    "book_now": "立即预订"
+  },
+  "tournament_card": {
+    "type": "类型：{}",
+    "knockout": "淘汰赛"
+  },
+  "register_team": {
+    "error_title": "错误",
+    "error_message": "注册过程中发生错误！"
+  },
+  "add_player": {
+    "success_title": "成功",
+    "success_message": "球员已成功加入您的队伍！",
+    "error_title": "错误",
+    "error_message": "输入的球员ID无效",
+    "warning_title": "警告",
+    "warning_message": "请先输入您要添加的球员ID",
+    "button_text": "添加球员"
+  },
+  "players_team": {
+    "type_id_hint": "输入球员ID"
+  },
+  "user_team": {
+    "register_title": "注册您的队伍",
+    "team_name_hint": "队伍名称",
+    "pick_logo": "选择队伍徽标",
+    "data_required": "数据必填",
+    "fill_all_data": "请确保填写所有数据",
+    "next": "下一步"
+  },
+  "tournaments": {
+    "title": "可用锦标赛"
+  },
+  "match_details": {
+    "title": "比赛详情",
+    "not_played": "尚未进行",
+    "field_name": "足球场",
+    "no_location_info": "未提供位置信息",
+    "done": "完成"
+  },
+  "round_stage": {
+    "quarter_final": "四分之一决赛阶段",
+    "semi_final": "半决赛阶段",
+    "final": "决赛阶段",
+    "finished": "已结束"
+  },
+  "match": {
+    "vs": "对"
+  },
+  "team_info": {
+    "see_your_team": "查看您的队伍"
+  },
+  "tournament": {
+    "fields": "场地",
+    "get_info": "获取信息",
+    "error": "错误",
+    "private_for": "专属",
+    "only": "仅限",
+    "from": "从",
+    "to": "到",
+    "type": "类型",
+    "teams_joined": "已加入队伍",
+    "be_first": "成为第一支加入的队伍！",
+    "view_matches_rounds": "查看您的比赛和轮次",
+    "view_winner": "查看胜者",
+    "join": "加入"
+  },
+  "filter": {
+    "next_week": "下周",
+    "today": "今天",
+    "three_days": "三天内",
+    "last_week": "上周",
+    "last_month": "上个月"
+  },
+  "button": {
+    "done": "完成"
+  }
+}

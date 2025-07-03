@@ -1,0 +1,312 @@
+{
+  "signin": {
+    "title": "Accedi al tuo account",
+    "email": "Email",
+    "password": "Password",
+    "button": "Accedi",
+    "no_account": "Non hai un account?",
+    "signup": "Registrati"
+  },
+  "signup": {
+    "title": "Crea un account",
+    "name": "Nome",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Conferma Password",
+    "select_country": "Seleziona il tuo paese",
+    "submit": "Registrati",
+    "country_required": "Il paese è obbligatorio",
+    "already_have_account": "Hai già un account?",
+    "login": "Accedi"
+  },
+  "onboarding": {
+    "welcome": "Benvenuto su Book and Play!",
+    "subtitle": "Calcio vicino a te \n più veloce, facile e divertente!",
+    "continue_as": "Continua come ..",
+    "player": "Giocatore",
+    "owner": "Proprietario Campo da Calcio"
+  },
+  "home": {
+    "card1_title": "Prenota, Gioca, Vinci!",
+    "card1_subtitle": "Prenota Ora",
+    "card2_title": "Connettiti, Chatta e Gioca",
+    "card2_subtitle": "Invia Messaggio",
+    "card3_title": "Trova Nuovi Giocatori",
+    "card3_subtitle": "Trasmetti",
+    "your_booking": "La tua prenotazione",
+    "browse_your_booking": "Visualizza la tua prenotazione",
+    "recommended": "Ultimi Tornei",
+    "see_all": "Vedi Tutto"
+  },
+  "player_home_appbar": {
+    "welcome_back": "Bentornato,",
+    "error": "Errore:",
+    "default_user": "Utente"
+  },
+  "user_booking": {
+    "error_message": "Si è verificato un errore, riprova più tardi o contatta il nostro team.",
+    "no_matches": "Nessuna Partita Prenotata"
+  },
+  "user_book": {
+    "browse_fields": "Esplora i Campi da Calcio",
+    "search_hint": "Cerca un luogo o una posizione",
+    "location_info": "Informazioni sulla posizione:",
+    "amenities": "Servizi:",
+    "book_now": "Prenota Ora",
+    "get_directions": "Ottieni indicazioni",
+    "no_available_matches": "Nessuna partita disponibile",
+    "confirm_booking": "Conferma Prenotazione",
+    "error_booking_title": "Errore nella prenotazione!",
+    "success_booking_title": "Congratulazioni!",
+    "success_booking_sub": "Prenotazione avvenuta con successo",
+    "select_date_prompt": "Seleziona una data per vedere le partite"
+  },
+  "user_settings": {
+    "about_us": "Chi Siamo",
+    "change_password": "Cambia Password",
+    "logout": "Disconnetti",
+    "change_language": "Cambia Lingua",
+    "id_label": "ID:",
+    "error_loading": "Errore nel caricamento delle impostazioni"
+  },
+  "about_us": {
+    "title": "Book And Play",
+    "p1": "Book and Play è il tuo compagno ideale per organizzare e goderti le partite di calcio nella tua zona. Che tu sia un giocatore o un proprietario di campo, la nostra app unisce la comunità calcistica in un unico posto.",
+    "p2": "I giocatori possono facilmente trovare e prenotare partite negli stadi vicini, connettersi e chattare con i compagni di squadra e partecipare a campionati emozionanti.",
+    "p3": "Per i proprietari di campi, Book and Play offre una piattaforma semplice per aggiungere dettagli, programmare partite e gestire prenotazioni in modo efficiente.",
+    "p4": "Unisciti a una comunità in crescita che ama il calcio. Con Book and Play è più facile trovare partite, creare squadre e divertirsi."
+  },
+  "bottom_nav": {
+    "home": "Home",
+    "settings": "Impostazioni"
+  },
+  "log": {
+    "error": "Errore",
+    "check_credentials": "Controlla la tua email e password"
+  },
+  "owner_add_field": {
+    "title": "Compila le informazioni del tuo campo da calcio",
+    "field_name_hint": "Nome del campo da calcio",
+    "select_country": "Seleziona Paese",
+    "city_hint": "Città del campo",
+    "capacity_hint": "Capienza del campo",
+    "choose_location": "Scegli Posizione",
+    "pick_image": "Carica un'immagine del campo",
+    "submit": "Aggiungi Campo da Calcio",
+    "success_title": "Fatto!",
+    "success_message": "Il tuo campo è stato aggiunto con successo",
+    "save_location": "Salva Posizione",
+    "search_location": "cerca una posizione",
+    "location_info": "descrizione della posizione (es: punti di riferimento)"
+  },
+  "owner_home": {
+    "add_field_title": "Aggiungi Campo da Calcio",
+    "add_now": "Aggiungi Ora",
+    "add_tournament_title": "Aggiungi un Torneo",
+    "your_fields": "I Tuoi Campi",
+    "see_tournaments": "Vedi i Tuoi Tornei",
+    "fields": "Campi",
+    "matches": "Partite",
+    "add_field": "Aggiungi Campo"
+  },
+  "owner_tournament": {
+    "done": "Fatto",
+    "success_msg": "Hai aggiunto un torneo con successo!",
+    "create": "Crea un torneo",
+    "name": "Nome del torneo",
+    "description": "Descrizione",
+    "pick_date": "Scegli la data",
+    "submit": "Invia",
+    "public": "Pubblico",
+    "private": "Privato",
+    "institution": "Nome dell'istituzione",
+    "num_of_teams": "numero di squadre",
+    "title": "I tuoi tornei",
+    "error_message": "Si è verificato un errore, contatta il nostro team",
+    "from": "Dal",
+    "to": "Al",
+    "start": "Inizia Torneo",
+    "error_messagee": "Caricamento tornei fallito",
+    "empty_message": "Non hai ancora aggiunto tornei"
+  },
+  "date_range": {
+    "title": "Seleziona un intervallo di date",
+    "cancel": "Annulla",
+    "apply": "Applica"
+  },
+  "teams_joined": {
+    "title": "Squadre Iscritte",
+    "error": "Si è verificato un errore!",
+    "empty_message": "Nessuna squadra iscritta"
+  },
+  "hour_range": {
+    "title": "Seleziona ora di inizio",
+    "apply": "Applica",
+    "cancel": "Annulla"
+  },
+  "change_language": "Cambia Lingua",
+  "english": "Inglese",
+  "arabic": "Arabo",
+  "add_match": "Aggiungi Partita",
+  "max_players": "Numero massimo di giocatori per squadra",
+  "warning_title": "Avviso",
+  "permission_warning_message": "Concedi le autorizzazioni all'app.",
+  "enable_location_message": "Devi prima attivare la tua posizione",
+  "success_title": "Successo",
+  "error_title": "Errore",
+  "schedule_match_title": "Programma una partita per {fieldName}",
+  "max_players_hint": "Numero massimo di giocatori per squadra",
+  "pick_date_button": "Scegli una Data",
+  "weekly_note": "Nota: questa data sarà disponibile settimanalmente",
+  "enter_player_id_warning": "Inserisci un ID giocatore prima di aggiungerne uno nuovo.",
+  "add_player_hint": "Aggiungi ID Giocatore",
+  "add_time_button": "Aggiungi Orario",
+  "add_match_button": "Aggiungi Partita",
+  "enter_required_data_warning": "Inserisci tutti i dati richiesti",
+  "delete_match_confirmation": "Vuoi davvero eliminare definitivamente questa partita?",
+  "cancel_button": "Annulla",
+  "confirm_button": "Conferma",
+  "pick_start_time_warning": "Scegli prima un orario di inizio",
+  "from_label": "Da",
+  "to_label": "A",
+  "pick_start_time_button": "Scegli Ora di Inizio",
+  "pick_end_time_button": "Scegli Ora di Fine",
+  "field_deleted_success": "Il tuo campo è stato eliminato con successo!",
+  "delete_field_confirmation": "Sei sicuro di voler eliminare definitivamente il tuo campo?",
+  "your_matches_button": "Le Tue Partite",
+  "schedule_matches_button": "Programma Partite",
+  "delete_field_button": "Elimina Campo",
+  "field_capacity_label": "Campo da Calcio {capacity} x {capacity}",
+  "match_result_title": "Risultato della Partita",
+  "vs_label": "VS",
+  "score_warning_message": "Devi aggiungere un punteggio e non devono essere uguali",
+  "add_score_button": "Aggiungi Punteggio",
+  "done_button": "Fatto",
+  "generate_next_round_button": "Genera il Prossimo Turno",
+  "round_started_success_message": "Il turno è iniziato con successo!",
+  "round_started_error_message": "Si è verificato un errore durante la creazione del turno.",
+  "final_result_title": "Risultato",
+  "final_result_error_prefix": "Errore: {message}",
+  "month": {
+    "january": "Gennaio",
+    "february": "Febbraio",
+    "march": "Marzo",
+    "april": "Aprile",
+    "may": "Maggio",
+    "june": "Giugno",
+    "july": "Luglio",
+    "august": "Agosto",
+    "september": "Settembre",
+    "october": "Ottobre",
+    "november": "Novembre",
+    "december": "Dicembre"
+  },
+  "schedule_date": {
+    "missing_title": "Alcuni valori mancano",
+    "missing_message": "Seleziona gli orari per tutte le partite.",
+    "header_title": "Imposta l'orario per ogni partita",
+    "submit_button": "Avvia il prossimo turno"
+  },
+  "show_hour_range": {
+    "from": "Da",
+    "to": "A",
+    "select": "Seleziona un orario"
+  },
+  "change_password": {
+    "title": "Cambia la tua password",
+    "old_hint": "Vecchia password",
+    "new_hint": "Nuova password",
+    "button": "Cambia Password"
+  },
+  "search": {
+    "no_results": "Nessun risultato trovato per \"{query}\""
+  },
+  "amenities": {
+    "parking": "Parcheggio",
+    "ball_rent": "Noleggio Pallone",
+    "toilets": "Bagni",
+    "changing_rooms": "Spogliatoi",
+    "cafeteria": "Caffetteria",
+    "lighting_quality": "Qualità Illuminazione",
+    "field_quality": "Qualità del Campo"
+  },
+  "field_view": {
+    "no_location_info": "Nessuna descrizione della posizione",
+    "book_now": "Prenota Ora"
+  },
+  "tournament_card": {
+    "type": "Tipo: {}",
+    "knockout": "Eliminazione Diretta"
+  },
+  "register_team": {
+    "error_title": "Errore",
+    "error_message": "Si è verificato un errore durante la registrazione!"
+  },
+  "add_player": {
+    "success_title": "Successo",
+    "success_message": "Il giocatore è stato aggiunto alla tua squadra!",
+    "error_title": "Errore",
+    "error_message": "L'ID giocatore inserito non è valido",
+    "warning_title": "Avviso",
+    "warning_message": "Devi inserire l'ID del giocatore da aggiungere",
+    "button_text": "Aggiungi giocatore"
+  },
+  "players_team": {
+    "type_id_hint": "Inserisci ID giocatore"
+  },
+  "user_team": {
+    "register_title": "Registra la tua squadra",
+    "team_name_hint": "Nome squadra",
+    "pick_logo": "Carica il logo della squadra",
+    "data_required": "Dati richiesti",
+    "fill_all_data": "Assicurati di inserire tutti i dati",
+    "next": "Avanti"
+  },
+  "tournaments": {
+    "title": "Tornei Disponibili"
+  },
+  "match_details": {
+    "title": "Dettagli Partita",
+    "not_played": "Non ancora giocata",
+    "field_name": "Campo da Calcio",
+    "no_location_info": "Nessuna descrizione della posizione",
+    "done": "Fatto"
+  },
+  "round_stage": {
+    "quarter_final": "Ai Quarti di Finale",
+    "semi_final": "Alla Semifinale",
+    "final": "Alla Finale",
+    "finished": "Concluso"
+  },
+  "match": {
+    "vs": "VS"
+  },
+  "team_info": {
+    "see_your_team": "Vedi la tua squadra"
+  },
+  "tournament": {
+    "fields": "Campi",
+    "get_info": "Ottieni Info",
+    "error": "Errore",
+    "private_for": "Per",
+    "only": "solo",
+    "from": "Dal",
+    "to": "Al",
+    "type": "Tipo",
+    "teams_joined": "Squadre Iscritte",
+    "be_first": "Sii la prima squadra a partecipare!",
+    "view_matches_rounds": "Vedi le tue Partite e Turni",
+    "view_winner": "Vedi il Vincitore",
+    "join": "Partecipa"
+  },
+  "filter": {
+    "next_week": "Settimana prossima",
+    "today": "Oggi",
+    "three_days": "3 giorni",
+    "last_week": "Settimana scorsa",
+    "last_month": "Mese scorso"
+  },
+  "button": {
+    "done": "Fatto"
+  }
+}
