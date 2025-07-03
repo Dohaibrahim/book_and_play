@@ -5,9 +5,9 @@ import 'package:book_and_play/core/widgets/tournament_status_card.dart';
 import 'package:book_and_play/features/user/tournaments/data/models/get_tournaments_res.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/fetch_tournaments/fetch_tournaments_cubit.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/fetch_tournaments/fetch_tournaments_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class LatestTournaments extends StatelessWidget {
   const LatestTournaments({super.key, required this.fetchAll});
@@ -105,7 +105,12 @@ class TournamentCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                Text('Type : Knockout'),
+                Text(
+                  'tournament_card.type'.tr(
+                    args: ['tournament_card.knockout'.tr()],
+                  ),
+                ),
+                //Text('Type : Knockout'),
               ],
             ),
             Column(

@@ -4,6 +4,7 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/owner/matches/presentation/manager/delete_match/delete_match_cubit.dart';
 import 'package:book_and_play/features/owner/matches/presentation/manager/delete_match/delete_match_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class DeleteMatchBlocBuilder extends StatelessWidget {
         if (state is DeleteMatchFailureState) {
           TopSnackBar.show(
             context,
-            title: 'Error',
+            title: context.tr('error_title'),
             message: state.message,
             contentType: ContentType.failure,
             color: Colors.red,
@@ -29,7 +30,7 @@ class DeleteMatchBlocBuilder extends StatelessWidget {
           Navigator.pop(context);
           TopSnackBar.show(
             context,
-            title: 'Success',
+            title: context.tr('success_title'),
             message: state.message,
             contentType: ContentType.success,
             color: ColorManager.primaryColor,
@@ -40,7 +41,7 @@ class DeleteMatchBlocBuilder extends StatelessWidget {
         return AlertDialog(
           title: SizedBox(),
           content: Text(
-            'Are you sure you want to permanently delete this match?',
+            context.tr('delete_match_confirmation'),
             textAlign: TextAlign.center,
             style: TextStyles.font24BlackBold.copyWith(
               fontSize: 16,
@@ -52,8 +53,8 @@ class DeleteMatchBlocBuilder extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text(
-                'Cancel',
+              child: Text(
+                context.tr('cancel_button'),
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
@@ -64,9 +65,9 @@ class DeleteMatchBlocBuilder extends StatelessWidget {
               onPressed: () {
                 context.read<DeleteMatchCubit>().deleteMatch(matchId);
               },
-              child: const Text(
-                'Confirm',
-                style: TextStyle(
+              child: Text(
+                context.tr('confirm_button'),
+                style: const TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.w800,
                 ),

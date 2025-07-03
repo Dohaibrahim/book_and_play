@@ -9,6 +9,7 @@ import 'package:book_and_play/features/user/tournaments/data/models/get_tourname
 import 'package:book_and_play/features/user/tournaments/presentation/manager/get_specific_tournament/get_specific_tournament_cubit.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/manager/get_specific_tournament/get_specific_tournament_state.dart';
 import 'package:book_and_play/features/user/tournaments/presentation/widgets/team_info_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -39,7 +40,8 @@ class TournamentDetailsViewBody extends StatelessWidget {
           if (state is GetSpecificTournamentFailureState) {
             return Center(
               child: Text(
-                'error : ${state.msg}',
+                '${'tournament.error'.tr()} : ${state.msg}',
+                //'error : ${state.msg}',
                 style: TextStyles.font14BlackMedium,
               ),
             );
@@ -65,7 +67,7 @@ class TournamentDetailsViewBody extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Fields',
+                                'tournament.fields'.tr(),
                                 style: TextStyles.font24BlackBold.copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
@@ -121,7 +123,7 @@ class TournamentDetailsViewBody extends StatelessWidget {
                               );
                             },
                             child: Text(
-                              'get info',
+                              'tournament.get_info'.tr(),
                               style: TextStyle(
                                 color: ColorManager.primaryColor,
                                 fontSize: 18,
@@ -147,7 +149,8 @@ class TournamentDetailsViewBody extends StatelessWidget {
                 SizedBox(height: 10),
                 state.tournament.isPrivate
                     ? Text(
-                        'For ${state.tournament.institution} only',
+                        '${'tournament.private_for'.tr()} ${state.tournament.institution} ${'tournament.only'.tr()}',
+                        //'For ${state.tournament.institution} only',
                         style: TextStyle(
                           color: Colors.red,
                           fontSize: 20,
@@ -156,29 +159,27 @@ class TournamentDetailsViewBody extends StatelessWidget {
                       )
                     : SizedBox(),
                 Text(
-                  'From ${formatDate(state.tournament.startDate)}',
+                  '${'tournament.from'.tr()} ${formatDate(state.tournament.startDate)}',
                   style: TextStyle(fontSize: 18),
                 ),
                 Text(
-                  'To ${formatDate(state.tournament.endDate)}',
+                  '${'tournament.to'.tr()} ${formatDate(state.tournament.endDate)}',
                   style: TextStyle(fontSize: 18),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Type : Knockout',
+                  '${'tournament.type'.tr()} : Knockout',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 SizedBox(height: 30),
                 Text(
-                  'Teams Joined',
+                  'tournament.teams_joined'.tr(),
                   style: TextStyle(fontSize: 23, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(height: 10),
                 state.tournament.teams.isEmpty
                     ? Expanded(
-                        child: Center(
-                          child: Text('Be the first team who join!'),
-                        ),
+                        child: Center(child: Text('tournament.be_first'.tr())),
                       )
                     : Expanded(
                         child: ListView.builder(
@@ -203,7 +204,7 @@ class TournamentDetailsViewBody extends StatelessWidget {
                             arguments: state.tournament.id,
                           );
                         },
-                        text: 'View Your Matches & Rounds',
+                        text: 'tournament.view_matches_rounds'.tr(),
                         textStyle: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
@@ -213,7 +214,7 @@ class TournamentDetailsViewBody extends StatelessWidget {
                 state.tournament.status == 'finished'
                     ? AppButton(
                         onPressed: () {},
-                        text: 'View Winner',
+                        text: 'tournament.view_winner'.tr(),
                         textStyle: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
@@ -232,7 +233,7 @@ class TournamentDetailsViewBody extends StatelessWidget {
                             arguments: id,
                           );
                         },
-                        text: 'Join',
+                        text: 'tournament.join'.tr(),
                         textStyle: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,

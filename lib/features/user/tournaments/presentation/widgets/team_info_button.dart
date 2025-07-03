@@ -4,6 +4,7 @@ import 'package:book_and_play/core/utils/constant.dart';
 import 'package:book_and_play/core/utils/shared_pref.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/user/tournaments/data/models/tournament_details_res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class TeamInfoButton extends StatelessWidget {
@@ -42,7 +43,7 @@ class TeamInfoButton extends StatelessWidget {
                     },
                   );
                 },
-                text: 'See your team',
+                text: 'team_info.see_your_team'.tr(),
                 buttonColor: Colors.grey[400],
                 textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               )

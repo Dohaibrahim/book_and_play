@@ -2,6 +2,7 @@ import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/features/user/user_booking/data/models/user_matches_res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -63,8 +64,9 @@ class UserBookedFieldViewBody extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 100),
                   height: 40,
                   decoration: BoxDecoration(
-                    color:
-                        isMatchesOpen ? ColorManager.primaryColor : Colors.red,
+                    color: isMatchesOpen
+                        ? ColorManager.primaryColor
+                        : Colors.red,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Center(
@@ -132,7 +134,7 @@ class UserBookedFieldViewBody extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  text: 'Done',
+                  text: 'button.done'.tr(),
                 ),
                 SizedBox(height: screenHeight * 0.03),
               ],

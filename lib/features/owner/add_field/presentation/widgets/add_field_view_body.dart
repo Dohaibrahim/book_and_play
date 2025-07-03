@@ -166,7 +166,7 @@ class _AddFieldViewBodyState extends State<AddFieldViewBody> {
               Padding(
                 padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
                 child: AppTextFormField(
-                  hintText: 'location description (ex: landmarks)',
+                  hintText: 'owner_add_field.location_info'.tr(),
                   onSaved: (data) {
                     locationDesc = data;
                   },

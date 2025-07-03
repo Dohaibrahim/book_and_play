@@ -48,7 +48,6 @@ class MyApp extends StatelessWidget {
           : (userRole == 'owner'
                 ? Routes.ownerBottomNavView
                 : Routes.userBottomNavView),
-      // later will be sign in
       title: 'Book and Play',
     );
   }

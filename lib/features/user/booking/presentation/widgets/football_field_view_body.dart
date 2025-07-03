@@ -99,7 +99,7 @@ class FootballFieldViewBody extends StatelessWidget {
                       SizedBox(height: 10),
                       Text(
                         state.field.locationInfo ??
-                            'No location description provided',
+                            'field_view.no_location_info'.tr(),
                         style: TextStyles.font14BlackMedium.copyWith(
                           color: Colors.grey[700],
                           fontSize: 17,
@@ -132,7 +132,7 @@ class FootballFieldViewBody extends StatelessWidget {
                             },
                           );
                         },
-                        text: 'Book Now',
+                        text: 'field_view.book_now'.tr(),
                       ),
                       SizedBox(height: screenHeight * 0.03),
                       //Expanded(child: SizedBox()),
@@ -159,13 +159,13 @@ class AmenitiesListView extends StatelessWidget {
     final amenity = amenties.first;
 
     final available = {
-      'Parking': amenity.parking,
-      'Ball Rent': amenity.ballRent,
-      'Toilets': amenity.toilets,
-      'Changing Rooms': amenity.changingRooms,
-      'Cafeteria': amenity.cafeteria,
-      'Lighting Quality': amenity.lightingQuality,
-      'Field Quality': amenity.fieldQuality,
+      'amenities.parking': amenity.parking,
+      'amenities.ball_rent': amenity.ballRent,
+      'amenities.toilets': amenity.toilets,
+      'amenities.changing_rooms': amenity.changingRooms,
+      'amenities.cafeteria': amenity.cafeteria,
+      'amenities.lighting_quality': amenity.lightingQuality,
+      'amenities.field_quality': amenity.fieldQuality,
     };
 
     final visibleAmenities = available.entries
@@ -181,7 +181,7 @@ class AmenitiesListView extends StatelessWidget {
         itemCount: amenties.length,
         itemBuilder: (context, index) {
           return Text(
-            visibleAmenities[index],
+            visibleAmenities[index].tr(),
             style: TextStyles.font14BlackMedium.copyWith(
               color: Colors.grey[700],
               fontSize: 16,

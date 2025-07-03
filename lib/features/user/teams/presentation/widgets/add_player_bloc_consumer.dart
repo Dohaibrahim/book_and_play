@@ -7,6 +7,7 @@ import 'package:book_and_play/features/user/teams/presentation/manager/add_playe
 import 'package:book_and_play/features/user/teams/presentation/manager/add_player_cubit/add_player_state.dart';
 import 'package:book_and_play/features/user/teams/presentation/manager/get_specific_team_cubit/get_specific_team_cubit.dart';
 import 'package:book_and_play/features/user/teams/presentation/widgets/players_of_team_view_body.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,8 +30,8 @@ class AddPlayerBlocConsumer extends StatelessWidget {
         if (state is AddPlayerSuccessState) {
           TopSnackBar.show(
             context,
-            title: 'Success',
-            message: 'The player is successfully added to your team!',
+            title: 'add_player.success_title'.tr(),
+            message: 'add_player.success_message'.tr(),
             contentType: ContentType.success,
             color: ColorManager.primaryColor,
           );
@@ -38,8 +39,8 @@ class AddPlayerBlocConsumer extends StatelessWidget {
         if (state is AddPlayerFailureState) {
           TopSnackBar.show(
             context,
-            title: 'Error',
-            message: 'The player ID you entered not valid',
+            title: 'add_player.error_title'.tr(),
+            message: 'add_player.error_message'.tr(),
             contentType: ContentType.failure,
             color: Colors.red,
           );
@@ -64,14 +65,14 @@ class AddPlayerBlocConsumer extends StatelessWidget {
             } else {
               TopSnackBar.show(
                 context,
-                title: 'Warning',
-                message: 'You should enter player ID you want to add',
+                title: 'add_player.warning_title'.tr(),
+                message: 'add_player.warning_message'.tr(),
                 contentType: ContentType.warning,
                 color: Colors.orange,
               );
             }
           },
-          text: 'Add player',
+          text: 'add_player.button_text'.tr(),
         );
       },
     );

@@ -89,12 +89,15 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 onPressed: () {
                   showCountryPicker(
                     context: context,
+                    countryFilter: CountryService()
+                        .getAll()
+                        .where((c) => c.countryCode != 'IL') // Exclude Israel
+                        .map((c) => c.countryCode)
+                        .toList(),
                     onSelect: (Country country) async {
-                      log('Select country: ${country.name}');
+                      log('Selected country: ${country.name}');
                       countryName = country.name;
-                      countryName != null
-                          ? isCountrySelected = true
-                          : isCountrySelected = false;
+                      isCountrySelected = countryName != null;
                     },
                     onClosed: () {
                       countryName ??= '';

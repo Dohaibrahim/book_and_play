@@ -18,7 +18,9 @@ class StadiumCard extends StatelessWidget {
     required this.stadiumCapacity,
     required this.date,
     required this.country,
+    required this.image,
   });
+  final ImageProvider image;
   final String title, stadiumCapacity, date, country;
   final UserMatchModel matchModel;
   @override
@@ -42,7 +44,6 @@ class StadiumCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               margin: EdgeInsets.only(left: 13, top: 8, bottom: 8, right: 13),
@@ -60,11 +61,10 @@ class StadiumCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/images/stadium_image.jpg'),
+                  image: image, //AssetImage('assets/images/stadium_image.jpg'),
                 ),
               ),
             ),
-
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -135,7 +135,14 @@ class StadiumCardListView extends StatelessWidget {
             padding: EdgeInsets.zero,
             itemCount: state.matches.length,
             itemBuilder: (context, index) {
+              final imageProvider =
+                  (state.matches[index].field.image != null &&
+                      state.matches[index].field.image!.isNotEmpty)
+                  ? NetworkImage(state.matches[index].field.image!)
+                  : AssetImage('assets/images/football_stadium_demo.jpg')
+                        as ImageProvider;
               return StadiumCard(
+                image: imageProvider,
                 matchModel: state.matches[index],
                 title: state.matches[index].field.name,
                 stadiumCapacity:

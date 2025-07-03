@@ -4,6 +4,7 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/show_hour_range.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ScheduleDate extends StatefulWidget {
@@ -38,8 +39,8 @@ class _ScheduleDateState extends State<ScheduleDate> {
     if (matchTimes.any((t) => t == null)) {
       return TopSnackBar.show(
         context,
-        title: 'There are value missed',
-        message: 'Please select times for all matches.',
+        title: context.tr('schedule_date.missing_title'),
+        message: context.tr('schedule_date.missing_message'),
         contentType: ContentType.warning,
         color: Colors.orange[600]!,
       );
@@ -68,7 +69,7 @@ class _ScheduleDateState extends State<ScheduleDate> {
           ),
           SizedBox(height: 10),
           Text(
-            'Set Time To Each Match ',
+            context.tr('schedule_date.header_title'),
             style: TextStyles.font32BlockBold.copyWith(
               color: ColorManager.primaryColor,
               fontSize: 25,
@@ -91,7 +92,7 @@ class _ScheduleDateState extends State<ScheduleDate> {
             onPressed: () {
               saveAndPop();
             },
-            text: 'Start The Next Round',
+            text: context.tr('schedule_date.submit_button'),
           ),
           SizedBox(height: 20),
         ],

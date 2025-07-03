@@ -25,7 +25,7 @@ class MatchDetailsViewBody extends StatelessWidget {
         children: [
           SizedBox(height: 70),
           Text(
-            'Match Details',
+            'match_details.title'.tr(),
             style: TextStyles.font24BlackBold,
             textAlign: TextAlign.center,
           ),
@@ -37,7 +37,7 @@ class MatchDetailsViewBody extends StatelessWidget {
               date: formatDate(match.date),
               time: '${match.time.start} - ${match.time.end}',
               score: match.score.teamA == null
-                  ? 'not been played yet'
+                  ? 'match_details.not_played'.tr()
                   : '${match.score.teamA} - ${match.score.teamB}',
               teamsBName: match.teamB.name,
             ),
@@ -57,7 +57,7 @@ class MatchDetailsViewBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      'Football Field : ${state.field.name}',
+                      '${'match_details.field_name'.tr()} : ${state.field.name}',
                       style: TextStyles.font24BlackBold.copyWith(fontSize: 22),
                     ),
                     Row(
@@ -95,7 +95,8 @@ class MatchDetailsViewBody extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Egypt 11371, Cairo, 69 Mostafa El Nahas Street, Nasr City',
+                      state.field.locationInfo ??
+                          'match_details.no_location_info'.tr(),
                       style: TextStyles.font14BlackMedium.copyWith(
                         color: Colors.grey[700],
                         fontSize: 16,
@@ -121,7 +122,7 @@ class MatchDetailsViewBody extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      text: 'Done',
+                      text: 'match_details.done'.tr(),
                       textStyle: TextStyles.font24BlackBold.copyWith(
                         color: Colors.white,
                         fontSize: 20,

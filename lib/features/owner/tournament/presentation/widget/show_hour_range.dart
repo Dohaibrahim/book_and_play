@@ -1,4 +1,5 @@
 import 'package:book_and_play/core/theme/text_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ShowHourRange extends StatefulWidget {
@@ -33,7 +34,7 @@ class _ShowHourRangeState extends State<ShowHourRange> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            'From',
+            context.tr('show_hour_range.from'),
             style: TextStyles.font24BlackBold.copyWith(fontSize: 18),
           ),
           SizedBox(
@@ -76,7 +77,7 @@ class _ShowHourRangeState extends State<ShowHourRange> {
                 child: Center(
                   child: Text(
                     selectedTime == null
-                        ? 'select a date'
+                        ? context.tr('show_hour_range.select')
                         : selectedTime!.format(context),
                     style: TextStyle(
                       fontSize: selectedTime == null ? 13 : 18,
@@ -88,7 +89,10 @@ class _ShowHourRangeState extends State<ShowHourRange> {
               ),
             ),
           ),
-          Text('To', style: TextStyles.font24BlackBold.copyWith(fontSize: 18)),
+          Text(
+            context.tr('show_hour_range.to'),
+            style: TextStyles.font24BlackBold.copyWith(fontSize: 18),
+          ),
           Container(
             width: 140,
             height: 45,

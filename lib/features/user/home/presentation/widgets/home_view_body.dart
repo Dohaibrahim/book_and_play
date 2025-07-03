@@ -52,7 +52,7 @@ class HomeViewBody extends StatelessWidget {
                   Navigator.pushNamed(context, Routes.tournamentsView);
                 },
                 child: Text(
-                  'See All',
+                  'home.see_all'.tr(),
                   style: TextStyles.font14BlackMedium.copyWith(
                     color: ColorManager.primaryColor,
                     fontSize: 16,

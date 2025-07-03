@@ -14,7 +14,6 @@ import 'package:book_and_play/features/owner/tournament/presentation/teams_sched
 import 'package:book_and_play/features/user/booking/presentation/book_now_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/choose_football_field_view.dart';
 import 'package:book_and_play/features/user/booking/presentation/football_field_view.dart';
-import 'package:book_and_play/features/user/booking/presentation/location_selection.dart';
 import 'package:book_and_play/features/user/home/presentation/home_view.dart';
 import 'package:book_and_play/features/user/Bottom_nav/presentation/bottom_nav_view.dart';
 import 'package:book_and_play/features/onboarding/presentation/onboarding_view.dart';

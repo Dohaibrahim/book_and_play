@@ -132,7 +132,7 @@ class _OwnerAvailableSlotsListViewState
         } else if (state is GetAvailableMatchesFailureState) {
           return Center(
             child: Text(
-              'Error: ${state.errorMessage}',
+              '${context.tr('error_title')}: ${state.errorMessage}',
               style: TextStyles.font24BlackBold.copyWith(fontSize: 17),
             ),
           );

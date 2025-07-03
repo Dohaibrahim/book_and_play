@@ -7,10 +7,9 @@ class UserMatchesResponse {
   factory UserMatchesResponse.fromJson(Map<String, dynamic> json) {
     return UserMatchesResponse(
       message: json['message'],
-      matches:
-          (json['matches'] as List)
-              .map((match) => UserMatchModel.fromJson(match))
-              .toList(),
+      matches: (json['matches'] as List)
+          .map((match) => UserMatchModel.fromJson(match))
+          .toList(),
     );
   }
 }
@@ -77,6 +76,7 @@ class Field {
   final bool isPaid;
   final int pricePerHour;
   final List<dynamic> amenities;
+  final String? image;
 
   Field({
     required this.location,
@@ -88,12 +88,14 @@ class Field {
     required this.isPaid,
     required this.pricePerHour,
     required this.amenities,
+    this.image,
   });
 
   factory Field.fromJson(Map<String, dynamic> json) {
     return Field(
       location: GeoLocation.fromJson(json['location']),
       id: json['_id'],
+      image: json['image'],
       name: json['name'],
       city: json['city'],
       country: json['country'],

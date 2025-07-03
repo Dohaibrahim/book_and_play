@@ -10,6 +10,7 @@ import 'package:book_and_play/features/owner/tournament/data/models/teams_matche
 import 'package:book_and_play/features/owner/tournament/presentation/manager/add_score_cubit/add_score_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/add_score_cubit/add_score_state.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/score_text_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -59,7 +60,7 @@ class _AddScoreState extends State<AddScore> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Match Result',
+              context.tr('match_result_title'),
               style: TextStyles.font24BlackBold.copyWith(fontSize: 18),
             ),
             SizedBox(height: 30),
@@ -86,7 +87,7 @@ class _AddScoreState extends State<AddScore> {
                     ],
                   ),
                   Text(
-                    'VS',
+                    context.tr('vs_label'),
                     textAlign: TextAlign.end,
                     style: TextStyles.font32BlockBold.copyWith(
                       color: ColorManager.primaryColor,
@@ -118,7 +119,7 @@ class _AddScoreState extends State<AddScore> {
                 if (state is AddScoreFailureState) {
                   return TopSnackBar.show(
                     context,
-                    title: 'Error',
+                    title: context.tr('error_title'),
                     message: state.msg,
                     contentType: ContentType.failure,
                     color: Colors.red,
@@ -163,15 +164,14 @@ class _AddScoreState extends State<AddScore> {
                       log('score a : ${scoreForA} , score b : ${scoreForB}');
                       TopSnackBar.show(
                         context,
-                        title: 'Warning',
-                        message:
-                            'You should add score first and they shouldn\'t equal',
+                        title: context.tr('warning_title'),
+                        message: context.tr('score_warning_message'),
                         contentType: ContentType.warning,
                         color: Colors.orange,
                       );
                     }
                   },
-                  text: 'Add',
+                  text: context.tr('add_score_button'),
                   textStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

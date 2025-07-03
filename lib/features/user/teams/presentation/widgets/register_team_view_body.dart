@@ -9,6 +9,7 @@ import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/user/teams/data/models/team_create_req.dart';
 import 'package:book_and_play/features/user/teams/presentation/manager/player_team_cubit/player_team_cubit.dart';
 import 'package:book_and_play/features/user/teams/presentation/manager/player_team_cubit/player_team_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -53,13 +54,13 @@ class _RegisterTeamViewBodyState extends State<RegisterTeamViewBody> {
             Image.asset('assets/images/register_team_image.png'),
             SizedBox(height: screenHeight * 0.05),
             Text(
-              'Register your team',
+              'user_team.register_title'.tr(),
               style: TextStyles.font24BlackBold,
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 40),
             AppTextFormField(
-              hintText: 'team name',
+              hintText: 'user_team.team_name_hint'.tr(),
               onSaved: (data) {
                 teamName = data;
               },
@@ -75,7 +76,7 @@ class _RegisterTeamViewBodyState extends State<RegisterTeamViewBody> {
                 borderSide: BorderSide(color: Colors.transparent),
               ),
               child: Text(
-                'Pick a logo of your team',
+                'user_team.pick_logo'.tr(),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 15,
@@ -107,14 +108,14 @@ class _RegisterTeamViewBodyState extends State<RegisterTeamViewBody> {
                     } else {
                       TopSnackBar.show(
                         context,
-                        title: 'Data required',
-                        message: 'please make sure to fill all data',
+                        title: 'user_team.data_required'.tr(),
+                        message: 'user_team.fill_all_data'.tr(),
                         contentType: ContentType.failure,
                         color: Colors.orange,
                       );
                     }
                   },
-                  text: 'Next',
+                  text: 'user_team.next'.tr(),
                   textStyle: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,

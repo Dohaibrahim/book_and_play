@@ -10,6 +10,7 @@ import 'package:book_and_play/features/owner/tournament/presentation/manager/get
 import 'package:book_and_play/features/owner/tournament/presentation/widget/add_score.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/bottom_sheet_builder.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/widget/match_card.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -100,7 +101,7 @@ class _TeamsScheduledViewBodyState extends State<TeamsScheduledViewBody> {
                                 '${currentMatches[index].time.start} : ${currentMatches[index].time.end}',
                             score: currentMatches[index].score.teamA != null
                                 ? '${currentMatches[index].score.teamA} - ${currentMatches[index].score.teamB}'
-                                : 'Add Score',
+                                : context.tr('add_score_button'),
                             teamsBName: currentMatches[index].teamB.name,
                           ),
                         ),

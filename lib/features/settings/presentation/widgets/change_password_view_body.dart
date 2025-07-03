@@ -5,6 +5,7 @@ import 'package:book_and_play/core/widgets/password_text_form_field.dart';
 import 'package:book_and_play/features/settings/data/models/change_pass_req.dart';
 import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_cubit.dart';
 import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,19 +32,19 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
             children: [
               SizedBox(height: screenHeight * 0.15),
               Text(
-                'Change Your Password',
+                'change_password.title'.tr(),
                 style: TextStyles.font32BlockBold.copyWith(fontSize: 25),
               ),
               SizedBox(height: 50),
               PasswordTextFormField(
-                hintText: 'Old password',
+                hintText: 'change_password.old_hint'.tr(),
                 onSaved: (data) {
                   oldPass = data;
                 },
               ),
               SizedBox(height: 15),
               PasswordTextFormField(
-                hintText: 'New password',
+                hintText: 'change_password.new_hint'.tr(),
                 onSaved: (data) {
                   newPass = data;
                 },
@@ -71,7 +72,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                         );
                       }
                     },
-                    text: 'Change Password',
+                    text: 'change_password.button'.tr(),
                     textStyle: TextStyle(fontSize: 20),
                   );
                 },

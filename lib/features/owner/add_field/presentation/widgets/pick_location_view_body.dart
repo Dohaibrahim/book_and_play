@@ -41,8 +41,8 @@ class _PickLocationViewBodyState extends State<PickLocationViewBody> {
     } else {
       TopSnackBar.show(
         context,
-        title: 'Warning',
-        message: 'Please give permissions to the app.',
+        title: context.tr('warning_title'),
+        message: context.tr('permission_warning_message'),
         contentType: ContentType.warning,
         color: Colors.orange,
       );
@@ -76,8 +76,8 @@ class _PickLocationViewBodyState extends State<PickLocationViewBody> {
         log("Location service not enabled.");
         TopSnackBar.show(
           context,
-          title: 'Warning',
-          message: 'you have to enable your location first',
+          title: context.tr('warning_title'),
+          message: context.tr('enable_location_message'),
           contentType: ContentType.warning,
           color: Colors.orange,
         );

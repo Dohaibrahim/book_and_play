@@ -1,6 +1,7 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:book_and_play/core/widgets/top_snackbar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class PickTimeRangeButton extends StatelessWidget {
@@ -45,8 +46,8 @@ class PickTimeRangeButton extends StatelessWidget {
       if (startTime == null) {
         TopSnackBar.show(
           context,
-          title: 'Warning',
-          message: 'Please pick a start time first',
+          title: context.tr('warning_title'),
+          message: context.tr('pick_start_time_warning'),
           contentType: ContentType.warning,
           color: Colors.orange,
         );
@@ -63,8 +64,8 @@ class PickTimeRangeButton extends StatelessWidget {
       } else {
         TopSnackBar.show(
           context,
-          title: 'Warning',
-          message: 'End time must be after start time',
+          title: context.tr('warning_title'),
+          message: context.tr('pick_start_time_warning'),
           contentType: ContentType.warning,
           color: Colors.orange,
         );
@@ -82,13 +83,13 @@ class PickTimeRangeButton extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: const [
+              children: [
                 Text(
-                  'From',
+                  context.tr('from_label'),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'To',
+                  context.tr('to_label'),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -104,13 +105,13 @@ class PickTimeRangeButton extends StatelessWidget {
                 TimeButton(
                   onPressed: _pickStartTime,
                   text: startTime == null
-                      ? 'Pick Start Time'
+                      ? context.tr('pick_start_time_button')
                       : _formatTime(startTime),
                 ),
                 TimeButton(
                   onPressed: _pickEndTime,
                   text: endTime == null
-                      ? 'Pick End Time'
+                      ? context.tr('pick_start_time_button')
                       : _formatTime(endTime),
                 ),
               ],

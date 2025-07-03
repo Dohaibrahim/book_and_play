@@ -56,7 +56,7 @@ class _TeamsJoinedViewBodyState extends State<TeamsJoinedViewBody> {
                   return Expanded(
                     child: Center(
                       child: Text(
-                        'There are no teams joined yet',
+                        'teams_joined.empty_message'.tr(),
                         style: TextStyles.font14BlackMedium,
                       ),
                     ),

@@ -5,6 +5,7 @@ import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/owner/owner_fields/data/models/owner_fields.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/manager/delete_field_cubit/delete_field_cubit.dart';
 import 'package:book_and_play/features/owner/owner_fields/presentation/manager/delete_field_cubit/delete_field_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,8 +25,8 @@ class DeleteFieldBlocProvider extends StatelessWidget {
             Navigator.pop(context);
             TopSnackBar.show(
               context,
-              title: 'Success',
-              message: 'your field has been removed successfully!',
+              title: context.tr('success_title'),
+              message: context.tr('field_deleted_success'),
               contentType: ContentType.success,
               color: ColorManager.primaryColor,
             );
@@ -33,7 +34,7 @@ class DeleteFieldBlocProvider extends StatelessWidget {
           if (state is DeleteFieldFailureState) {
             TopSnackBar.show(
               context,
-              title: 'Error',
+              title: context.tr('error_title'),
               message: state.errorMessage,
               contentType: ContentType.failure,
               color: Colors.red,
@@ -44,7 +45,7 @@ class DeleteFieldBlocProvider extends StatelessWidget {
           return AlertDialog(
             title: SizedBox(),
             content: Text(
-              'Are you sure you want to permanently delete your field?',
+              context.tr('delete_field_confirmation'),
               textAlign: TextAlign.center,
               style: TextStyles.font24BlackBold.copyWith(
                 fontSize: 16,
@@ -56,9 +57,9 @@ class DeleteFieldBlocProvider extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text(
-                  'Cancel',
-                  style: TextStyle(
+                child: Text(
+                  context.tr('cancel_button'),
+                  style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
                   ),
@@ -68,9 +69,9 @@ class DeleteFieldBlocProvider extends StatelessWidget {
                 onPressed: () {
                   context.read<DeleteFieldCubit>().deleteField(args.id);
                 },
-                child: const Text(
-                  'Confirm',
-                  style: TextStyle(
+                child: Text(
+                  context.tr('confirm_button'),
+                  style: const TextStyle(
                     color: Colors.red,
                     fontWeight: FontWeight.w800,
                   ),

@@ -7,6 +7,7 @@ import 'package:book_and_play/features/owner/matches/presentation/widgets/add_pl
 import 'package:book_and_play/features/owner/matches/presentation/widgets/create_match_bloc_builder.dart';
 import 'package:book_and_play/features/owner/owner_fields/data/models/owner_fields.dart';
 import 'package:book_and_play/features/owner/matches/presentation/widgets/pick_time_range.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -42,12 +43,13 @@ class _ScheduleMatchViewBodyState extends State<ScheduleMatchViewBody> {
                 children: [
                   SizedBox(height: screenHeight * 0.20),
                   Text(
-                    'Schedule a match for ${widget.ownerField.name}',
+                    tr('schedule_match_title', args: [widget.ownerField.name]),
+                    //'Schedule a match for ${widget.ownerField.name}',
                     style: TextStyles.font24BlackBold,
                   ),
                   SizedBox(height: screenHeight * 0.07),
                   AppTextFormField(
-                    hintText: 'Max number of players at each team',
+                    hintText: tr('max_players_hint'),
                     onSaved: (data) {
                       playersNum = int.parse(data ?? '0');
                     },
@@ -59,7 +61,7 @@ class _ScheduleMatchViewBodyState extends State<ScheduleMatchViewBody> {
                   AppButton(
                     onPressed: () => _pickDate(context),
                     text: pickedDate == null
-                        ? 'Pick a Date'
+                        ? tr('pick_date_button')
                         : formatDate(pickedDate!),
                     buttonColor: Colors.blueGrey[500],
                     textStyle: TextStyle(fontSize: 18),
@@ -82,7 +84,7 @@ class _ScheduleMatchViewBodyState extends State<ScheduleMatchViewBody> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Note : This date will be available for players weekly',
+                    tr('weekly_note'),
                     style: TextStyles.font14BlackMedium.copyWith(
                       color: Colors.grey[700],
                     ),

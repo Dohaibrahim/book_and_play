@@ -2,6 +2,7 @@ import 'package:book_and_play/core/theme/color_manager.dart';
 import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +23,7 @@ class FinalResultViewBody extends StatelessWidget {
               children: [
                 SizedBox(height: screenHeight * 0.15),
                 Text(
-                  'Result',
+                  context.tr('final_result_title'),
                   style: TextStyles.font24BlackBold.copyWith(fontSize: 28),
                   textAlign: TextAlign.center,
                 ),
@@ -80,7 +81,15 @@ class FinalResultViewBody extends StatelessWidget {
             );
           }
           if (state is GetMatchesFailureState) {
-            return Center(child: Text('error : ${state.errorMsg}'));
+            return Center(
+              child: Text(
+                context.tr(
+                  'final_result_error_prefix',
+                  namedArgs: {'message': state.errorMsg},
+                ),
+                style: TextStyles.font14BlackMedium.copyWith(color: Colors.red),
+              ),
+            );
           } else {
             return SizedBox();
           }

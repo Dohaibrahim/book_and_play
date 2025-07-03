@@ -6,6 +6,7 @@ import 'package:book_and_play/features/owner/matches/data/models/create_match_re
 import 'package:book_and_play/features/owner/matches/presentation/manager/create_match/create_match_cubit.dart';
 import 'package:book_and_play/features/owner/matches/presentation/manager/create_match/create_match_state.dart';
 import 'package:book_and_play/features/owner/owner_fields/data/models/owner_fields.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -67,14 +68,14 @@ class CreateMatchButton extends StatelessWidget {
                 pickedDate == null) {
               TopSnackBar.show(
                 context,
-                title: 'Warning',
-                message: 'Please enter all required data',
+                title: context.tr('warning_title'),
+                message: context.tr('enter_required_data_warning'),
                 contentType: ContentType.warning,
                 color: Colors.orange,
               );
             }
           },
-          text: 'Add Match',
+          text: context.tr('add_match_button'),
           textStyle: TextStyle(fontSize: 18),
         );
       },

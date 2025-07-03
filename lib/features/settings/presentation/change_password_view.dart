@@ -4,6 +4,7 @@ import 'package:book_and_play/core/widgets/top_snackbar.dart';
 import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_cubit.dart';
 import 'package:book_and_play/features/settings/presentation/manager/change_pass_cubit/change_pass_state.dart';
 import 'package:book_and_play/features/settings/presentation/widgets/change_password_view_body.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +23,7 @@ class ChangePasswordView extends StatelessWidget {
               Navigator.pop(context);
               TopSnackBar.show(
                 context,
-                title: 'Success',
+                title: context.tr('success_title'),
                 message: state.message,
                 contentType: ContentType.success,
                 color: ColorManager.primaryColor,
@@ -31,7 +32,7 @@ class ChangePasswordView extends StatelessWidget {
             if (state is ChangePassFailureState) {
               TopSnackBar.show(
                 context,
-                title: 'Error',
+                title: context.tr('error_title'),
                 message: state.errorMessage,
                 contentType: ContentType.failure,
                 color: Colors.red,

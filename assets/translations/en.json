@@ -36,7 +36,8 @@
     "card3_subtitle": "Broadcast",
     "your_booking": "Your Booking",
     "browse_your_booking": "Browse your booking",
-    "recommended": "Latest Tournaments"
+    "recommended": "Latest Tournaments",
+    "see_all": "See All"
   },
   "player_home_appbar": {
     "welcome_back": "Welcome Back,",
@@ -64,7 +65,10 @@
   "user_settings": {
     "about_us": "About Us",
     "change_password": "Change Password",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "change_language": "Change language",
+    "id_label": "ID :",
+    "error_loading": "Error loading settings"
   },
   "about_us": {
     "title": "Book And Play",
@@ -93,7 +97,8 @@
     "success_title": "Done1",
     "success_message": "Your field is now added successfully",
     "save_location": "Save Location",
-    "search_location" : "search on location"
+    "search_location" : "search on location",
+    "location_info" : "location description (ex: landmarks)"
   },
   "owner_home": {
   "add_field_title": "Add Football Field",
@@ -121,7 +126,9 @@
   "error_message": "There is an error right now, please reach out to our team",
   "from": "From",
   "to": "To",
-  "start": "Start Tournament"
+  "start": "Start Tournament",
+  "error_messagee": "Failed to load tournaments",
+  "empty_message": "You haven't added any tournaments yet"
 
 },
 "date_range": {
@@ -131,7 +138,8 @@
 },
 "teams_joined": {
   "title": "Teams Joined",
-  "error": "There is an error right now!"
+  "error": "There is an error right now!",
+  "empty_message": "There are no teams joined yet"
 },
 "hour_range": {
   "title": "Select Start Hour",
@@ -142,6 +150,167 @@
   "english": "English",
   "arabic": "Arabic",
   "add_match": "Add Match",
-  "max_players": "Max number of players at each team"
+  "max_players": "Max number of players at each team",
+  "warning_title": "Warning",
+  "permission_warning_message": "Please give permissions to the app.",
+  "enable_location_message": "You have to enable your location first",
+  "success_title": "Success",
+  "error_title": "Error",
+  "schedule_match_title": "Schedule a match for {fieldName}",
+  "max_players_hint": "Max number of players at each team",
+  "pick_date_button": "Pick a Date",
+  "weekly_note": "Note: This date will be available for players weekly",
+  "enter_player_id_warning": "Please enter a Player ID before adding a new one.",
+  "add_player_hint": "Add Player ID",
+  "add_time_button": "Add Time",
+  "add_match_button": "Add Match",
+  "enter_required_data_warning": "Please enter all required data",
+  "delete_match_confirmation": "Are you sure you want to permanently delete this match?",
+  "cancel_button": "Cancel",
+  "confirm_button": "Confirm",
+  "pick_start_time_warning": "Please pick a start time first",
+  "from_label": "From",
+  "to_label": "To",
+  "pick_start_time_button": "Pick Start Time",
+  "pick_end_time_button": "Pick End Time",
+  "field_deleted_success": "Your field has been removed successfully!",
+  "delete_field_confirmation": "Are you sure you want to permanently delete your field?",
+  "your_matches_button": "Your Matches",
+  "schedule_matches_button": "Schedule Matches",
+  "delete_field_button": "Delete Field",
+  "field_capacity_label": "{capacity} x {capacity} Football Field",
+  "match_result_title": "Match Result",
+  "vs_label": "VS",
+  "score_warning_message": "You should add score first and they shouldn't equal",
+  "add_score_button": "Add Score",
+  "done_button": "Done",
+  "generate_next_round_button": "Generate Next Round",
+  "round_started_success_message": "The round is started successfully!",
+  "round_started_error_message": "An error occurred while trying to create round.",
+  "final_result_title": "Result",
+  "final_result_error_prefix": "Error: {message}",
+  "month": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  },
+  "schedule_date": {
+    "missing_title": "Some values are missing",
+    "missing_message": "Please select times for all matches.",
+    "header_title": "Set Time To Each Match",
+    "submit_button": "Start The Next Round"
+  },
+  "show_hour_range": {
+    "from": "From",
+    "to": "To",
+    "select": "Select a time"
+  },
+  "change_password": {
+  "title": "Change Your Password",
+  "old_hint": "Old password",
+  "new_hint": "New password",
+  "button": "Change Password"
+},
+"search": {
+  "no_results": "No results found for \"{query}\""
+},
+"amenities": {
+  "parking": "Parking",
+  "ball_rent": "Ball Rent",
+  "toilets": "Toilets",
+  "changing_rooms": "Changing Rooms",
+  "cafeteria": "Cafeteria",
+  "lighting_quality": "Lighting Quality",
+  "field_quality": "Field Quality"
+},
+"field_view": {
+  "no_location_info": "No location description provided",
+  "book_now": "Book Now"
+},
+"tournament_card": {
+  "type": "Type: {}",
+  "knockout": "Knockout"
+},
+"register_team": {
+  "error_title": "Error",
+  "error_message": "An error occurred during registration!"
+},
+"add_player": {
+  "success_title": "Success",
+  "success_message": "The player is successfully added to your team!",
+  "error_title": "Error",
+  "error_message": "The player ID you entered is not valid",
+  "warning_title": "Warning",
+  "warning_message": "You should enter the player ID you want to add",
+  "button_text": "Add player"
+},
+"players_team": {
+  "type_id_hint": "Type player ID"
+},
+"user_team": {
+  "register_title": "Register your team",
+  "team_name_hint": "Team name",
+  "pick_logo": "Pick a logo of your team",
+  "data_required": "Data required",
+  "fill_all_data": "Please make sure to fill all data",
+  "next": "Next"
+},
+"tournaments": {
+  "title": "Available Tournaments"
+},
+"match_details": {
+  "title": "Match Details",
+  "not_played": "Not played yet",
+  "field_name": "Football Field",
+  "no_location_info": "No location description provided",
+  "done": "Done"
+},
+
+  "round_stage": {
+    "quarter_final": "At Quarter Final Stage",
+    "semi_final": "At Semi Final Stage",
+    "final": "At Final Round Stage",
+    "finished": "Finished"
+  },
+  "match": {
+    "vs": "VS"
+  },
+  "team_info": {
+    "see_your_team": "See your team"
+  },
+  "tournament": {
+  "fields": "Fields",
+  "get_info": "Get Info",
+  "error": "Error",
+  "private_for": "For",
+  "only": "only",
+  "from": "From",
+  "to": "To",
+  "type": "Type",
+  "teams_joined": "Teams Joined",
+  "be_first": "Be the first team who joins!",
+  "view_matches_rounds": "View Your Matches & Rounds",
+  "view_winner": "View Winner",
+  "join": "Join"
+},
+"filter": {
+  "next_week": "Next week",
+  "today": "Today",
+  "three_days": "3 days",
+  "last_week": "Last week",
+  "last_month": "Last month"
+},
+"button": {
+  "done": "Done"
+}
 
 }

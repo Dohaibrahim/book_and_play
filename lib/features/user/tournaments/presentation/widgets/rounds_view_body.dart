@@ -4,6 +4,7 @@ import 'package:book_and_play/core/theme/text_styles.dart';
 import 'package:book_and_play/features/owner/tournament/data/models/teams_matches_res.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_cubit.dart';
 import 'package:book_and_play/features/owner/tournament/presentation/manager/get_matches/get_matches_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,13 +20,14 @@ class RoundsViewBody extends StatelessWidget {
         if (state is GetMatchesSuccessState) {
           if (state.rounds.roundOf16.isEmpty) {
             if (state.rounds.quarterfinal.isEmpty) {
-              round = 'at quarter final stage';
+              round = 'round_stage.quarter_final'
+                  .tr(); //'at quarter final stage';
             } else if (state.rounds.semifinal.isEmpty) {
-              round = 'at semi final stage';
+              round = 'round_stage.semi_final'.tr();
             } else if (state.rounds.finalRound.isEmpty) {
-              round = 'at finalRound stage';
+              round = 'round_stage.final'.tr();
             } else {
-              round = 'Finished';
+              round = 'round_stage.finished'.tr();
             }
           }
           return Padding(
@@ -238,7 +240,7 @@ class PositionedMatchCard extends StatelessWidget {
                       match!.teamA.name,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text("VS"),
+                    Text('match.vs'.tr()),
                     Text(
                       match!.teamB.name,
                       style: TextStyle(fontWeight: FontWeight.bold),

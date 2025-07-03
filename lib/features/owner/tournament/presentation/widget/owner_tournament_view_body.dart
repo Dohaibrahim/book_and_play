@@ -51,7 +51,7 @@ class OwnerTournamentViewBody extends StatelessWidget {
                 if (state.tournament.isEmpty) {
                   return Expanded(
                     child: Center(
-                      child: Text('You havn\'t any tournaments yet'),
+                      child: Text('owner_tournament.empty_message'.tr()),
                     ),
                   );
                 }
@@ -65,7 +65,7 @@ class OwnerTournamentViewBody extends StatelessWidget {
                             .tournament[index]
                             .status, //TournamentStatus.upcoming.name,
                         subTitle:
-                            '${'owner_tournament.from'.tr()} ${formatDateToReadable(state.tournament[index].startDate)} ${'owner_tournament.to'.tr()} ${formatDateToReadable(state.tournament[index].endDate)}',
+                            '${'owner_tournament.from'.tr()} ${formatDateToReadable(state.tournament[index].startDate, context)} ${'owner_tournament.to'.tr()} ${formatDateToReadable(state.tournament[index].endDate, context)}',
                         title: state.tournament[index].name,
                         onTap: () {
                           switch (state.tournament[index].status) {
@@ -105,20 +105,20 @@ class OwnerTournamentViewBody extends StatelessWidget {
     );
   }
 
-  String formatDateToReadable(DateTime inputDate) {
+  String formatDateToReadable(DateTime inputDate, BuildContext context) {
     List<String> months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
+      context.tr('month.january'),
+      context.tr('month.february'),
+      context.tr('month.march'),
+      context.tr('month.april'),
+      context.tr('month.may'),
+      context.tr('month.june'),
+      context.tr('month.july'),
+      context.tr('month.august'),
+      context.tr('month.september'),
+      context.tr('month.october'),
+      context.tr('month.november'),
+      context.tr('month.december'),
     ];
 
     String day = inputDate.day.toString();

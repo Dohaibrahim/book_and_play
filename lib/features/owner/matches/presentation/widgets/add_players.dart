@@ -1,6 +1,7 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:book_and_play/core/widgets/app_text_form_field.dart';
 import 'package:book_and_play/core/widgets/top_snackbar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AddPlayersWidget extends StatefulWidget {
@@ -27,8 +28,8 @@ class _AddPlayersWidgetState extends State<AddPlayersWidget> {
     if (lastText.isEmpty) {
       TopSnackBar.show(
         context,
-        title: 'Warning',
-        message: 'Please enter a Player ID before adding a new one.',
+        title: context.tr('warning_title'),
+        message: context.tr('enter_player_id_warning'),
         contentType: ContentType.warning,
         color: Colors.orange,
       );
@@ -76,7 +77,7 @@ class _AddPlayersWidgetState extends State<AddPlayersWidget> {
                   Expanded(
                     child: AppTextFormField(
                       controller: controller,
-                      hintText: 'Add Player ID',
+                      hintText: context.tr('add_player_hint'),
                     ),
                   ),
                   const SizedBox(width: 8),

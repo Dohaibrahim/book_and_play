@@ -73,7 +73,8 @@ class SettingsViewBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'ID : ${userInfo['id']}',
+                      '${'user_settings.id_label'.tr()} ${userInfo['id']}',
+                      //'ID : ${userInfo['id']}',
                       style: TextStyles.font14BlackMedium.copyWith(
                         fontSize: 18,
                       ),
@@ -114,7 +115,7 @@ class SettingsViewBody extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.017),
                     SettingsIcon(
                       screenHeight: screenHeight,
-                      text: 'Change language',
+                      text: 'user_settings.change_language'.tr(),
                       onTap: () {
                         showBottomSheet(
                           context: context,
