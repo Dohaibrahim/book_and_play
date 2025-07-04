@@ -4,9 +4,14 @@ import 'package:book_and_play/core/widgets/app_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingViewBody extends StatelessWidget {
+class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
 
+  @override
+  State<OnboardingViewBody> createState() => _OnboardingViewBodyState();
+}
+
+class _OnboardingViewBodyState extends State<OnboardingViewBody> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
@@ -83,7 +88,172 @@ class OnboardingViewBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: screenHeight * 0.05),
+          AppButton(
+            onPressed: () {
+              showBottomSheet(
+                context: context,
+                builder: (context) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey[200]!),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    height: screenHeight * 0.45,
+                    child: Padding(
+                      padding: EdgeInsetsGeometry.symmetric(
+                        horizontal: 20,
+                        vertical: 50,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          AppButton(
+                            onPressed: () async {
+                              Navigator.pop(context);
+                              context.setLocale(Locale('ar'));
+                              setState(() {});
+                            },
+                            text: 'arabic',
+                          ),
+                          AppButton(
+                            onPressed: () async {
+                              Navigator.pop(context);
+                              context.setLocale(Locale('zh'));
+                              setState(() {});
+                            },
+                            text: 'Chinese',
+                          ),
+                          AppButton(
+                            onPressed: () {
+                              context.setLocale(Locale('en'));
+                              print('Switched to: ${context.locale}');
+                              Navigator.pop(context);
+                              setState(() {});
+                            },
+                            text: 'english',
+                          ),
+                          AppButton(
+                            onPressed: () async {
+                              Navigator.pop(context);
+                              context.setLocale(Locale('fr'));
+                              setState(() {});
+                            },
+                            text: 'Frensh',
+                          ),
+                          AppButton(
+                            onPressed: () async {
+                              Navigator.pop(context);
+                              context.setLocale(Locale('it'));
+                              setState(() {});
+                            },
+                            text: 'Italian',
+                          ),
+                          AppButton(
+                            onPressed: () async {
+                              Navigator.pop(context);
+                              context.setLocale(Locale('pt'));
+                              setState(() {});
+                            },
+                            text: 'Portuguese',
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+            text: 'Language',
+            height: 50,
+            textStyle: TextStyle(fontSize: 18),
+          ),
+          SizedBox(height: screenHeight * 0.05),
         ],
+      ),
+    );
+  }
+}
+
+class ChangeLanguage extends StatefulWidget {
+  const ChangeLanguage({
+    super.key,
+    required this.screenHeight,
+    required this.context,
+  });
+  final BuildContext context;
+  final double screenHeight;
+
+  @override
+  State<ChangeLanguage> createState() => _ChangeLanguageState();
+}
+
+class _ChangeLanguageState extends State<ChangeLanguage> {
+  @override
+  Widget build(BuildContext newcontext) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.grey[200]!),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      height: widget.screenHeight * 0.45,
+      child: Padding(
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(widget.context);
+                widget.context.setLocale(Locale('ar'));
+                setState(() {});
+              },
+              text: 'arabic',
+            ),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(widget.context);
+                widget.context.setLocale(Locale('zh'));
+                setState(() {});
+              },
+              text: 'Chinese',
+            ),
+            AppButton(
+              onPressed: () {
+                widget.context.setLocale(Locale('en'));
+
+                Navigator.pop(widget.context);
+                setState(() {});
+              },
+              text: 'english',
+            ),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(widget.context);
+                widget.context.setLocale(Locale('fr'));
+                setState(() {});
+              },
+              text: 'Frensh',
+            ),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(widget.context);
+                widget.context.setLocale(Locale('it'));
+                setState(() {});
+              },
+              text: 'Italian',
+            ),
+            AppButton(
+              onPressed: () async {
+                Navigator.pop(widget.context);
+                widget.context.setLocale(Locale('pt'));
+                setState(() {});
+              },
+              text: 'Portuguese',
+            ),
+          ],
+        ),
       ),
     );
   }

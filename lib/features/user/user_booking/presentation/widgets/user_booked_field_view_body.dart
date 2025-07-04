@@ -14,6 +14,12 @@ class UserBookedFieldViewBody extends StatelessWidget {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final screenWidth = MediaQuery.sizeOf(context).width;
     final bool isMatchesOpen = userMatchModel.status == 'open';
+    final imageProvider =
+        (userMatchModel.field.image != null &&
+            userMatchModel.field.image!.isNotEmpty)
+        ? NetworkImage(userMatchModel.field.image!)
+        : AssetImage('assets/images/football_stadium_demo.jpg')
+              as ImageProvider;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -22,28 +28,30 @@ class UserBookedFieldViewBody extends StatelessWidget {
           height: screenHeight * 0.50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/images/stadium_image.jpg'),
-            ),
+            image: DecorationImage(fit: BoxFit.cover, image: imageProvider),
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 15),
           child: SizedBox(
             height: screenHeight * 0.50,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SizedBox(height: screenHeight * 0.01),
-                SizedBox(
-                  height: screenHeight * 0.04,
-                  child: Text(
-                    userMatchModel.field.name,
-                    style: TextStyles.font24BlackBold,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: screenHeight * 0.04,
+                      child: Text(
+                        userMatchModel.field.name,
+                        style: TextStyles.font24BlackBold,
+                      ),
+                    ),
+                    FieldStatusCard(tournamentStatus: userMatchModel.status),
+                  ],
                 ),
-
                 Text(
                   'A ${userMatchModel.field.capacity} x ${userMatchModel.field.capacity} Football Field',
                   style: TextStyles.font14BlackMedium.copyWith(
@@ -59,26 +67,6 @@ class UserBookedFieldViewBody extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  margin: EdgeInsets.symmetric(horizontal: 100),
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: isMatchesOpen
-                        ? ColorManager.primaryColor
-                        : Colors.red,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Center(
-                    child: Text(
-                      userMatchModel.status,
-                      style: TextStyles.font24BlackBold.copyWith(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -157,3 +145,31 @@ class UserBookedFieldViewBody extends StatelessWidget {
     return DateFormat('EEEE').format(date); // Full day name
   }
 }
+
+class FieldStatusCard extends StatelessWidget {
+  const FieldStatusCard({super.key, required this.tournamentStatus});
+
+  final String tournamentStatus;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+        color: tournamentStatus == FieldStatus.open.name
+            ? Color(0xff23CF5F)
+            : Color(0xffFB120A),
+        border: Border.all(color: Colors.transparent),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        tournamentStatus,
+        style: TextStyles.font14BlackMedium.copyWith(
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+}
+
+enum FieldStatus { open, full }

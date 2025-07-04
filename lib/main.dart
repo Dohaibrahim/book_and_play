@@ -33,7 +33,7 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({
     super.key,
     required this.isLoggedInUser,
@@ -43,6 +43,11 @@ class MyApp extends StatelessWidget {
   final String userRole;
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
@@ -50,9 +55,9 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: !isLoggedInUser
+      initialRoute: !widget.isLoggedInUser
           ? Routes.onboardingView
-          : (userRole == 'owner'
+          : (widget.userRole == 'owner'
                 ? Routes.ownerBottomNavView
                 : Routes.userBottomNavView),
       title: 'Book and Play',
