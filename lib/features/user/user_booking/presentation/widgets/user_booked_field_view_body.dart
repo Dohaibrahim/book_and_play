@@ -13,7 +13,6 @@ class UserBookedFieldViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final screenWidth = MediaQuery.sizeOf(context).width;
-    final bool isMatchesOpen = userMatchModel.status == 'open';
     final imageProvider =
         (userMatchModel.field.image != null &&
             userMatchModel.field.image!.isNotEmpty)

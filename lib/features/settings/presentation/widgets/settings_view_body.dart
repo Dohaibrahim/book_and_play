@@ -119,8 +119,11 @@ class SettingsViewBody extends StatelessWidget {
                       onTap: () {
                         showBottomSheet(
                           context: context,
-                          builder: (context) {
-                            return ChangeLanguage(screenHeight: screenHeight);
+                          builder: (builderContext) {
+                            return ChangeLanguage(
+                              screenHeight: screenHeight,
+                              oldContext: context,
+                            );
                           },
                         );
                       },
@@ -154,9 +157,14 @@ class SettingsViewBody extends StatelessWidget {
 }
 
 class ChangeLanguage extends StatefulWidget {
-  const ChangeLanguage({super.key, required this.screenHeight});
+  const ChangeLanguage({
+    super.key,
+    required this.screenHeight,
+    required this.oldContext,
+  });
 
   final double screenHeight;
+  final BuildContext oldContext;
 
   @override
   State<ChangeLanguage> createState() => _ChangeLanguageState();
@@ -179,96 +187,49 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
           children: [
             AppButton(
               onPressed: () async {
-                Navigator.pop(context);
-                context.setLocale(Locale('ar'));
-                await getUserRole() == 'owner'
-                    ? Navigator.pushReplacementNamed(
-                        context,
-                        Routes.ownerBottomNavView,
-                      )
-                    : Navigator.pushReplacementNamed(
-                        context,
-                        Routes.userBottomNavView,
-                      );
+                Navigator.pop(widget.oldContext);
+                widget.oldContext.setLocale(Locale('ar'));
+                setState(() {});
               },
               text: 'arabic',
             ),
             AppButton(
               onPressed: () async {
-                Navigator.pop(context);
-                context.setLocale(Locale('zh'));
-                await getUserRole() == 'owner'
-                    ? Navigator.pushReplacementNamed(
-                        context,
-                        Routes.ownerBottomNavView,
-                      )
-                    : Navigator.pushReplacementNamed(
-                        context,
-                        Routes.userBottomNavView,
-                      );
+                Navigator.pop(widget.oldContext);
+                widget.oldContext.setLocale(Locale('zh'));
+                setState(() {});
               },
               text: 'Chinese',
             ),
             AppButton(
               onPressed: () async {
-                context.setLocale(Locale('en'));
-                await getUserRole() == 'owner'
-                    ? Navigator.pushReplacementNamed(
-                        context,
-                        Routes.ownerBottomNavView,
-                      )
-                    : Navigator.pushReplacementNamed(
-                        context,
-                        Routes.userBottomNavView,
-                      );
+                Navigator.pop(widget.oldContext);
+                widget.oldContext.setLocale(Locale('en'));
+                setState(() {});
               },
               text: 'english',
             ),
             AppButton(
               onPressed: () async {
-                Navigator.pop(context);
-                context.setLocale(Locale('fr'));
-                await getUserRole() == 'owner'
-                    ? Navigator.pushReplacementNamed(
-                        context,
-                        Routes.ownerBottomNavView,
-                      )
-                    : Navigator.pushReplacementNamed(
-                        context,
-                        Routes.userBottomNavView,
-                      );
+                Navigator.pop(widget.oldContext);
+                widget.oldContext.setLocale(Locale('fr'));
+                setState(() {});
               },
               text: 'Frensh',
             ),
             AppButton(
               onPressed: () async {
-                Navigator.pop(context);
-                context.setLocale(Locale('it'));
-                await getUserRole() == 'owner'
-                    ? Navigator.pushReplacementNamed(
-                        context,
-                        Routes.ownerBottomNavView,
-                      )
-                    : Navigator.pushReplacementNamed(
-                        context,
-                        Routes.userBottomNavView,
-                      );
+                Navigator.pop(widget.oldContext);
+                widget.oldContext.setLocale(Locale('it'));
+                setState(() {});
               },
               text: 'Italian',
             ),
             AppButton(
               onPressed: () async {
-                Navigator.pop(context);
-                context.setLocale(Locale('pt'));
-                await getUserRole() == 'owner'
-                    ? Navigator.pushReplacementNamed(
-                        context,
-                        Routes.ownerBottomNavView,
-                      )
-                    : Navigator.pushReplacementNamed(
-                        context,
-                        Routes.userBottomNavView,
-                      );
+                Navigator.pop(widget.oldContext);
+                widget.oldContext.setLocale(Locale('pt'));
+                setState(() {});
               },
               text: 'Portuguese',
             ),
